@@ -463,6 +463,7 @@ function bindSettingsEvents() {
     saveSettings(settings);
     refreshDirtyUI();
     render();
+    document.getElementById("settingsPanel").classList.remove("open");
   });
 }
 
