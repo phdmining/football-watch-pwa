@@ -94,8 +94,11 @@ button.icon-btn {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   margin-top: 16px;
-  padding: 16px;
+  padding: 16px 16px 0;
   display: none;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
 }
 .settings.open { display: block; }
 
@@ -184,8 +187,11 @@ select, .city-row input {
   justify-content: flex-end;
   gap: 10px;
   margin-top: 18px;
-  padding-top: 14px;
+  padding: 14px 0;
   border-top: 1px solid var(--line);
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
 }
 .dirty-hint {
   font-size: 12px;

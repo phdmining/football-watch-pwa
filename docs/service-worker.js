@@ -1,4 +1,4 @@
-const CACHE_NAME = "football-watch-shell-v1";
+const CACHE_NAME = "football-watch-shell-v2";
 const SHELL_FILES = [
   "./index.html", "./style.css", "./app.js",
   "./manifest.json", "./icon.svg", "./city_timezones.json",

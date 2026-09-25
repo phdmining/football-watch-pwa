@@ -483,7 +483,13 @@ async function init() {
     return;
   }
 
-  render();
+  try {
+    render();
+  } catch (e) {
+    document.getElementById("content").innerHTML =
+      `<div class="empty-state">页面渲染出错了：${e.message}<br>试试强制刷新页面（下拉刷新，或者关掉标签页重新打开）。</div>`;
+    console.error(e);
+  }
 }
 
 init();
