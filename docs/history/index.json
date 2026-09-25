@@ -1,0 +1,18 @@
+{
+  "seasons": [
+    {
+      "season": "2026-27",
+      "matchCount": 180,
+      "dateFrom": "2026-10-09",
+      "dateTo": "2026-10-25",
+      "competitions": [
+        "BL1",
+        "CL",
+        "FL1",
+        "PD",
+        "PL",
+        "SA"
+      ]
+    }
+  ]
+}
