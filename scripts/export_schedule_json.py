@@ -56,38 +56,116 @@ HALF_LIFE_DAYS = 60      # 遗忘因子半衰期：60天前的样本权重衰减
 COLD_START_MIN_SAMPLES = 200   # 少于这个样本数，用理论默认值兜底，不用不可靠的小样本统计
 
 
+SEASON_START_MONTH = 8   # 每年8月1日作为赛季分界（可按需调整）
+
+
+def season_key_for_date(utc_date_str: str) -> str:
+    """把一个UTC时间字符串映射到所属赛季，如 '2026-27'"""
+    d = datetime.fromisoformat(utc_date_str.replace("Z", "+00:00"))
+    y = d.year if d.month >= SEASON_START_MONTH else d.year - 1
+    return f"{y}-{str((y + 1) % 100).zfill(2)}"
+
+
+def load_season_archive(history_dir: str, season: str) -> dict:
+    path = os.path.join(history_dir, f"season_{season}.json")
+    if os.path.exists(path):
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+
+def save_season_archive(history_dir: str, season: str, data: dict):
+    path = os.path.join(history_dir, f"season_{season}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False)
+
+
+def update_season_archives(history_dir: str, matches_out: list) -> set:
+    """
+    把本次算出的比赛按赛季分组，以比赛ID为key去重更新进对应赛季归档文件
+    （同一场比赛被多次扫到，只保留最新一次快照，避免重复计数）。
+    返回本次涉及到的赛季集合。
+    """
+    by_season = defaultdict(dict)
+    for m in matches_out:
+        season = season_key_for_date(m["utcDate"])
+        by_season[season][str(m["id"])] = {
+            "utcDate": m["utcDate"],
+            "competition": m["competition"]["code"],
+            "breakdown": m["breakdown"],
+        }
+
+    touched_seasons = set()
+    for season, new_entries in by_season.items():
+        archive = load_season_archive(history_dir, season)
+        archive.update(new_entries)   # 按比赛ID覆盖更新，新快照替换旧的
+        save_season_archive(history_dir, season, archive)
+        touched_seasons.add(season)
+    return touched_seasons
+
+
+def rebuild_history_index(history_dir: str):
+    """扫描所有赛季归档文件，生成索引，供前端统计面板的赛季下拉列表使用"""
+    seasons_info = []
+    for fname in sorted(os.listdir(history_dir)):
+        if not (fname.startswith("season_") and fname.endswith(".json")):
+            continue
+        season = fname[len("season_"):-len(".json")]
+        try:
+            with open(os.path.join(history_dir, fname), "r", encoding="utf-8") as f:
+                archive = json.load(f)
+        except Exception:
+            continue
+        if not archive:
+            continue
+        dates = [m["utcDate"][:10] for m in archive.values()]
+        comps = sorted(set(m["competition"] for m in archive.values()))
+        seasons_info.append({
+            "season": season,
+            "matchCount": len(archive),
+            "dateFrom": min(dates),
+            "dateTo": max(dates),
+            "competitions": comps,
+        })
+    seasons_info.sort(key=lambda s: s["season"])
+
+    with open(os.path.join(history_dir, "index.json"), "w", encoding="utf-8") as f:
+        json.dump({"seasons": seasons_info}, f, ensure_ascii=False, indent=2)
+    return seasons_info
+
+
 def compute_dimension_stats(history_dir: str, today_str: str):
     """
-    读取 docs/history/ 下所有归档文件，按"距今天数"用指数遗忘因子加权，
+    读取所有赛季归档文件，按"比赛日期距今天数"用指数遗忘因子加权，
     计算每个维度的加权均值/标准差，供前端做z-score标准化。
     返回 (dimension_stats, samples_used, cold_start)
     """
     import math
     today = datetime.strptime(today_str, "%Y-%m-%d")
-    weighted_values = {d: [] for d in DIMENSIONS}  # d -> [(value, weight), ...]
+    weighted_values = {d: [] for d in DIMENSIONS}
     total_samples = 0
 
     for fname in os.listdir(history_dir):
-        if not fname.endswith(".json"):
+        if not (fname.startswith("season_") and fname.endswith(".json")):
             continue
-        date_str = fname[:-5]
-        try:
-            fdate = datetime.strptime(date_str, "%Y-%m-%d")
-        except ValueError:
-            continue
-        age_days = (today - fdate).days
-        if age_days < 0:
-            continue
-        decay = 0.5 ** (age_days / HALF_LIFE_DAYS)
-
         try:
             with open(os.path.join(history_dir, fname), "r", encoding="utf-8") as f:
-                entry = json.load(f)
+                archive = json.load(f)
         except Exception:
             continue
 
-        for m in entry.get("matches", []):
+        for m in archive.values():
             bd = m.get("breakdown", {})
+            try:
+                mdate = datetime.fromisoformat(m["utcDate"].replace("Z", "+00:00")).replace(tzinfo=None)
+            except Exception:
+                continue
+            age_days = max(0, (today - mdate).days)   # 未来的比赛(负数)按0天算，权重最高
+            decay = 0.5 ** (age_days / HALF_LIFE_DAYS)
+
             total_samples += 1
             for d in DIMENSIONS:
                 if d in bd:
@@ -105,7 +183,7 @@ def compute_dimension_stats(history_dir: str, today_str: str):
         var = sum(w * (v - mean) ** 2 for v, w in pairs) / wsum
         std = math.sqrt(var)
         if std < 0.05:
-            std = 0.05  # 避免标准差过小导致z-score爆炸
+            std = 0.05
         stats[d] = {"mean": round(mean, 4), "std": round(std, 4)}
 
     return stats, total_samples, cold_start
@@ -196,30 +274,15 @@ def main():
         all_team_names.update(names)
     club_influence_map = {name: round(get_club_influence(name), 3) for name in all_team_names}
 
-    print("[4/5] 归档本次打分结果，计算统计量（用于下次运行的自适应标准化）...")
+    print("[4/5] 归档本次打分结果（按赛季+比赛ID去重），计算统计量...")
     history_dir = os.path.join(ROOT, "docs", "history")
     os.makedirs(history_dir, exist_ok=True)
     today_str = datetime.now(dt_timezone.utc).strftime("%Y-%m-%d")
 
-    # 归档今天的原始breakdown（供未来做z-score标准化用）
-    archive_entry = {
-        "date": today_str,
-        "matches": [{"breakdown": m["breakdown"]} for m in matches_out],
-    }
-    with open(os.path.join(history_dir, f"{today_str}.json"), "w", encoding="utf-8") as f:
-        json.dump(archive_entry, f, ensure_ascii=False)
-
-    # 清理过老的归档（超过2年的删掉，避免仓库无限增长）
-    cutoff = datetime.now(dt_timezone.utc) - timedelta(days=730)
-    for fname in os.listdir(history_dir):
-        if not fname.endswith(".json"):
-            continue
-        try:
-            fdate = datetime.strptime(fname[:-5], "%Y-%m-%d").replace(tzinfo=dt_timezone.utc)
-        except ValueError:
-            continue
-        if fdate < cutoff:
-            os.remove(os.path.join(history_dir, fname))
+    touched_seasons = update_season_archives(history_dir, matches_out)
+    seasons_info = rebuild_history_index(history_dir)
+    print(f"      -> 更新了赛季归档: {', '.join(sorted(touched_seasons)) or '(无)'}；"
+          f"当前共有 {len(seasons_info)} 个赛季有记录")
 
     dimension_stats, samples_used, cold_start = compute_dimension_stats(history_dir, today_str)
     if cold_start:
@@ -227,6 +290,8 @@ def main():
               f"暂时用理论默认值(均值0.5/标准差0.2)做标准化，样本积累到一定量后会自动切换成真实统计值。")
     else:
         print(f"      -> 用了 {samples_used} 场历史样本（含遗忘因子加权）计算标准化统计量")
+
+    current_season = season_key_for_date(datetime.now(dt_timezone.utc).strftime("%Y-%m-%dT00:00:00Z"))
 
     print("[5/5] 写入 docs/schedule.json ...")
     output = {
@@ -242,6 +307,7 @@ def main():
         "dimensionStats": dimension_stats,   # {dim: {mean, std}}，前端用来做z-score标准化
         "statsColdStart": cold_start,
         "statsSampleCount": samples_used,
+        "currentSeason": current_season,
         "matches": matches_out,
     }
 
