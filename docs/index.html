@@ -41,17 +41,24 @@
       </div>
 
       <div class="field">
-        <label class="field-label">我支持的主队（可选）</label>
-        <select id="favoriteTeamSelect">
-          <option value="">不设置</option>
-        </select>
+        <label class="field-label">关注球队（按顺序，排第一优先级最高）</label>
+        <div class="team-search-row">
+          <input type="text" id="teamSearchInput" placeholder="搜索球队，比如「利物浦」或「Liverpool」">
+        </div>
+        <div class="team-search-results" id="teamSearchResults"></div>
+        <div class="watched-team-list" id="watchedTeamList"></div>
       </div>
 
       <div class="field">
         <label class="checkbox-row">
           <input type="checkbox" id="forceFavoriteCheckbox" checked>
-          方案A优先安排我的主队比赛（即使不是当天分数最高组合）
+          方案A优先安排关注球队的比赛（即使不是当天分数最高组合）
         </label>
+      </div>
+
+      <div class="settings-actions">
+        <span class="dirty-hint" id="dirtyHint"></span>
+        <button class="confirm-btn" id="confirmSettingsBtn">确认更新</button>
       </div>
     </div>
   </header>

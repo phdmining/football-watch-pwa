@@ -74,8 +74,33 @@ def _search_api_football_team_id(team_name: str, api_key: str):
         cache_set("teams", f"af_id_{team_name}", {"id": None})
         return None
     team_id = results[0]["team"]["id"]
-    cache_set("teams", f"af_id_{team_name}", {"id": team_id})
+    logo = results[0]["team"].get("logo")
+    venue = results[0].get("venue") or {}
+    capacity = venue.get("capacity")
+    cache_set("teams", f"af_id_{team_name}", {"id": team_id, "logo": logo, "capacity": capacity})
     return team_id
+
+
+def get_team_extra_info(team_name: str, mock_mode: bool, api_key: str):
+    """返回 {"logo": str|None, "capacity": int|None}，跟球队ID查询共用同一次API调用和缓存"""
+    if mock_mode:
+        try:
+            with open(os.path.join(MOCK_DIR, "teams.json"), "r", encoding="utf-8") as f:
+                teams = json.load(f)
+            t = teams.get(team_name, {})
+            return {"logo": None, "capacity": t.get("capacity")}
+        except Exception:
+            return {"logo": None, "capacity": None}
+
+    cached = cache_get("teams", f"af_id_{team_name}", ttl_days=180)
+    if cached is not None:
+        return {"logo": cached.get("logo"), "capacity": cached.get("capacity")}
+    # 触发一次查询（会顺带写入缓存）
+    _search_api_football_team_id(team_name, api_key)
+    cached = cache_get("teams", f"af_id_{team_name}", ttl_days=180)
+    if cached is not None:
+        return {"logo": cached.get("logo"), "capacity": cached.get("capacity")}
+    return {"logo": None, "capacity": None}
 
 
 def _fetch_real_h2h(id1: int, id2: int, api_key: str):

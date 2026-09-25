@@ -177,6 +177,99 @@ select, .city-row input {
   margin-top: 4px;
 }
 
+/* ---- 设置面板：确认按钮 ---- */
+.settings-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.dirty-hint {
+  font-size: 12px;
+  color: var(--amber);
+  flex: 1;
+}
+.confirm-btn {
+  background: var(--amber);
+  border: none;
+  color: #1a1406;
+  font-weight: 600;
+  border-radius: var(--radius);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.confirm-btn:disabled {
+  background: var(--surface-raised);
+  color: var(--text-dim);
+}
+
+/* ---- 球队搜索选择器 ---- */
+.team-search-row input {
+  width: 100%;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: inherit;
+}
+.team-search-results {
+  margin-top: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.team-search-results:empty { display: none; }
+.team-result-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  cursor: pointer;
+}
+.team-result-row:hover { background: var(--surface-raised); }
+.team-result-row img { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
+.team-result-row .team-comp-tag { margin-left: auto; font-size: 11px; color: var(--text-dim); }
+
+.watched-team-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.watched-team-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+.watched-team-row .rank-badge {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: #1a1406;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.watched-team-row img { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
+.watched-team-row .name { flex: 1; font-size: 14px; }
+.watched-team-row button {
+  background: none; border: none; color: var(--text-dim);
+  font-size: 14px; padding: 4px 6px; font-family: inherit;
+}
+.watched-team-row button:hover { color: var(--text); }
+
 /* ---- Day sections ---- */
 .day-section {
   margin-top: 28px;
@@ -255,8 +348,13 @@ select, .city-row input {
 .match-teams {
   font-size: 15px;
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 .match-teams .fav { color: var(--amber); font-weight: 600; }
+.team-crest { width: 16px; height: 16px; object-fit: contain; vertical-align: -3px; }
 
 .match-meta {
   display: flex;
@@ -275,7 +373,14 @@ select, .city-row input {
 }
 .tag.comp { color: var(--text); }
 .tag.derby { color: var(--red); border-color: var(--red); }
+.tag.bigclub { color: var(--amber); border-color: var(--amber-dim); }
+.tag.fav { color: var(--amber); border-color: var(--amber); font-weight: 600; }
 .tag.reason { color: var(--text-dim); flex-basis: 100%; margin-top: 2px; }
+
+/* ---- 俱乐部影响力分层：球队名字颜色区分 ---- */
+.team-name.tier-gold { color: var(--amber); font-weight: 700; }
+.team-name.tier-silver { color: #C9CDD6; font-weight: 600; }
+.team-name.tier-normal { color: var(--text); }
 
 /* ---- Full schedule table ---- */
 .full-table {

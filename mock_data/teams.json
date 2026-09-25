@@ -7,7 +7,8 @@
     "address": "Manchester",
     "city": "Manchester",
     "lat": 53.4631,
-    "lon": -2.2913
+    "lon": -2.2913,
+    "capacity": 74310
   },
   "Manchester City FC": {
     "id": 1001,
@@ -17,7 +18,8 @@
     "address": "Manchester",
     "city": "Manchester",
     "lat": 53.4831,
-    "lon": -2.2004
+    "lon": -2.2004,
+    "capacity": 53400
   },
   "Liverpool FC": {
     "id": 1002,
@@ -27,7 +29,8 @@
     "address": "Liverpool",
     "city": "Liverpool",
     "lat": 53.4308,
-    "lon": -2.9608
+    "lon": -2.9608,
+    "capacity": 61276
   },
   "Everton FC": {
     "id": 1003,
@@ -37,7 +40,8 @@
     "address": "Liverpool",
     "city": "Liverpool",
     "lat": 53.4388,
-    "lon": -2.9662
+    "lon": -2.9662,
+    "capacity": 52888
   },
   "Arsenal FC": {
     "id": 1004,
@@ -47,7 +51,8 @@
     "address": "London",
     "city": "London",
     "lat": 51.5549,
-    "lon": -0.1084
+    "lon": -0.1084,
+    "capacity": 60704
   },
   "Tottenham Hotspur FC": {
     "id": 1005,
@@ -57,7 +62,8 @@
     "address": "London",
     "city": "London",
     "lat": 51.6043,
-    "lon": -0.0664
+    "lon": -0.0664,
+    "capacity": 62850
   },
   "Chelsea FC": {
     "id": 1006,
@@ -67,7 +73,8 @@
     "address": "London",
     "city": "London",
     "lat": 51.4816,
-    "lon": -0.1909
+    "lon": -0.1909,
+    "capacity": 40343
   },
   "Newcastle United FC": {
     "id": 1007,
@@ -77,7 +84,8 @@
     "address": "Newcastle",
     "city": "Newcastle",
     "lat": 54.9756,
-    "lon": -1.6217
+    "lon": -1.6217,
+    "capacity": 52305
   },
   "Aston Villa FC": {
     "id": 1008,
@@ -87,7 +95,8 @@
     "address": "Birmingham",
     "city": "Birmingham",
     "lat": 52.5092,
-    "lon": -1.8848
+    "lon": -1.8848,
+    "capacity": 42918
   },
   "Brighton & Hove Albion FC": {
     "id": 1009,
@@ -97,7 +106,8 @@
     "address": "Brighton",
     "city": "Brighton",
     "lat": 50.8617,
-    "lon": -0.0837
+    "lon": -0.0837,
+    "capacity": 31800
   },
   "Real Madrid": {
     "id": 1010,
@@ -107,7 +117,8 @@
     "address": "Madrid",
     "city": "Madrid",
     "lat": 40.4531,
-    "lon": -3.6883
+    "lon": -3.6883,
+    "capacity": 85000
   },
   "Atlético de Madrid": {
     "id": 1011,
@@ -117,7 +128,8 @@
     "address": "Madrid",
     "city": "Madrid",
     "lat": 40.4362,
-    "lon": -3.5995
+    "lon": -3.5995,
+    "capacity": 68456
   },
   "FC Barcelona": {
     "id": 1012,
@@ -127,7 +139,8 @@
     "address": "Barcelona",
     "city": "Barcelona",
     "lat": 41.3809,
-    "lon": 2.1228
+    "lon": 2.1228,
+    "capacity": 99354
   },
   "Sevilla FC": {
     "id": 1013,
@@ -137,7 +150,8 @@
     "address": "Sevilla",
     "city": "Sevilla",
     "lat": 37.3841,
-    "lon": -5.9709
+    "lon": -5.9709,
+    "capacity": 43883
   },
   "Real Betis Balompié": {
     "id": 1014,
@@ -147,7 +161,8 @@
     "address": "Sevilla",
     "city": "Sevilla",
     "lat": 37.3568,
-    "lon": -5.9821
+    "lon": -5.9821,
+    "capacity": 60720
   },
   "Valencia CF": {
     "id": 1015,
@@ -157,7 +172,8 @@
     "address": "Valencia",
     "city": "Valencia",
     "lat": 39.4747,
-    "lon": -0.3583
+    "lon": -0.3583,
+    "capacity": 49430
   },
   "Real Sociedad de Fútbol": {
     "id": 1016,
@@ -167,7 +183,8 @@
     "address": "San Sebastian",
     "city": "San Sebastian",
     "lat": 43.3017,
-    "lon": -1.9736
+    "lon": -1.9736,
+    "capacity": 39500
   },
   "Villarreal CF": {
     "id": 1017,
@@ -177,7 +194,8 @@
     "address": "Villarreal",
     "city": "Villarreal",
     "lat": 39.9442,
-    "lon": -0.1037
+    "lon": -0.1037,
+    "capacity": 23500
   },
   "Juventus FC": {
     "id": 1018,
@@ -187,7 +205,8 @@
     "address": "Turin",
     "city": "Turin",
     "lat": 45.1096,
-    "lon": 7.6413
+    "lon": 7.6413,
+    "capacity": 41507
   },
   "Torino FC": {
     "id": 1019,
@@ -197,7 +216,8 @@
     "address": "Turin",
     "city": "Turin",
     "lat": 45.042,
-    "lon": 7.6498
+    "lon": 7.6498,
+    "capacity": 27958
   },
   "FC Internazionale Milano": {
     "id": 1020,
@@ -207,7 +227,8 @@
     "address": "Milan",
     "city": "Milan",
     "lat": 45.4781,
-    "lon": 9.124
+    "lon": 9.124,
+    "capacity": 75923
   },
   "AC Milan": {
     "id": 1021,
@@ -217,7 +238,8 @@
     "address": "Milan",
     "city": "Milan",
     "lat": 45.4781,
-    "lon": 9.124
+    "lon": 9.124,
+    "capacity": 75923
   },
   "AS Roma": {
     "id": 1022,
@@ -227,7 +249,8 @@
     "address": "Rome",
     "city": "Rome",
     "lat": 41.9339,
-    "lon": 12.4547
+    "lon": 12.4547,
+    "capacity": 70634
   },
   "SS Lazio": {
     "id": 1023,
@@ -237,7 +260,8 @@
     "address": "Rome",
     "city": "Rome",
     "lat": 41.9339,
-    "lon": 12.4547
+    "lon": 12.4547,
+    "capacity": 70634
   },
   "SSC Napoli": {
     "id": 1024,
@@ -247,7 +271,8 @@
     "address": "Naples",
     "city": "Naples",
     "lat": 40.828,
-    "lon": 14.193
+    "lon": 14.193,
+    "capacity": 54726
   },
   "ACF Fiorentina": {
     "id": 1025,
@@ -257,7 +282,8 @@
     "address": "Florence",
     "city": "Florence",
     "lat": 43.7808,
-    "lon": 11.2822
+    "lon": 11.2822,
+    "capacity": 43147
   },
   "FC Bayern München": {
     "id": 1026,
@@ -267,7 +293,8 @@
     "address": "Munich",
     "city": "Munich",
     "lat": 48.2188,
-    "lon": 11.6247
+    "lon": 11.6247,
+    "capacity": 75000
   },
   "Borussia Dortmund": {
     "id": 1027,
@@ -277,7 +304,8 @@
     "address": "Dortmund",
     "city": "Dortmund",
     "lat": 51.4926,
-    "lon": 7.4517
+    "lon": 7.4517,
+    "capacity": 81365
   },
   "Bayer 04 Leverkusen": {
     "id": 1028,
@@ -287,7 +315,8 @@
     "address": "Leverkusen",
     "city": "Leverkusen",
     "lat": 51.0382,
-    "lon": 7.0023
+    "lon": 7.0023,
+    "capacity": 30210
   },
   "RB Leipzig": {
     "id": 1029,
@@ -297,7 +326,8 @@
     "address": "Leipzig",
     "city": "Leipzig",
     "lat": 51.3458,
-    "lon": 12.3483
+    "lon": 12.3483,
+    "capacity": 47069
   },
   "Eintracht Frankfurt": {
     "id": 1030,
@@ -307,7 +337,8 @@
     "address": "Frankfurt",
     "city": "Frankfurt",
     "lat": 50.0686,
-    "lon": 8.6455
+    "lon": 8.6455,
+    "capacity": 51500
   },
   "VfB Stuttgart": {
     "id": 1031,
@@ -317,7 +348,8 @@
     "address": "Stuttgart",
     "city": "Stuttgart",
     "lat": 48.7928,
-    "lon": 9.232
+    "lon": 9.232,
+    "capacity": 60469
   },
   "Paris Saint-Germain FC": {
     "id": 1032,
@@ -327,7 +359,8 @@
     "address": "Paris",
     "city": "Paris",
     "lat": 48.8414,
-    "lon": 2.253
+    "lon": 2.253,
+    "capacity": 47929
   },
   "Olympique de Marseille": {
     "id": 1033,
@@ -337,7 +370,8 @@
     "address": "Marseille",
     "city": "Marseille",
     "lat": 43.2698,
-    "lon": 5.3958
+    "lon": 5.3958,
+    "capacity": 67394
   },
   "AS Monaco FC": {
     "id": 1034,
@@ -347,7 +381,8 @@
     "address": "Monaco",
     "city": "Monaco",
     "lat": 43.7276,
-    "lon": 7.4152
+    "lon": 7.4152,
+    "capacity": 16360
   },
   "Olympique Lyonnais": {
     "id": 1035,
@@ -357,7 +392,8 @@
     "address": "Lyon",
     "city": "Lyon",
     "lat": 45.7653,
-    "lon": 4.9822
+    "lon": 4.9822,
+    "capacity": 59186
   },
   "LOSC Lille": {
     "id": 1036,
@@ -367,6 +403,7 @@
     "address": "Lille",
     "city": "Lille",
     "lat": 50.612,
-    "lon": 3.1302
+    "lon": 3.1302,
+    "capacity": 50186
   }
 }

@@ -1,8 +1,21 @@
 """
 综合打分模块
-五大维度，各自归一化到 0~1，再按 config.weights 加权求和 -> 0~100 的推荐指数
+八个维度，各自归一化到 0~1，再按 config.weights 加权求和 -> 0~100 的推荐指数
 """
+import json
+import math
+import os
 from derby import evaluate_derby
+
+_INFLUENCE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "club_influence.json")
+with open(_INFLUENCE_PATH, "r", encoding="utf-8") as f:
+    _INFLUENCE_DB = json.load(f)
+
+_INFLUENCE_MAP = _INFLUENCE_DB["clubs"]
+_INFLUENCE_BASELINE = _INFLUENCE_DB["_baseline"]
+
+_MAX_KNOWN_CAPACITY = 100000  # 用于场馆规模对数归一化的参照上限（诺坎普量级）
 
 
 def _form_score(form_str: str) -> float:
@@ -19,6 +32,27 @@ def _position_score(position: int, total_teams: int) -> float:
     if total_teams <= 1:
         return 0.5
     return 1 - (position - 1) / (total_teams - 1)
+
+
+def get_club_influence(team_name: str) -> float:
+    return _INFLUENCE_MAP.get(team_name, _INFLUENCE_BASELINE)
+
+
+def score_club_influence(home_name: str, away_name: str) -> float:
+    """双方俱乐部影响力均值，0~1"""
+    return (get_club_influence(home_name) + get_club_influence(away_name)) / 2
+
+
+def score_stadium_scale(home_capacity, away_capacity) -> float:
+    """
+    场馆规模评分，0~1。用对数压缩，避免容量数字直接线性主导。
+    这里用主队场馆容量（比赛实际在主队场馆进行），客队容量目前不参与计算，
+    保留参数是为了以后可能需要双方对比时扩展。
+    """
+    if not home_capacity or home_capacity <= 0:
+        return 0.3  # 拿不到容量数据时给中性偏低分，不武断给0
+    ratio = math.log(home_capacity) / math.log(_MAX_KNOWN_CAPACITY)
+    return max(0.0, min(1.0, ratio))
 
 
 def score_form_ranking(team1_standing: dict, team2_standing: dict) -> float:
@@ -130,10 +164,12 @@ def score_third_party_impact_v2(team1_standing, team2_standing, comp_team_map) -
 
 
 def score_match(match: dict, comp_code: str, standings: dict, h2h_data,
-                 coords1, coords2, weights: dict, derby_distance_km: float) -> dict:
+                 coords1, coords2, weights: dict, derby_distance_km: float,
+                 home_capacity=None) -> dict:
     """
     match: {"homeTeam": {"name":...}, "awayTeam": {"name":...}, ...}
     standings: 本联赛 team_map（get_standings返回结果里对应comp_code的部分）
+    home_capacity: 主队场馆容量（可选，拿不到时场馆规模维度给中性分）
     返回: {"total_score": 0~100, "breakdown": {...}, "derby_info": {...}}
     """
     home_name = match["homeTeam"]["name"]
@@ -151,6 +187,8 @@ def score_match(match: dict, comp_code: str, standings: dict, h2h_data,
         "big_club_clash": 1.0 if derby_info["is_big_club_clash"] else 0.0,
         "title_relevance": score_title_relevance(s1, s2),
         "third_party_impact": score_third_party_impact_v2(s1, s2, standings),
+        "club_influence": score_club_influence(home_name, away_name),
+        "stadium_scale": score_stadium_scale(home_capacity, None),
     }
 
     total = sum(scores[k] * weights.get(k, 0) for k in scores)
@@ -185,6 +223,10 @@ def build_reason_text(match: dict, result: dict) -> str:
         parts.append("双方状态火热")
     if bd["third_party_impact"] >= 0.6:
         parts.append("牵动周边排名")
+    if bd["club_influence"] >= 0.75:
+        parts.append("豪门底蕴深厚")
+    if bd["stadium_scale"] >= 0.85:
+        parts.append("大球场氛围")
 
     if not parts:
         parts.append("常规联赛焦点战")

@@ -11,54 +11,54 @@ from datetime import datetime, timedelta, timezone
 
 random.seed(42)
 
-# 球队数据：(name, city, lat, lon)  -- 城市坐标用于验证"同城德比"地理算法
+# 球队数据：(name, city, lat, lon, capacity)  -- capacity用于验证"场馆规模"打分维度
 TEAMS = {
     "PL": [
-        ("Manchester United FC", "Manchester", 53.4631, -2.2913),
-        ("Manchester City FC", "Manchester", 53.4831, -2.2004),
-        ("Liverpool FC", "Liverpool", 53.4308, -2.9608),
-        ("Everton FC", "Liverpool", 53.4388, -2.9662),
-        ("Arsenal FC", "London", 51.5549, -0.1084),
-        ("Tottenham Hotspur FC", "London", 51.6043, -0.0664),
-        ("Chelsea FC", "London", 51.4816, -0.1909),
-        ("Newcastle United FC", "Newcastle", 54.9756, -1.6217),
-        ("Aston Villa FC", "Birmingham", 52.5092, -1.8848),
-        ("Brighton & Hove Albion FC", "Brighton", 50.8617, -0.0837),
+        ("Manchester United FC", "Manchester", 53.4631, -2.2913, 74310),
+        ("Manchester City FC", "Manchester", 53.4831, -2.2004, 53400),
+        ("Liverpool FC", "Liverpool", 53.4308, -2.9608, 61276),
+        ("Everton FC", "Liverpool", 53.4388, -2.9662, 52888),
+        ("Arsenal FC", "London", 51.5549, -0.1084, 60704),
+        ("Tottenham Hotspur FC", "London", 51.6043, -0.0664, 62850),
+        ("Chelsea FC", "London", 51.4816, -0.1909, 40343),
+        ("Newcastle United FC", "Newcastle", 54.9756, -1.6217, 52305),
+        ("Aston Villa FC", "Birmingham", 52.5092, -1.8848, 42918),
+        ("Brighton & Hove Albion FC", "Brighton", 50.8617, -0.0837, 31800),
     ],
     "PD": [
-        ("Real Madrid", "Madrid", 40.4531, -3.6883),
-        ("Atlético de Madrid", "Madrid", 40.4362, -3.5995),
-        ("FC Barcelona", "Barcelona", 41.3809, 2.1228),
-        ("Sevilla FC", "Sevilla", 37.3841, -5.9709),
-        ("Real Betis Balompié", "Sevilla", 37.3568, -5.9821),
-        ("Valencia CF", "Valencia", 39.4747, -0.3583),
-        ("Real Sociedad de Fútbol", "San Sebastian", 43.3017, -1.9736),
-        ("Villarreal CF", "Villarreal", 39.9442, -0.1037),
+        ("Real Madrid", "Madrid", 40.4531, -3.6883, 85000),
+        ("Atlético de Madrid", "Madrid", 40.4362, -3.5995, 68456),
+        ("FC Barcelona", "Barcelona", 41.3809, 2.1228, 99354),
+        ("Sevilla FC", "Sevilla", 37.3841, -5.9709, 43883),
+        ("Real Betis Balompié", "Sevilla", 37.3568, -5.9821, 60720),
+        ("Valencia CF", "Valencia", 39.4747, -0.3583, 49430),
+        ("Real Sociedad de Fútbol", "San Sebastian", 43.3017, -1.9736, 39500),
+        ("Villarreal CF", "Villarreal", 39.9442, -0.1037, 23500),
     ],
     "SA": [
-        ("Juventus FC", "Turin", 45.1096, 7.6413),
-        ("Torino FC", "Turin", 45.0420, 7.6498),
-        ("FC Internazionale Milano", "Milan", 45.4781, 9.1240),
-        ("AC Milan", "Milan", 45.4781, 9.1240),
-        ("AS Roma", "Rome", 41.9339, 12.4547),
-        ("SS Lazio", "Rome", 41.9339, 12.4547),
-        ("SSC Napoli", "Naples", 40.8280, 14.1930),
-        ("ACF Fiorentina", "Florence", 43.7808, 11.2822),
+        ("Juventus FC", "Turin", 45.1096, 7.6413, 41507),
+        ("Torino FC", "Turin", 45.0420, 7.6498, 27958),
+        ("FC Internazionale Milano", "Milan", 45.4781, 9.1240, 75923),
+        ("AC Milan", "Milan", 45.4781, 9.1240, 75923),
+        ("AS Roma", "Rome", 41.9339, 12.4547, 70634),
+        ("SS Lazio", "Rome", 41.9339, 12.4547, 70634),
+        ("SSC Napoli", "Naples", 40.8280, 14.1930, 54726),
+        ("ACF Fiorentina", "Florence", 43.7808, 11.2822, 43147),
     ],
     "BL1": [
-        ("FC Bayern München", "Munich", 48.2188, 11.6247),
-        ("Borussia Dortmund", "Dortmund", 51.4926, 7.4517),
-        ("Bayer 04 Leverkusen", "Leverkusen", 51.0382, 7.0023),
-        ("RB Leipzig", "Leipzig", 51.3458, 12.3483),
-        ("Eintracht Frankfurt", "Frankfurt", 50.0686, 8.6455),
-        ("VfB Stuttgart", "Stuttgart", 48.7928, 9.2320),
+        ("FC Bayern München", "Munich", 48.2188, 11.6247, 75000),
+        ("Borussia Dortmund", "Dortmund", 51.4926, 7.4517, 81365),
+        ("Bayer 04 Leverkusen", "Leverkusen", 51.0382, 7.0023, 30210),
+        ("RB Leipzig", "Leipzig", 51.3458, 12.3483, 47069),
+        ("Eintracht Frankfurt", "Frankfurt", 50.0686, 8.6455, 51500),
+        ("VfB Stuttgart", "Stuttgart", 48.7928, 9.2320, 60469),
     ],
     "FL1": [
-        ("Paris Saint-Germain FC", "Paris", 48.8414, 2.2530),
-        ("Olympique de Marseille", "Marseille", 43.2698, 5.3958),
-        ("AS Monaco FC", "Monaco", 43.7276, 7.4152),
-        ("Olympique Lyonnais", "Lyon", 45.7653, 4.9822),
-        ("LOSC Lille", "Lille", 50.6120, 3.1302),
+        ("Paris Saint-Germain FC", "Paris", 48.8414, 2.2530, 47929),
+        ("Olympique de Marseille", "Marseille", 43.2698, 5.3958, 67394),
+        ("AS Monaco FC", "Monaco", 43.7276, 7.4152, 16360),
+        ("Olympique Lyonnais", "Lyon", 45.7653, 4.9822, 59186),
+        ("LOSC Lille", "Lille", 50.6120, 3.1302, 50186),
     ],
     "CL": [],  # 欧冠球队从五大联赛里抽取跨国对阵，单独处理
 }
@@ -79,7 +79,7 @@ def get_team_id(name):
         team_id_counter += 1
     return team_ids[name]
 
-def build_team_obj(name, city, lat, lon):
+def build_team_obj(name, city, lat, lon, capacity):
     return {
         "id": get_team_id(name),
         "name": name,
@@ -89,6 +89,7 @@ def build_team_obj(name, city, lat, lon):
         "city": city,
         "lat": lat,
         "lon": lon,
+        "capacity": capacity,
     }
 
 def kickoff_hour():
@@ -97,8 +98,8 @@ def kickoff_hour():
 # ---------- 1. 生成球队字典 mock_data/teams.json ----------
 all_teams = {}
 for comp, teams in TEAMS.items():
-    for (name, city, lat, lon) in teams:
-        all_teams[name] = build_team_obj(name, city, lat, lon)
+    for (name, city, lat, lon, capacity) in teams:
+        all_teams[name] = build_team_obj(name, city, lat, lon, capacity)
 
 with open("mock_data/teams.json", "w", encoding="utf-8") as f:
     json.dump(all_teams, f, ensure_ascii=False, indent=2)
