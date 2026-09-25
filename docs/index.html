@@ -20,7 +20,41 @@
         <h1>观赛助手</h1>
         <p class="tagline">欧洲五大联赛 + 欧冠 · 本地时间</p>
       </div>
-      <button class="icon-btn" id="settingsToggle">设置</button>
+      <div class="header-actions">
+        <button class="icon-btn" id="statsToggle">统计</button>
+        <button class="icon-btn" id="settingsToggle">设置</button>
+      </div>
+    </div>
+
+    <div class="settings" id="statsPanel">
+      <h2>比赛分值分布统计</h2>
+
+      <div class="field">
+        <label class="field-label">赛事（可多选）</label>
+        <div class="league-grid" id="statsLeagueGrid"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">时间范围</label>
+        <select id="statsRangeSelect">
+          <option value="future30">未来30天（当前已加载）</option>
+          <option value="currentSeason">本赛季</option>
+          <option value="all">全部（有记录以来）</option>
+          <option value="custom">自定义范围…</option>
+        </select>
+        <div class="custom-range-row" id="customRangeRow" style="display:none;">
+          <input type="date" id="statsDateFrom">
+          <span>至</span>
+          <input type="date" id="statsDateTo">
+        </div>
+      </div>
+
+      <div class="settings-actions">
+        <span class="dirty-hint" id="statsHint"></span>
+        <button class="confirm-btn" id="generateStatsBtn">生成统计图</button>
+      </div>
+
+      <div id="statsResult"></div>
     </div>
 
     <div class="settings" id="settingsPanel">

@@ -58,13 +58,14 @@ function weekdayCn(dateStr) {
   return map[wd] || wd;
 }
 
-/* ===================== 打分：z-score标准化 + logistic压缩 + 关注球队加成 ===================== */
-function zscore(raw, dim) {
-  const st = scheduleData.dimensionStats[dim] || { mean: 0.5, std: 0.2 };
-  const std = st.std > 0.001 ? st.std : 0.2;
-  return (raw - st.mean) / std;
+// 跟后端 export_schedule_json.py 的 season_key_for_date 保持一致：每年8月1日为赛季分界
+function seasonKeyForDate(utcDateStr) {
+  const d = new Date(utcDateStr);
+  const y = d.getUTCMonth() >= 7 ? d.getUTCFullYear() : d.getUTCFullYear() - 1;
+  return `${y}-${String((y + 1) % 100).padStart(2, "0")}`;
 }
 
+/* ===================== 打分：z-score标准化 + logistic压缩 + 关注球队加成 ===================== */
 function logistic(x, k) {
   return 100 / (1 + Math.exp(-k * x));
 }
@@ -77,16 +78,19 @@ function watchRankFor(match) {
   return -1;
 }
 
-function computeScore(match) {
-  const w = scheduleData.weights;
-  const bd = match.breakdown;
+function scoreBase(breakdown, weights, dimensionStats) {
   let zTotal = 0;
-  for (const dim in w) {
-    zTotal += (w[dim] || 0) * zscore(bd[dim] || 0.5, dim);
+  for (const dim in weights) {
+    const st = (dimensionStats && dimensionStats[dim]) || { mean: 0.5, std: 0.2 };
+    const std = st.std > 0.001 ? st.std : 0.2;
+    const raw = breakdown[dim] !== undefined ? breakdown[dim] : 0.5;
+    zTotal += (weights[dim] || 0) * ((raw - st.mean) / std);
   }
-  // k=1.1 是经验取值：让 z_total 在约±2.5个标准差时贴近 0/100 两端，中段分布类似正态曲线的S形映射
-  let total = logistic(zTotal, 1.1);
+  return logistic(zTotal, 1.1);
+}
 
+function computeScore(match) {
+  let total = scoreBase(match.breakdown, scheduleData.weights, scheduleData.dimensionStats);
   const rank = watchRankFor(match);
   if (rank >= 0) {
     const bonus = WATCH_BONUS_TIERS[Math.min(rank, WATCH_BONUS_TIERS.length - 1)];
@@ -429,6 +433,7 @@ function openSettingsPanel() {
   updateTzHint();
   refreshDirtyUI();
   document.getElementById("settingsPanel").classList.add("open");
+  document.getElementById("statsPanel").classList.remove("open");
 }
 
 function bindSettingsEvents() {
@@ -467,9 +472,258 @@ function bindSettingsEvents() {
   });
 }
 
+/* ===================== 统计面板 ===================== */
+let statsLeagues = null;          // null = 未初始化，会在打开面板时取settings.leagues
+let historyIndexCache = null;     // docs/history/index.json 缓存
+const seasonArchiveCache = {};    // season -> {matchId: {...}}
+
+async function fetchHistoryIndex() {
+  if (historyIndexCache) return historyIndexCache;
+  try {
+    const res = await fetch("history/index.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("no index");
+    historyIndexCache = await res.json();
+  } catch (e) {
+    historyIndexCache = { seasons: [] };
+  }
+  return historyIndexCache;
+}
+
+async function fetchSeasonArchive(season) {
+  if (seasonArchiveCache[season]) return seasonArchiveCache[season];
+  try {
+    const res = await fetch(`history/season_${season}.json`, { cache: "no-cache" });
+    if (!res.ok) throw new Error("not found");
+    const data = await res.json();
+    seasonArchiveCache[season] = data;
+    return data;
+  } catch (e) {
+    seasonArchiveCache[season] = {};
+    return {};
+  }
+}
+
+function populateStatsLeagueGrid() {
+  const grid = document.getElementById("statsLeagueGrid");
+  const selected = new Set(statsLeagues || selectedLeagueCodes());
+  grid.innerHTML = Object.entries(scheduleData.competitions).map(([code, name]) => `
+    <label class="league-chip">
+      <input type="checkbox" value="${code}" ${selected.has(code) ? "checked" : ""}>
+      ${name.split(" ")[0]}
+    </label>`).join("");
+  grid.querySelectorAll("input").forEach(cb => {
+    cb.addEventListener("change", () => {
+      statsLeagues = [...grid.querySelectorAll("input:checked")].map(x => x.value);
+    });
+  });
+}
+
+async function openStatsPanel() {
+  if (!statsLeagues) statsLeagues = selectedLeagueCodes();
+  populateStatsLeagueGrid();
+  document.getElementById("statsPanel").classList.add("open");
+  document.getElementById("settingsPanel").classList.remove("open");
+
+  // 清掉上次动态插入的具体赛季选项，重新拉取最新索引插入
+  const sel = document.getElementById("statsRangeSelect");
+  sel.querySelectorAll('option[data-dynamic="1"]').forEach(o => o.remove());
+
+  const index = await fetchHistoryIndex();
+  const currentSeason = scheduleData.currentSeason;
+  const pastSeasons = index.seasons.filter(s => s.season !== currentSeason).sort((a, b) => b.season.localeCompare(a.season));
+  const allOpt = sel.querySelector('option[value="all"]');
+  pastSeasons.forEach(s => {
+    const opt = document.createElement("option");
+    opt.value = `season:${s.season}`;
+    opt.textContent = `${s.season} 赛季（${s.matchCount}场）`;
+    opt.dataset.dynamic = "1";
+    sel.insertBefore(opt, allOpt);
+  });
+}
+
+/**
+ * 把 "matches" 数组（可能来自 scheduleData.matches 或赛季归档）统一成
+ * {id, utcDate, competitionCode, breakdown} 的形状，方便后续合并去重。
+ */
+function normalizeFromSchedule(matches) {
+  return matches.map(m => ({
+    id: String(m.id), utcDate: m.utcDate,
+    competitionCode: m.competition.code, breakdown: m.breakdown,
+  }));
+}
+function normalizeFromArchive(archiveObj) {
+  return Object.entries(archiveObj).map(([id, m]) => ({
+    id, utcDate: m.utcDate, competitionCode: m.competition, breakdown: m.breakdown,
+  }));
+}
+
+function mergeDedupe(...lists) {
+  const map = new Map();
+  // 后面的list优先覆盖前面的（scheduleData.matches最新鲜，放最后）
+  for (const list of lists) {
+    for (const item of list) map.set(item.id, item);
+  }
+  return [...map.values()];
+}
+
+async function gatherMatchesForRange(range, customFrom, customTo) {
+  const liveNormalized = normalizeFromSchedule(scheduleData.matches);
+
+  if (range === "future30") {
+    return liveNormalized;
+  }
+
+  if (range === "currentSeason") {
+    const season = scheduleData.currentSeason;
+    const archive = await fetchSeasonArchive(season);
+    return mergeDedupe(normalizeFromArchive(archive), liveNormalized);
+  }
+
+  if (range === "all") {
+    const index = await fetchHistoryIndex();
+    const lists = [];
+    for (const s of index.seasons) {
+      const archive = await fetchSeasonArchive(s.season);
+      lists.push(normalizeFromArchive(archive));
+    }
+    lists.push(liveNormalized);
+    return mergeDedupe(...lists);
+  }
+
+  if (range.startsWith("season:")) {
+    const season = range.slice("season:".length);
+    const archive = await fetchSeasonArchive(season);
+    const archived = normalizeFromArchive(archive);
+    // 如果选中的正好是本赛季，把最新鲜的live数据也合并进来
+    return season === scheduleData.currentSeason ? mergeDedupe(archived, liveNormalized) : archived;
+  }
+
+  if (range === "custom") {
+    const index = await fetchHistoryIndex();
+    const from = customFrom, to = customTo;
+    const lists = [];
+    for (const s of index.seasons) {
+      // 只拉取时间范围有重叠的赛季文件，节省流量
+      if (to && s.dateFrom > to) continue;
+      if (from && s.dateTo < from) continue;
+      const archive = await fetchSeasonArchive(s.season);
+      lists.push(normalizeFromArchive(archive));
+    }
+    lists.push(liveNormalized);
+    let merged = mergeDedupe(...lists);
+    merged = merged.filter(m => {
+      const d = m.utcDate.slice(0, 10);
+      if (from && d < from) return false;
+      if (to && d > to) return false;
+      return true;
+    });
+    return merged;
+  }
+
+  return liveNormalized;
+}
+
+function renderHistogramSvg(counts, binLabels) {
+  const W = 600, H = 220, padL = 30, padB = 24, padT = 10, padR = 10;
+  const maxCount = Math.max(1, ...counts);
+  const barAreaW = W - padL - padR;
+  const barW = barAreaW / counts.length;
+  const scaleY = (H - padT - padB) / maxCount;
+
+  let bars = "";
+  counts.forEach((c, i) => {
+    const barH = c * scaleY;
+    const x = padL + i * barW + barW * 0.12;
+    const w = barW * 0.76;
+    const y = H - padB - barH;
+    bars += `<rect class="bar" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${barH.toFixed(1)}" rx="2"></rect>`;
+    if (c > 0) {
+      bars += `<text class="count-label" x="${(x + w / 2).toFixed(1)}" y="${(y - 4).toFixed(1)}" text-anchor="middle">${c}</text>`;
+    }
+    bars += `<text class="bar-label" x="${(x + w / 2).toFixed(1)}" y="${H - padB + 14}" text-anchor="middle">${binLabels[i]}</text>`;
+  });
+
+  return `<svg class="histogram-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <line class="axis-line" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+    ${bars}
+  </svg>`;
+}
+
+function renderStatsResult(matches) {
+  const box = document.getElementById("statsResult");
+  if (!matches.length) {
+    box.innerHTML = `<div class="stats-empty">这个范围内没有符合条件的比赛数据。</div>`;
+    return;
+  }
+
+  const scores = matches.map(m => scoreBase(m.breakdown, scheduleData.weights, scheduleData.dimensionStats));
+  scores.sort((a, b) => a - b);
+  const n = scores.length;
+  const mean = scores.reduce((a, b) => a + b, 0) / n;
+  const median = n % 2 === 0 ? (scores[n / 2 - 1] + scores[n / 2]) / 2 : scores[(n - 1) / 2];
+  const variance = scores.reduce((s, x) => s + (x - mean) ** 2, 0) / n;
+  const std = Math.sqrt(variance);
+
+  const bins = new Array(10).fill(0);
+  const labels = [];
+  for (let i = 0; i < 10; i++) labels.push(`${i * 10}`);
+  scores.forEach(s => {
+    const idx = Math.min(9, Math.floor(s / 10));
+    bins[idx]++;
+  });
+
+  box.innerHTML = `
+    <div class="stats-summary">
+      <span>样本 <b>${n}</b> 场</span>
+      <span>平均分 <b>${mean.toFixed(1)}</b></span>
+      <span>中位数 <b>${median.toFixed(1)}</b></span>
+      <span>标准差 <b>${std.toFixed(1)}</b></span>
+    </div>
+    ${renderHistogramSvg(bins, labels)}
+  `;
+}
+
+function bindStatsEvents() {
+  document.getElementById("statsToggle").addEventListener("click", () => {
+    const panel = document.getElementById("statsPanel");
+    if (panel.classList.contains("open")) panel.classList.remove("open");
+    else openStatsPanel();
+  });
+
+  document.getElementById("statsRangeSelect").addEventListener("change", (e) => {
+    document.getElementById("customRangeRow").style.display =
+      e.target.value === "custom" ? "flex" : "none";
+  });
+
+  document.getElementById("generateStatsBtn").addEventListener("click", async () => {
+    const btn = document.getElementById("generateStatsBtn");
+    const range = document.getElementById("statsRangeSelect").value;
+    const from = document.getElementById("statsDateFrom").value;
+    const to = document.getElementById("statsDateTo").value;
+
+    btn.disabled = true;
+    document.getElementById("statsHint").textContent = "正在计算…";
+    document.getElementById("statsResult").innerHTML = "";
+
+    try {
+      let matches = await gatherMatchesForRange(range, from, to);
+      const leagues = new Set(statsLeagues && statsLeagues.length ? statsLeagues : Object.keys(scheduleData.competitions));
+      matches = matches.filter(m => leagues.has(m.competitionCode));
+      renderStatsResult(matches);
+      document.getElementById("statsHint").textContent = "";
+    } catch (e) {
+      document.getElementById("statsResult").innerHTML =
+        `<div class="stats-empty">统计失败：${e.message}</div>`;
+      document.getElementById("statsHint").textContent = "";
+    }
+    btn.disabled = false;
+  });
+}
+
 /* ===================== 启动 ===================== */
 async function init() {
   bindSettingsEvents();
+  bindStatsEvents();
 
   try {
     const [scheduleRes, cityRes] = await Promise.all([
@@ -482,6 +736,11 @@ async function init() {
     document.getElementById("content").innerHTML =
       `<div class="empty-state">赛程数据加载失败，检查一下网络，或者稍后重试。</div>`;
     return;
+  }
+
+  const seasonOpt = document.querySelector('#statsRangeSelect option[value="currentSeason"]');
+  if (seasonOpt && scheduleData.currentSeason) {
+    seasonOpt.textContent = `本赛季（${scheduleData.currentSeason}）`;
   }
 
   try {
