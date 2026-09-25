@@ -1,0 +1,118 @@
+{
+  "matches": [
+    {
+      "id": 500101,
+      "utcDate": "2026-09-28T20:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "LEAGUE_STAGE",
+      "competition": {
+        "code": "CL",
+        "name": "UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "awayTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      }
+    },
+    {
+      "id": 500102,
+      "utcDate": "2026-10-03T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "LEAGUE_STAGE",
+      "competition": {
+        "code": "CL",
+        "name": "UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      }
+    },
+    {
+      "id": 500103,
+      "utcDate": "2026-10-08T21:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "LEAGUE_STAGE",
+      "competition": {
+        "code": "CL",
+        "name": "UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      }
+    },
+    {
+      "id": 500104,
+      "utcDate": "2026-10-12T16:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "LEAGUE_STAGE",
+      "competition": {
+        "code": "CL",
+        "name": "UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      }
+    },
+    {
+      "id": 500105,
+      "utcDate": "2026-10-16T21:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "LEAGUE_STAGE",
+      "competition": {
+        "code": "CL",
+        "name": "UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      }
+    },
+    {
+      "id": 500106,
+      "utcDate": "2026-10-21T15:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "LEAGUE_STAGE",
+      "competition": {
+        "code": "CL",
+        "name": "UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "awayTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      }
+    }
+  ]
+}

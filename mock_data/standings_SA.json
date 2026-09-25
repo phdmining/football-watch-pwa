@@ -1,0 +1,113 @@
+{
+  "standings": [
+    {
+      "type": "TOTAL",
+      "table": [
+        {
+          "position": 1,
+          "team": {
+            "id": 1024,
+            "name": "SSC Napoli"
+          },
+          "playedGames": 7,
+          "won": 7,
+          "draw": 0,
+          "lost": 0,
+          "points": 21,
+          "form": "WWLWL"
+        },
+        {
+          "position": 2,
+          "team": {
+            "id": 1018,
+            "name": "Juventus FC"
+          },
+          "playedGames": 6,
+          "won": 5,
+          "draw": 1,
+          "lost": 0,
+          "points": 16,
+          "form": "DLLDL"
+        },
+        {
+          "position": 3,
+          "team": {
+            "id": 1022,
+            "name": "AS Roma"
+          },
+          "playedGames": 6,
+          "won": 5,
+          "draw": 1,
+          "lost": 0,
+          "points": 16,
+          "form": "DDLWW"
+        },
+        {
+          "position": 4,
+          "team": {
+            "id": 1019,
+            "name": "Torino FC"
+          },
+          "playedGames": 7,
+          "won": 5,
+          "draw": 0,
+          "lost": 2,
+          "points": 15,
+          "form": "LWLWD"
+        },
+        {
+          "position": 5,
+          "team": {
+            "id": 1020,
+            "name": "FC Internazionale Milano"
+          },
+          "playedGames": 8,
+          "won": 5,
+          "draw": 0,
+          "lost": 3,
+          "points": 15,
+          "form": "DWDDW"
+        },
+        {
+          "position": 6,
+          "team": {
+            "id": 1021,
+            "name": "AC Milan"
+          },
+          "playedGames": 7,
+          "won": 4,
+          "draw": 0,
+          "lost": 3,
+          "points": 12,
+          "form": "DWWDD"
+        },
+        {
+          "position": 7,
+          "team": {
+            "id": 1023,
+            "name": "SS Lazio"
+          },
+          "playedGames": 6,
+          "won": 2,
+          "draw": 4,
+          "lost": 0,
+          "points": 10,
+          "form": "DDDLD"
+        },
+        {
+          "position": 8,
+          "team": {
+            "id": 1025,
+            "name": "ACF Fiorentina"
+          },
+          "playedGames": 6,
+          "won": 1,
+          "draw": 1,
+          "lost": 4,
+          "points": 4,
+          "form": "LWDLD"
+        }
+      ]
+    }
+  ]
+}

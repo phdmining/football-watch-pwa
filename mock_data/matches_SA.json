@@ -1,0 +1,460 @@
+{
+  "matches": [
+    {
+      "id": 500057,
+      "utcDate": "2026-09-24T15:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      }
+    },
+    {
+      "id": 500059,
+      "utcDate": "2026-09-24T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      }
+    },
+    {
+      "id": 500058,
+      "utcDate": "2026-09-24T19:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      }
+    },
+    {
+      "id": 500056,
+      "utcDate": "2026-09-24T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "awayTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      }
+    },
+    {
+      "id": 500061,
+      "utcDate": "2026-09-27T18:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      }
+    },
+    {
+      "id": 500062,
+      "utcDate": "2026-09-27T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      },
+      "awayTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      }
+    },
+    {
+      "id": 500063,
+      "utcDate": "2026-09-27T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      }
+    },
+    {
+      "id": 500060,
+      "utcDate": "2026-09-27T20:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      }
+    },
+    {
+      "id": 500065,
+      "utcDate": "2026-09-30T16:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "awayTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      }
+    },
+    {
+      "id": 500066,
+      "utcDate": "2026-09-30T18:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      },
+      "awayTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      }
+    },
+    {
+      "id": 500064,
+      "utcDate": "2026-09-30T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      }
+    },
+    {
+      "id": 500067,
+      "utcDate": "2026-10-03T15:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      }
+    },
+    {
+      "id": 500068,
+      "utcDate": "2026-10-03T19:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      }
+    },
+    {
+      "id": 500005,
+      "utcDate": "2026-10-04T18:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 9,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      }
+    },
+    {
+      "id": 500069,
+      "utcDate": "2026-10-06T18:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      }
+    },
+    {
+      "id": 500070,
+      "utcDate": "2026-10-06T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      }
+    },
+    {
+      "id": 500071,
+      "utcDate": "2026-10-06T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      },
+      "awayTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      }
+    },
+    {
+      "id": 500072,
+      "utcDate": "2026-10-09T17:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      }
+    },
+    {
+      "id": 500073,
+      "utcDate": "2026-10-09T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      }
+    },
+    {
+      "id": 500076,
+      "utcDate": "2026-10-12T15:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      }
+    },
+    {
+      "id": 500074,
+      "utcDate": "2026-10-12T15:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "awayTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      }
+    },
+    {
+      "id": 500075,
+      "utcDate": "2026-10-12T21:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      }
+    },
+    {
+      "id": 500006,
+      "utcDate": "2026-10-14T15:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      }
+    },
+    {
+      "id": 500077,
+      "utcDate": "2026-10-15T19:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "SA",
+        "name": "Serie A"
+      },
+      "homeTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      }
+    }
+  ]
+}

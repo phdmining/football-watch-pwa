@@ -1,0 +1,113 @@
+{
+  "standings": [
+    {
+      "type": "TOTAL",
+      "table": [
+        {
+          "position": 1,
+          "team": {
+            "id": 1017,
+            "name": "Villarreal CF"
+          },
+          "playedGames": 8,
+          "won": 7,
+          "draw": 0,
+          "lost": 1,
+          "points": 21,
+          "form": "DDLDW"
+        },
+        {
+          "position": 2,
+          "team": {
+            "id": 1010,
+            "name": "Real Madrid"
+          },
+          "playedGames": 8,
+          "won": 5,
+          "draw": 2,
+          "lost": 1,
+          "points": 17,
+          "form": "LDLLW"
+        },
+        {
+          "position": 3,
+          "team": {
+            "id": 1016,
+            "name": "Real Sociedad de Fútbol"
+          },
+          "playedGames": 5,
+          "won": 4,
+          "draw": 0,
+          "lost": 1,
+          "points": 12,
+          "form": "DDDDD"
+        },
+        {
+          "position": 4,
+          "team": {
+            "id": 1013,
+            "name": "Sevilla FC"
+          },
+          "playedGames": 6,
+          "won": 3,
+          "draw": 2,
+          "lost": 1,
+          "points": 11,
+          "form": "LWDLW"
+        },
+        {
+          "position": 5,
+          "team": {
+            "id": 1011,
+            "name": "Atlético de Madrid"
+          },
+          "playedGames": 5,
+          "won": 3,
+          "draw": 0,
+          "lost": 2,
+          "points": 9,
+          "form": "LWLWW"
+        },
+        {
+          "position": 6,
+          "team": {
+            "id": 1014,
+            "name": "Real Betis Balompié"
+          },
+          "playedGames": 6,
+          "won": 2,
+          "draw": 0,
+          "lost": 4,
+          "points": 6,
+          "form": "DLDLD"
+        },
+        {
+          "position": 7,
+          "team": {
+            "id": 1015,
+            "name": "Valencia CF"
+          },
+          "playedGames": 6,
+          "won": 0,
+          "draw": 4,
+          "lost": 2,
+          "points": 4,
+          "form": "LDWLL"
+        },
+        {
+          "position": 8,
+          "team": {
+            "id": 1012,
+            "name": "FC Barcelona"
+          },
+          "playedGames": 5,
+          "won": 0,
+          "draw": 1,
+          "lost": 4,
+          "points": 1,
+          "form": "WWWWL"
+        }
+      ]
+    }
+  ]
+}

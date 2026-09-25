@@ -1,0 +1,2636 @@
+{
+  "generatedAt": "2026-09-25T02:21:18Z",
+  "daysAhead": 30,
+  "matchDurationMinutes": 120,
+  "weights": {
+    "form_ranking": 0.3,
+    "h2h_history": 0.2,
+    "derby": 0.1,
+    "big_club_clash": 0.05,
+    "title_relevance": 0.25,
+    "third_party_impact": 0.1
+  },
+  "competitions": {
+    "PL": "英超 Premier League",
+    "PD": "西甲 La Liga",
+    "SA": "意甲 Serie A",
+    "BL1": "德甲 Bundesliga",
+    "FL1": "法甲 Ligue 1",
+    "CL": "欧冠 UEFA Champions League"
+  },
+  "teamsByCompetition": {
+    "PL": [
+      "Arsenal FC",
+      "Aston Villa FC",
+      "Brighton & Hove Albion FC",
+      "Chelsea FC",
+      "Everton FC",
+      "Liverpool FC",
+      "Manchester City FC",
+      "Manchester United FC",
+      "Newcastle United FC",
+      "Tottenham Hotspur FC"
+    ],
+    "PD": [
+      "Atlético de Madrid",
+      "FC Barcelona",
+      "Real Betis Balompié",
+      "Real Madrid",
+      "Real Sociedad de Fútbol",
+      "Sevilla FC",
+      "Valencia CF",
+      "Villarreal CF"
+    ],
+    "SA": [
+      "AC Milan",
+      "ACF Fiorentina",
+      "AS Roma",
+      "FC Internazionale Milano",
+      "Juventus FC",
+      "SS Lazio",
+      "SSC Napoli",
+      "Torino FC"
+    ],
+    "BL1": [
+      "Bayer 04 Leverkusen",
+      "Borussia Dortmund",
+      "Eintracht Frankfurt",
+      "FC Bayern München",
+      "RB Leipzig",
+      "VfB Stuttgart"
+    ],
+    "FL1": [
+      "AS Monaco FC",
+      "LOSC Lille",
+      "Olympique Lyonnais",
+      "Olympique de Marseille",
+      "Paris Saint-Germain FC"
+    ],
+    "CL": [
+      "Arsenal FC",
+      "Borussia Dortmund",
+      "FC Barcelona",
+      "FC Bayern München",
+      "FC Internazionale Milano",
+      "Juventus FC",
+      "Liverpool FC",
+      "Manchester City FC",
+      "Paris Saint-Germain FC",
+      "Real Madrid"
+    ]
+  },
+  "matches": [
+    {
+      "id": 500018,
+      "utcDate": "2026-09-27T15:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "awayTeam": {
+        "id": 1003,
+        "name": "Everton FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5333333333333334,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.42333333333333334,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 38.8,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500002,
+      "utcDate": "2026-09-27T17:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3138888888888889,
+        "h2h_history": 0.5555555555555556,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6766666666666666,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 58.7,
+      "derbyLabel": "英格兰国家德比 双红会",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "英格兰国家德比 双红会 · 豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500016,
+      "utcDate": "2026-09-27T19:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      },
+      "awayTeam": {
+        "id": 1009,
+        "name": "Brighton & Hove Albion FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3305555555555556,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6611111111111112,
+        "third_party_impact": 0.5833333333333334
+      },
+      "baseScore": 38.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500014,
+      "utcDate": "2026-09-27T19:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      },
+      "awayTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.43333333333333335,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7122222222222222,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 43.1,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500017,
+      "utcDate": "2026-09-27T20:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.375,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6022222222222222,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 42.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战"
+    },
+    {
+      "id": 500015,
+      "utcDate": "2026-09-27T21:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.6027777777777777,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5922222222222222,
+        "third_party_impact": 0.7083333333333334
+      },
+      "baseScore": 51.0,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 牵动周边排名"
+    },
+    {
+      "id": 500019,
+      "utcDate": "2026-09-30T16:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1009,
+        "name": "Brighton & Hove Albion FC"
+      },
+      "awayTeam": {
+        "id": 1003,
+        "name": "Everton FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.4083333333333333,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.49666666666666665,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 36.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500020,
+      "utcDate": "2026-09-30T17:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "awayTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5611111111111111,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5233333333333333,
+        "third_party_impact": 0.5
+      },
+      "baseScore": 45.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战"
+    },
+    {
+      "id": 500023,
+      "utcDate": "2026-09-30T19:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "awayTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.34444444444444444,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6222222222222222,
+        "third_party_impact": 0.75
+      },
+      "baseScore": 39.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500022,
+      "utcDate": "2026-09-30T20:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3944444444444445,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5911111111111111,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 44.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 牵动周边排名"
+    },
+    {
+      "id": 500021,
+      "utcDate": "2026-09-30T20:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      },
+      "awayTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5666666666666667,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.8377777777777777,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 49.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500004,
+      "utcDate": "2026-10-02T20:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "awayTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.663888888888889,
+        "h2h_history": 0.5,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6777777777777778,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 68.1,
+      "derbyLabel": "同城德比 (London vs London)",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "同城德比 (London vs London) · 豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500025,
+      "utcDate": "2026-10-03T16:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      },
+      "awayTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.4555555555555556,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5477777777777778,
+        "third_party_impact": 0.5833333333333334
+      },
+      "baseScore": 39.2,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500024,
+      "utcDate": "2026-10-03T21:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      },
+      "awayTeam": {
+        "id": 1003,
+        "name": "Everton FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5555555555555556,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5033333333333333,
+        "third_party_impact": 0.7083333333333333
+      },
+      "baseScore": 42.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500026,
+      "utcDate": "2026-10-03T21:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.45,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5977777777777777,
+        "third_party_impact": 0.6666666666666667
+      },
+      "baseScore": 46.1,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 牵动周边排名"
+    },
+    {
+      "id": 500003,
+      "utcDate": "2026-10-06T16:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3527777777777778,
+        "h2h_history": 1.0,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5222222222222223,
+        "third_party_impact": 0.4583333333333333
+      },
+      "baseScore": 63.2,
+      "derbyLabel": "同城德比 (Manchester vs Manchester)",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "同城德比 (Manchester vs Manchester) · 豪门内战 · 历史交锋势均力敌"
+    },
+    {
+      "id": 500029,
+      "utcDate": "2026-10-06T16:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "awayTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.49722222222222223,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6166666666666667,
+        "third_party_impact": 0.7916666666666667
+      },
+      "baseScore": 44.2,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500028,
+      "utcDate": "2026-10-06T16:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "awayTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5444444444444444,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7577777777777777,
+        "third_party_impact": 0.4583333333333333
+      },
+      "baseScore": 45.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500027,
+      "utcDate": "2026-10-06T18:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.2416666666666667,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5966666666666667,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 39.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 牵动周边排名"
+    },
+    {
+      "id": 500030,
+      "utcDate": "2026-10-09T16:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1009,
+        "name": "Brighton & Hove Albion FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.22777777777777777,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6755555555555556,
+        "third_party_impact": 0.4583333333333333
+      },
+      "baseScore": 34.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500031,
+      "utcDate": "2026-10-12T18:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5055555555555555,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6322222222222222,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 43.2,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500032,
+      "utcDate": "2026-10-12T19:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      },
+      "awayTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.663888888888889,
+        "h2h_history": 0.5,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6777777777777778,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 68.1,
+      "derbyLabel": "同城德比 (London vs London)",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "同城德比 (London vs London) · 豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500033,
+      "utcDate": "2026-10-15T15:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3138888888888889,
+        "h2h_history": 0.5555555555555556,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6766666666666666,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 58.7,
+      "derbyLabel": "英格兰国家德比 双红会",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "英格兰国家德比 双红会 · 豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500035,
+      "utcDate": "2026-10-18T21:00:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1009,
+        "name": "Brighton & Hove Albion FC"
+      },
+      "awayTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3638888888888889,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5166666666666666,
+        "third_party_impact": 0.5
+      },
+      "baseScore": 34.8,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500034,
+      "utcDate": "2026-10-18T21:30:00Z",
+      "competition": {
+        "code": "PL",
+        "name": "英超 Premier League"
+      },
+      "homeTeam": {
+        "id": 1003,
+        "name": "Everton FC"
+      },
+      "awayTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.2861111111111111,
+        "h2h_history": 0.3,
+        "derby": 1.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5766666666666667,
+        "third_party_impact": 0.75
+      },
+      "baseScore": 46.5,
+      "derbyLabel": "同城德比 (Liverpool vs Manchester)",
+      "isTopDerby": true,
+      "isBigClubClash": false,
+      "reason": "同城德比 (Liverpool vs Manchester) · 牵动周边排名"
+    },
+    {
+      "id": 500041,
+      "utcDate": "2026-09-27T18:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      },
+      "awayTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "breakdown": {
+        "form_ranking": 0.4357142857142857,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5800000000000001,
+        "third_party_impact": 0.41666666666666663
+      },
+      "baseScore": 37.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500042,
+      "utcDate": "2026-09-27T18:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "awayTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.525,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6385714285714286,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 49.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 牵动周边排名"
+    },
+    {
+      "id": 500040,
+      "utcDate": "2026-09-27T20:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1015,
+        "name": "Valencia CF"
+      },
+      "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "breakdown": {
+        "form_ranking": 0.3107142857142857,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7185714285714286,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 38.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500001,
+      "utcDate": "2026-09-29T15:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "breakdown": {
+        "form_ranking": 0.4892857142857143,
+        "h2h_history": 0.5484848484848485,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5428571428571429,
+        "third_party_impact": 0.375
+      },
+      "baseScore": 58.0,
+      "derbyLabel": "西班牙国家德比 El Clásico",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "西班牙国家德比 El Clásico · 豪门内战"
+    },
+    {
+      "id": 500044,
+      "utcDate": "2026-09-30T15:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1016,
+        "name": "Real Sociedad de Fútbol"
+      },
+      "awayTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      },
+      "breakdown": {
+        "form_ranking": 0.45,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6585714285714286,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 41.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500046,
+      "utcDate": "2026-09-30T16:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "breakdown": {
+        "form_ranking": 0.46785714285714286,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5285714285714285,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 44.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 牵动周边排名"
+    },
+    {
+      "id": 500043,
+      "utcDate": "2026-09-30T19:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      },
+      "awayTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "breakdown": {
+        "form_ranking": 0.6642857142857144,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.8342857142857143,
+        "third_party_impact": 0.2916666666666667
+      },
+      "baseScore": 49.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500045,
+      "utcDate": "2026-09-30T20:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1015,
+        "name": "Valencia CF"
+      },
+      "awayTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "breakdown": {
+        "form_ranking": 0.3678571428571429,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6285714285714286,
+        "third_party_impact": 0.5833333333333333
+      },
+      "baseScore": 38.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500047,
+      "utcDate": "2026-10-03T16:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "awayTeam": {
+        "id": 1016,
+        "name": "Real Sociedad de Fútbol"
+      },
+      "breakdown": {
+        "form_ranking": 0.5035714285714286,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6014285714285714,
+        "third_party_impact": 0.5
+      },
+      "baseScore": 41.1,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500048,
+      "utcDate": "2026-10-03T20:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "awayTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      },
+      "breakdown": {
+        "form_ranking": 0.6428571428571428,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6,
+        "third_party_impact": 0.5416666666666667
+      },
+      "baseScore": 45.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500049,
+      "utcDate": "2026-10-06T20:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "awayTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      },
+      "breakdown": {
+        "form_ranking": 0.3464285714285714,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6285714285714286,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 37.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500050,
+      "utcDate": "2026-10-09T15:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "awayTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      },
+      "breakdown": {
+        "form_ranking": 0.6321428571428571,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5528571428571429,
+        "third_party_impact": 0.4583333333333333
+      },
+      "baseScore": 43.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500051,
+      "utcDate": "2026-10-18T15:00:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1016,
+        "name": "Real Sociedad de Fútbol"
+      },
+      "awayTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "breakdown": {
+        "form_ranking": 0.5607142857142857,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7114285714285714,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 46.0,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500052,
+      "utcDate": "2026-10-18T16:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      },
+      "awayTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.41428571428571426,
+        "h2h_history": 0.3,
+        "derby": 1.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5857142857142857,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 49.7,
+      "derbyLabel": "同城德比 (Sevilla vs Sevilla)",
+      "isTopDerby": true,
+      "isBigClubClash": false,
+      "reason": "同城德比 (Sevilla vs Sevilla) · 牵动周边排名"
+    },
+    {
+      "id": 500053,
+      "utcDate": "2026-10-21T15:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1015,
+        "name": "Valencia CF"
+      },
+      "awayTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.37857142857142856,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5957142857142858,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 38.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500054,
+      "utcDate": "2026-10-21T17:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "awayTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "breakdown": {
+        "form_ranking": 0.5464285714285715,
+        "h2h_history": 0.3,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6328571428571429,
+        "third_party_impact": 0.41666666666666663
+      },
+      "baseScore": 57.4,
+      "derbyLabel": "同城德比 (Madrid vs Madrid)",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "同城德比 (Madrid vs Madrid) · 豪门内战"
+    },
+    {
+      "id": 500055,
+      "utcDate": "2026-10-21T17:30:00Z",
+      "competition": {
+        "code": "PD",
+        "name": "西甲 La Liga"
+      },
+      "homeTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "awayTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      },
+      "breakdown": {
+        "form_ranking": 0.575,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5428571428571429,
+        "third_party_impact": 0.4166666666666667
+      },
+      "baseScore": 41.0,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500061,
+      "utcDate": "2026-09-27T18:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      },
+      "breakdown": {
+        "form_ranking": 0.6642857142857144,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.7928571428571428,
+        "third_party_impact": 0.37499999999999994
+      },
+      "baseScore": 54.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 名次含金量高"
+    },
+    {
+      "id": 500062,
+      "utcDate": "2026-09-27T19:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      },
+      "awayTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "breakdown": {
+        "form_ranking": 0.4285714285714286,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5957142857142858,
+        "third_party_impact": 0.4583333333333333
+      },
+      "baseScore": 38.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500063,
+      "utcDate": "2026-09-27T19:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "breakdown": {
+        "form_ranking": 0.5285714285714286,
+        "h2h_history": 0.75,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6471428571428572,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 68.7,
+      "derbyLabel": "同城德比 (Milan vs Milan)",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "同城德比 (Milan vs Milan) · 豪门内战 · 历史交锋势均力敌 · 牵动周边排名"
+    },
+    {
+      "id": 500060,
+      "utcDate": "2026-09-27T20:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "breakdown": {
+        "form_ranking": 0.4035714285714286,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6428571428571429,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 40.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500065,
+      "utcDate": "2026-09-30T16:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "awayTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5107142857142857,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.7128571428571429,
+        "third_party_impact": 0.5833333333333333
+      },
+      "baseScore": 50.0,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 名次含金量高"
+    },
+    {
+      "id": 500066,
+      "utcDate": "2026-09-30T18:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      },
+      "awayTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "breakdown": {
+        "form_ranking": 0.5357142857142857,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6228571428571429,
+        "third_party_impact": 0.25
+      },
+      "baseScore": 40.1,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500064,
+      "utcDate": "2026-09-30T20:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.55,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7071428571428571,
+        "third_party_impact": 0.8333333333333333
+      },
+      "baseScore": 48.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500067,
+      "utcDate": "2026-10-03T15:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      },
+      "breakdown": {
+        "form_ranking": 0.5,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5428571428571429,
+        "third_party_impact": 0.08333333333333331
+      },
+      "baseScore": 35.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500068,
+      "utcDate": "2026-10-03T19:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      },
+      "breakdown": {
+        "form_ranking": 0.592857142857143,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.8857142857142858,
+        "third_party_impact": 0.75
+      },
+      "baseScore": 58.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500005,
+      "utcDate": "2026-10-04T18:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "breakdown": {
+        "form_ranking": 0.5464285714285715,
+        "h2h_history": 0.32916666666666666,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.7799999999999999,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 64.1,
+      "derbyLabel": "意大利德比 Derby d'Italia",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "意大利德比 Derby d'Italia · 豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500069,
+      "utcDate": "2026-10-06T18:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "breakdown": {
+        "form_ranking": 0.3821428571428572,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7028571428571428,
+        "third_party_impact": 0.4583333333333333
+      },
+      "baseScore": 39.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500070,
+      "utcDate": "2026-10-06T19:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5464285714285715,
+        "h2h_history": 0.32916666666666666,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.7799999999999999,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 64.1,
+      "derbyLabel": "意大利德比 Derby d'Italia",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "意大利德比 Derby d'Italia · 豪门内战 · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500071,
+      "utcDate": "2026-10-06T20:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      },
+      "awayTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5964285714285714,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7728571428571428,
+        "third_party_impact": 0.9166666666666666
+      },
+      "baseScore": 52.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500072,
+      "utcDate": "2026-10-09T17:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "breakdown": {
+        "form_ranking": 0.4178571428571429,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.65,
+        "third_party_impact": 0.5416666666666667
+      },
+      "baseScore": 40.2,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500073,
+      "utcDate": "2026-10-09T19:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "breakdown": {
+        "form_ranking": 0.5142857142857142,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.64,
+        "third_party_impact": 0.75
+      },
+      "baseScore": 44.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500076,
+      "utcDate": "2026-10-12T15:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "breakdown": {
+        "form_ranking": 0.3464285714285714,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5828571428571429,
+        "third_party_impact": 0.29166666666666663
+      },
+      "baseScore": 33.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500074,
+      "utcDate": "2026-10-12T15:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1023,
+        "name": "SS Lazio"
+      },
+      "awayTeam": {
+        "id": 1022,
+        "name": "AS Roma"
+      },
+      "breakdown": {
+        "form_ranking": 0.4642857142857143,
+        "h2h_history": 0.3,
+        "derby": 1.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.7157142857142857,
+        "third_party_impact": 0.625
+      },
+      "baseScore": 54.1,
+      "derbyLabel": "同城德比 (Rome vs Rome)",
+      "isTopDerby": true,
+      "isBigClubClash": false,
+      "reason": "同城德比 (Rome vs Rome) · 名次含金量高 · 牵动周边排名"
+    },
+    {
+      "id": 500075,
+      "utcDate": "2026-10-12T21:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1019,
+        "name": "Torino FC"
+      },
+      "awayTeam": {
+        "id": 1024,
+        "name": "SSC Napoli"
+      },
+      "breakdown": {
+        "form_ranking": 0.6678571428571429,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.68,
+        "third_party_impact": 0.5416666666666666
+      },
+      "baseScore": 48.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500006,
+      "utcDate": "2026-10-14T15:00:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "awayTeam": {
+        "id": 1021,
+        "name": "AC Milan"
+      },
+      "breakdown": {
+        "form_ranking": 0.5285714285714286,
+        "h2h_history": 0.75,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.6471428571428572,
+        "third_party_impact": 0.6666666666666666
+      },
+      "baseScore": 68.7,
+      "derbyLabel": "同城德比 (Milan vs Milan)",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "同城德比 (Milan vs Milan) · 豪门内战 · 历史交锋势均力敌 · 牵动周边排名"
+    },
+    {
+      "id": 500077,
+      "utcDate": "2026-10-15T19:30:00Z",
+      "competition": {
+        "code": "SA",
+        "name": "意甲 Serie A"
+      },
+      "homeTeam": {
+        "id": 1025,
+        "name": "ACF Fiorentina"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "breakdown": {
+        "form_ranking": 0.3821428571428572,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.53,
+        "third_party_impact": 0.375
+      },
+      "baseScore": 34.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500082,
+      "utcDate": "2026-09-27T21:00:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      },
+      "awayTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "breakdown": {
+        "form_ranking": 0.5750000000000001,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6,
+        "third_party_impact": 0.4166666666666667
+      },
+      "baseScore": 42.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500081,
+      "utcDate": "2026-09-27T21:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1030,
+        "name": "Eintracht Frankfurt"
+      },
+      "awayTeam": {
+        "id": 1028,
+        "name": "Bayer 04 Leverkusen"
+      },
+      "breakdown": {
+        "form_ranking": 0.47500000000000003,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.54,
+        "third_party_impact": 0.5416666666666667
+      },
+      "baseScore": 39.2,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500084,
+      "utcDate": "2026-09-30T16:00:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      },
+      "awayTeam": {
+        "id": 1031,
+        "name": "VfB Stuttgart"
+      },
+      "breakdown": {
+        "form_ranking": 0.725,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5900000000000001,
+        "third_party_impact": 0.5833333333333334
+      },
+      "baseScore": 48.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "双方状态火热"
+    },
+    {
+      "id": 500007,
+      "utcDate": "2026-09-30T19:00:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "awayTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "breakdown": {
+        "form_ranking": 0.5,
+        "h2h_history": 0.7333333333333334,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.64,
+        "third_party_impact": 0.2916666666666667
+      },
+      "baseScore": 63.6,
+      "derbyLabel": "德国国家德比 Der Klassiker",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "德国国家德比 Der Klassiker · 豪门内战 · 历史交锋势均力敌"
+    },
+    {
+      "id": 500083,
+      "utcDate": "2026-09-30T21:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "awayTeam": {
+        "id": 1028,
+        "name": "Bayer 04 Leverkusen"
+      },
+      "breakdown": {
+        "form_ranking": 0.625,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.52,
+        "third_party_impact": 0.375
+      },
+      "baseScore": 46.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战"
+    },
+    {
+      "id": 500085,
+      "utcDate": "2026-09-30T21:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "awayTeam": {
+        "id": 1030,
+        "name": "Eintracht Frankfurt"
+      },
+      "breakdown": {
+        "form_ranking": 0.35,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.64,
+        "third_party_impact": 0.45833333333333337
+      },
+      "baseScore": 37.1,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500086,
+      "utcDate": "2026-10-03T20:00:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1030,
+        "name": "Eintracht Frankfurt"
+      },
+      "awayTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      },
+      "breakdown": {
+        "form_ranking": 0.42500000000000004,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6,
+        "third_party_impact": 0.5833333333333334
+      },
+      "baseScore": 39.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "常规联赛焦点战"
+    },
+    {
+      "id": 500087,
+      "utcDate": "2026-10-06T17:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      },
+      "awayTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "breakdown": {
+        "form_ranking": 0.525,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.74,
+        "third_party_impact": 0.20833333333333337
+      },
+      "baseScore": 42.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500088,
+      "utcDate": "2026-10-06T20:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1031,
+        "name": "VfB Stuttgart"
+      },
+      "awayTeam": {
+        "id": 1030,
+        "name": "Eintracht Frankfurt"
+      },
+      "breakdown": {
+        "form_ranking": 0.55,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.55,
+        "third_party_impact": 0.8333333333333334
+      },
+      "baseScore": 44.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500089,
+      "utcDate": "2026-10-09T15:00:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "awayTeam": {
+        "id": 1031,
+        "name": "VfB Stuttgart"
+      },
+      "breakdown": {
+        "form_ranking": 0.7,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.53,
+        "third_party_impact": 0.6666666666666667
+      },
+      "baseScore": 46.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "双方状态火热 · 牵动周边排名"
+    },
+    {
+      "id": 500090,
+      "utcDate": "2026-10-12T18:00:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1031,
+        "name": "VfB Stuttgart"
+      },
+      "awayTeam": {
+        "id": 1028,
+        "name": "Bayer 04 Leverkusen"
+      },
+      "breakdown": {
+        "form_ranking": 0.7749999999999999,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.93,
+        "third_party_impact": 0.5416666666666667
+      },
+      "baseScore": 57.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 双方状态火热"
+    },
+    {
+      "id": 500091,
+      "utcDate": "2026-10-15T20:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1028,
+        "name": "Bayer 04 Leverkusen"
+      },
+      "awayTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "breakdown": {
+        "form_ranking": 0.575,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.76,
+        "third_party_impact": 0.16666666666666669
+      },
+      "baseScore": 48.9,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 名次含金量高"
+    },
+    {
+      "id": 500092,
+      "utcDate": "2026-10-21T20:30:00Z",
+      "competition": {
+        "code": "BL1",
+        "name": "德甲 Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "awayTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "breakdown": {
+        "form_ranking": 0.5,
+        "h2h_history": 0.7333333333333334,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.64,
+        "third_party_impact": 0.2916666666666667
+      },
+      "baseScore": 63.6,
+      "derbyLabel": "德国国家德比 Der Klassiker",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "德国国家德比 Der Klassiker · 豪门内战 · 历史交锋势均力敌"
+    },
+    {
+      "id": 500096,
+      "utcDate": "2026-09-30T17:30:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      },
+      "awayTeam": {
+        "id": 1034,
+        "name": "AS Monaco FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.5125,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.7175,
+        "third_party_impact": 0.33333333333333337
+      },
+      "baseScore": 47.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 名次含金量高"
+    },
+    {
+      "id": 500095,
+      "utcDate": "2026-09-30T18:00:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1035,
+        "name": "Olympique Lyonnais"
+      },
+      "awayTeam": {
+        "id": 1036,
+        "name": "LOSC Lille"
+      },
+      "breakdown": {
+        "form_ranking": 0.3125,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.8075,
+        "third_party_impact": 0.5833333333333334
+      },
+      "baseScore": 41.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500097,
+      "utcDate": "2026-10-03T18:30:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1035,
+        "name": "Olympique Lyonnais"
+      },
+      "awayTeam": {
+        "id": 1033,
+        "name": "Olympique de Marseille"
+      },
+      "breakdown": {
+        "form_ranking": 0.5125,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5875,
+        "third_party_impact": 0.25
+      },
+      "baseScore": 43.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战"
+    },
+    {
+      "id": 500008,
+      "utcDate": "2026-10-09T16:30:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      },
+      "awayTeam": {
+        "id": 1033,
+        "name": "Olympique de Marseille"
+      },
+      "breakdown": {
+        "form_ranking": 0.6,
+        "h2h_history": 0.7105263157894737,
+        "derby": 1.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.5625,
+        "third_party_impact": 0.33333333333333337
+      },
+      "baseScore": 64.6,
+      "derbyLabel": "法国国家德比 Le Classique",
+      "isTopDerby": true,
+      "isBigClubClash": true,
+      "reason": "法国国家德比 Le Classique · 豪门内战 · 历史交锋势均力敌"
+    },
+    {
+      "id": 500098,
+      "utcDate": "2026-10-15T15:00:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1036,
+        "name": "LOSC Lille"
+      },
+      "awayTeam": {
+        "id": 1033,
+        "name": "Olympique de Marseille"
+      },
+      "breakdown": {
+        "form_ranking": 0.55,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.76,
+        "third_party_impact": 0.33333333333333337
+      },
+      "baseScore": 44.8,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500100,
+      "utcDate": "2026-10-21T16:00:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1034,
+        "name": "AS Monaco FC"
+      },
+      "awayTeam": {
+        "id": 1036,
+        "name": "LOSC Lille"
+      },
+      "breakdown": {
+        "form_ranking": 0.4625,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.9750000000000001,
+        "third_party_impact": 0.33333333333333337
+      },
+      "baseScore": 47.6,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高"
+    },
+    {
+      "id": 500099,
+      "utcDate": "2026-10-21T18:30:00Z",
+      "competition": {
+        "code": "FL1",
+        "name": "法甲 Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1035,
+        "name": "Olympique Lyonnais"
+      },
+      "awayTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.3625,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 1.0,
+        "title_relevance": 0.7100000000000001,
+        "third_party_impact": 0.5833333333333334
+      },
+      "baseScore": 45.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": true,
+      "reason": "豪门内战 · 名次含金量高"
+    },
+    {
+      "id": 500101,
+      "utcDate": "2026-09-28T20:00:00Z",
+      "competition": {
+        "code": "CL",
+        "name": "欧冠 UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "awayTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.7256944444444444,
+        "h2h_history": 0.8611111111111112,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.8388888888888889,
+        "third_party_impact": 0.875
+      },
+      "baseScore": 68.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 历史交锋势均力敌 · 双方状态火热 · 牵动周边排名"
+    },
+    {
+      "id": 500102,
+      "utcDate": "2026-10-03T21:00:00Z",
+      "competition": {
+        "code": "CL",
+        "name": "欧冠 UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "breakdown": {
+        "form_ranking": 0.45833333333333326,
+        "h2h_history": 0.7777777777777778,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6488888888888888,
+        "third_party_impact": 0.7916666666666667
+      },
+      "baseScore": 53.4,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "历史交锋势均力敌 · 牵动周边排名"
+    },
+    {
+      "id": 500103,
+      "utcDate": "2026-10-08T21:30:00Z",
+      "competition": {
+        "code": "CL",
+        "name": "欧冠 UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      },
+      "breakdown": {
+        "form_ranking": 0.2777777777777778,
+        "h2h_history": 0.3,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5777777777777778,
+        "third_party_impact": 0.7916666666666667
+      },
+      "baseScore": 36.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "牵动周边排名"
+    },
+    {
+      "id": 500104,
+      "utcDate": "2026-10-12T16:00:00Z",
+      "competition": {
+        "code": "CL",
+        "name": "欧冠 UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "awayTeam": {
+        "id": 1020,
+        "name": "FC Internazionale Milano"
+      },
+      "breakdown": {
+        "form_ranking": 0.39583333333333337,
+        "h2h_history": 0.84375,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.5122222222222222,
+        "third_party_impact": 0.9166666666666667
+      },
+      "baseScore": 50.7,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "历史交锋势均力敌 · 牵动周边排名"
+    },
+    {
+      "id": 500105,
+      "utcDate": "2026-10-16T21:30:00Z",
+      "competition": {
+        "code": "CL",
+        "name": "欧冠 UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1018,
+        "name": "Juventus FC"
+      },
+      "awayTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "breakdown": {
+        "form_ranking": 0.6111111111111112,
+        "h2h_history": 0.7954545454545454,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6677777777777778,
+        "third_party_impact": 0.9583333333333333
+      },
+      "baseScore": 60.5,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 历史交锋势均力敌 · 牵动周边排名"
+    },
+    {
+      "id": 500106,
+      "utcDate": "2026-10-21T15:00:00Z",
+      "competition": {
+        "code": "CL",
+        "name": "欧冠 UEFA Champions League"
+      },
+      "homeTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "awayTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "breakdown": {
+        "form_ranking": 0.6284722222222222,
+        "h2h_history": 0.7,
+        "derby": 0.0,
+        "big_club_clash": 0.0,
+        "title_relevance": 0.6688888888888889,
+        "third_party_impact": 0.875
+      },
+      "baseScore": 58.3,
+      "derbyLabel": null,
+      "isTopDerby": false,
+      "isBigClubClash": false,
+      "reason": "名次含金量高 · 历史交锋势均力敌 · 牵动周边排名"
+    }
+  ]
+}

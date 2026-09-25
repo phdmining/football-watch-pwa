@@ -1,0 +1,41 @@
+{
+  "_comment": "顶级德比清单：国家德比/最大宿敌，与同城地理算法命中的德比同档计最高分。key用球队在football-data.org中的名称做匹配（会做模糊匹配，兼容简称）。",
+  "top_derbies": [
+    {
+      "competition": "PD",
+      "teams": ["Real Madrid", "FC Barcelona"],
+      "label": "西班牙国家德比 El Clásico"
+    },
+    {
+      "competition": "BL1",
+      "teams": ["FC Bayern München", "Borussia Dortmund"],
+      "label": "德国国家德比 Der Klassiker"
+    },
+    {
+      "competition": "FL1",
+      "teams": ["Paris Saint-Germain FC", "Olympique de Marseille"],
+      "label": "法国国家德比 Le Classique"
+    },
+    {
+      "competition": "SA",
+      "teams": ["Juventus FC", "FC Internazionale Milano"],
+      "label": "意大利德比 Derby d'Italia"
+    },
+    {
+      "competition": "PL",
+      "teams": ["Manchester United FC", "Liverpool FC"],
+      "label": "英格兰国家德比 双红会"
+    }
+  ],
+
+  "_comment2": "同城/近距离德比不需要在此列出，由地理算法自动判定（见 derby.py + derby_distance_km 配置）。典型例子：米兰德比、马德里德比、曼市德比、北伦敦德比、默西塞德德比等。",
+
+  "_comment3": "豪门内战名单：双方都在同一联赛豪门名单里即触发加分，与顶级德比可叠加。",
+  "big_clubs": {
+    "PL": ["Manchester United FC", "Liverpool FC", "Manchester City FC", "Chelsea FC", "Arsenal FC", "Tottenham Hotspur FC"],
+    "PD": ["Real Madrid", "FC Barcelona", "Atlético de Madrid", "Sevilla FC"],
+    "SA": ["Juventus FC", "FC Internazionale Milano", "AC Milan", "AS Roma", "SSC Napoli"],
+    "BL1": ["FC Bayern München", "Borussia Dortmund", "Bayer 04 Leverkusen"],
+    "FL1": ["Paris Saint-Germain FC", "Olympique de Marseille", "AS Monaco FC", "Olympique Lyonnais"]
+  }
+}

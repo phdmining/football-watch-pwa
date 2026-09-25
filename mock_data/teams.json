@@ -1,0 +1,372 @@
+{
+  "Manchester United FC": {
+    "id": 1000,
+    "name": "Manchester United FC",
+    "shortName": "Manchester United",
+    "venue": "Manchester Stadium",
+    "address": "Manchester",
+    "city": "Manchester",
+    "lat": 53.4631,
+    "lon": -2.2913
+  },
+  "Manchester City FC": {
+    "id": 1001,
+    "name": "Manchester City FC",
+    "shortName": "Manchester City",
+    "venue": "Manchester Stadium",
+    "address": "Manchester",
+    "city": "Manchester",
+    "lat": 53.4831,
+    "lon": -2.2004
+  },
+  "Liverpool FC": {
+    "id": 1002,
+    "name": "Liverpool FC",
+    "shortName": "Liverpool",
+    "venue": "Liverpool Stadium",
+    "address": "Liverpool",
+    "city": "Liverpool",
+    "lat": 53.4308,
+    "lon": -2.9608
+  },
+  "Everton FC": {
+    "id": 1003,
+    "name": "Everton FC",
+    "shortName": "Everton",
+    "venue": "Liverpool Stadium",
+    "address": "Liverpool",
+    "city": "Liverpool",
+    "lat": 53.4388,
+    "lon": -2.9662
+  },
+  "Arsenal FC": {
+    "id": 1004,
+    "name": "Arsenal FC",
+    "shortName": "Arsenal",
+    "venue": "London Stadium",
+    "address": "London",
+    "city": "London",
+    "lat": 51.5549,
+    "lon": -0.1084
+  },
+  "Tottenham Hotspur FC": {
+    "id": 1005,
+    "name": "Tottenham Hotspur FC",
+    "shortName": "Tottenham Hotspur",
+    "venue": "London Stadium",
+    "address": "London",
+    "city": "London",
+    "lat": 51.6043,
+    "lon": -0.0664
+  },
+  "Chelsea FC": {
+    "id": 1006,
+    "name": "Chelsea FC",
+    "shortName": "Chelsea",
+    "venue": "London Stadium",
+    "address": "London",
+    "city": "London",
+    "lat": 51.4816,
+    "lon": -0.1909
+  },
+  "Newcastle United FC": {
+    "id": 1007,
+    "name": "Newcastle United FC",
+    "shortName": "Newcastle United",
+    "venue": "Newcastle Stadium",
+    "address": "Newcastle",
+    "city": "Newcastle",
+    "lat": 54.9756,
+    "lon": -1.6217
+  },
+  "Aston Villa FC": {
+    "id": 1008,
+    "name": "Aston Villa FC",
+    "shortName": "Aston Villa",
+    "venue": "Birmingham Stadium",
+    "address": "Birmingham",
+    "city": "Birmingham",
+    "lat": 52.5092,
+    "lon": -1.8848
+  },
+  "Brighton & Hove Albion FC": {
+    "id": 1009,
+    "name": "Brighton & Hove Albion FC",
+    "shortName": "Brighton & Hove Albion",
+    "venue": "Brighton Stadium",
+    "address": "Brighton",
+    "city": "Brighton",
+    "lat": 50.8617,
+    "lon": -0.0837
+  },
+  "Real Madrid": {
+    "id": 1010,
+    "name": "Real Madrid",
+    "shortName": "Real Madrid",
+    "venue": "Madrid Stadium",
+    "address": "Madrid",
+    "city": "Madrid",
+    "lat": 40.4531,
+    "lon": -3.6883
+  },
+  "Atlético de Madrid": {
+    "id": 1011,
+    "name": "Atlético de Madrid",
+    "shortName": "Atlético de Madrid",
+    "venue": "Madrid Stadium",
+    "address": "Madrid",
+    "city": "Madrid",
+    "lat": 40.4362,
+    "lon": -3.5995
+  },
+  "FC Barcelona": {
+    "id": 1012,
+    "name": "FC Barcelona",
+    "shortName": "FC Barcelona",
+    "venue": "Barcelona Stadium",
+    "address": "Barcelona",
+    "city": "Barcelona",
+    "lat": 41.3809,
+    "lon": 2.1228
+  },
+  "Sevilla FC": {
+    "id": 1013,
+    "name": "Sevilla FC",
+    "shortName": "Sevilla",
+    "venue": "Sevilla Stadium",
+    "address": "Sevilla",
+    "city": "Sevilla",
+    "lat": 37.3841,
+    "lon": -5.9709
+  },
+  "Real Betis Balompié": {
+    "id": 1014,
+    "name": "Real Betis Balompié",
+    "shortName": "Real Betis Balompié",
+    "venue": "Sevilla Stadium",
+    "address": "Sevilla",
+    "city": "Sevilla",
+    "lat": 37.3568,
+    "lon": -5.9821
+  },
+  "Valencia CF": {
+    "id": 1015,
+    "name": "Valencia CF",
+    "shortName": "Valencia",
+    "venue": "Valencia Stadium",
+    "address": "Valencia",
+    "city": "Valencia",
+    "lat": 39.4747,
+    "lon": -0.3583
+  },
+  "Real Sociedad de Fútbol": {
+    "id": 1016,
+    "name": "Real Sociedad de Fútbol",
+    "shortName": "Real Sociedad de Fútbol",
+    "venue": "San Sebastian Stadium",
+    "address": "San Sebastian",
+    "city": "San Sebastian",
+    "lat": 43.3017,
+    "lon": -1.9736
+  },
+  "Villarreal CF": {
+    "id": 1017,
+    "name": "Villarreal CF",
+    "shortName": "Villarreal",
+    "venue": "Villarreal Stadium",
+    "address": "Villarreal",
+    "city": "Villarreal",
+    "lat": 39.9442,
+    "lon": -0.1037
+  },
+  "Juventus FC": {
+    "id": 1018,
+    "name": "Juventus FC",
+    "shortName": "Juventus",
+    "venue": "Turin Stadium",
+    "address": "Turin",
+    "city": "Turin",
+    "lat": 45.1096,
+    "lon": 7.6413
+  },
+  "Torino FC": {
+    "id": 1019,
+    "name": "Torino FC",
+    "shortName": "Torino",
+    "venue": "Turin Stadium",
+    "address": "Turin",
+    "city": "Turin",
+    "lat": 45.042,
+    "lon": 7.6498
+  },
+  "FC Internazionale Milano": {
+    "id": 1020,
+    "name": "FC Internazionale Milano",
+    "shortName": "FC Internazionale Milano",
+    "venue": "Milan Stadium",
+    "address": "Milan",
+    "city": "Milan",
+    "lat": 45.4781,
+    "lon": 9.124
+  },
+  "AC Milan": {
+    "id": 1021,
+    "name": "AC Milan",
+    "shortName": "AC Milan",
+    "venue": "Milan Stadium",
+    "address": "Milan",
+    "city": "Milan",
+    "lat": 45.4781,
+    "lon": 9.124
+  },
+  "AS Roma": {
+    "id": 1022,
+    "name": "AS Roma",
+    "shortName": "AS Roma",
+    "venue": "Rome Stadium",
+    "address": "Rome",
+    "city": "Rome",
+    "lat": 41.9339,
+    "lon": 12.4547
+  },
+  "SS Lazio": {
+    "id": 1023,
+    "name": "SS Lazio",
+    "shortName": "SS Lazio",
+    "venue": "Rome Stadium",
+    "address": "Rome",
+    "city": "Rome",
+    "lat": 41.9339,
+    "lon": 12.4547
+  },
+  "SSC Napoli": {
+    "id": 1024,
+    "name": "SSC Napoli",
+    "shortName": "SSC Napoli",
+    "venue": "Naples Stadium",
+    "address": "Naples",
+    "city": "Naples",
+    "lat": 40.828,
+    "lon": 14.193
+  },
+  "ACF Fiorentina": {
+    "id": 1025,
+    "name": "ACF Fiorentina",
+    "shortName": "ACF Fiorentina",
+    "venue": "Florence Stadium",
+    "address": "Florence",
+    "city": "Florence",
+    "lat": 43.7808,
+    "lon": 11.2822
+  },
+  "FC Bayern München": {
+    "id": 1026,
+    "name": "FC Bayern München",
+    "shortName": "FC Bayern München",
+    "venue": "Munich Stadium",
+    "address": "Munich",
+    "city": "Munich",
+    "lat": 48.2188,
+    "lon": 11.6247
+  },
+  "Borussia Dortmund": {
+    "id": 1027,
+    "name": "Borussia Dortmund",
+    "shortName": "Borussia Dortmund",
+    "venue": "Dortmund Stadium",
+    "address": "Dortmund",
+    "city": "Dortmund",
+    "lat": 51.4926,
+    "lon": 7.4517
+  },
+  "Bayer 04 Leverkusen": {
+    "id": 1028,
+    "name": "Bayer 04 Leverkusen",
+    "shortName": "Bayer 04 Leverkusen",
+    "venue": "Leverkusen Stadium",
+    "address": "Leverkusen",
+    "city": "Leverkusen",
+    "lat": 51.0382,
+    "lon": 7.0023
+  },
+  "RB Leipzig": {
+    "id": 1029,
+    "name": "RB Leipzig",
+    "shortName": "RB Leipzig",
+    "venue": "Leipzig Stadium",
+    "address": "Leipzig",
+    "city": "Leipzig",
+    "lat": 51.3458,
+    "lon": 12.3483
+  },
+  "Eintracht Frankfurt": {
+    "id": 1030,
+    "name": "Eintracht Frankfurt",
+    "shortName": "Eintracht Frankfurt",
+    "venue": "Frankfurt Stadium",
+    "address": "Frankfurt",
+    "city": "Frankfurt",
+    "lat": 50.0686,
+    "lon": 8.6455
+  },
+  "VfB Stuttgart": {
+    "id": 1031,
+    "name": "VfB Stuttgart",
+    "shortName": "VfB Stuttgart",
+    "venue": "Stuttgart Stadium",
+    "address": "Stuttgart",
+    "city": "Stuttgart",
+    "lat": 48.7928,
+    "lon": 9.232
+  },
+  "Paris Saint-Germain FC": {
+    "id": 1032,
+    "name": "Paris Saint-Germain FC",
+    "shortName": "Paris Saint-Germain",
+    "venue": "Paris Stadium",
+    "address": "Paris",
+    "city": "Paris",
+    "lat": 48.8414,
+    "lon": 2.253
+  },
+  "Olympique de Marseille": {
+    "id": 1033,
+    "name": "Olympique de Marseille",
+    "shortName": "Olympique de Marseille",
+    "venue": "Marseille Stadium",
+    "address": "Marseille",
+    "city": "Marseille",
+    "lat": 43.2698,
+    "lon": 5.3958
+  },
+  "AS Monaco FC": {
+    "id": 1034,
+    "name": "AS Monaco FC",
+    "shortName": "AS Monaco",
+    "venue": "Monaco Stadium",
+    "address": "Monaco",
+    "city": "Monaco",
+    "lat": 43.7276,
+    "lon": 7.4152
+  },
+  "Olympique Lyonnais": {
+    "id": 1035,
+    "name": "Olympique Lyonnais",
+    "shortName": "Olympique Lyonnais",
+    "venue": "Lyon Stadium",
+    "address": "Lyon",
+    "city": "Lyon",
+    "lat": 45.7653,
+    "lon": 4.9822
+  },
+  "LOSC Lille": {
+    "id": 1036,
+    "name": "LOSC Lille",
+    "shortName": "LOSC Lille",
+    "venue": "Lille Stadium",
+    "address": "Lille",
+    "city": "Lille",
+    "lat": 50.612,
+    "lon": 3.1302
+  }
+}

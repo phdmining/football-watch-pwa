@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>球迷观赛助手</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="title-row">
+      <div>
+        <h1>观赛助手</h1>
+        <p class="tagline">欧洲五大联赛 + 欧冠 · 本地时间</p>
+      </div>
+      <button class="icon-btn" id="settingsToggle">设置</button>
+    </div>
+
+    <div class="settings" id="settingsPanel">
+      <h2>观赛设置</h2>
+
+      <div class="field">
+        <label class="field-label">所在城市</label>
+        <div class="city-row">
+          <select id="citySelect"></select>
+          <button id="autoLocateBtn">自动检测</button>
+        </div>
+        <p class="current-tz" id="currentTzHint"></p>
+      </div>
+
+      <div class="field">
+        <label class="field-label">关注的联赛（可多选）</label>
+        <div class="league-grid" id="leagueGrid"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">我支持的主队（可选）</label>
+        <select id="favoriteTeamSelect">
+          <option value="">不设置</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="checkbox-row">
+          <input type="checkbox" id="forceFavoriteCheckbox" checked>
+          方案A优先安排我的主队比赛（即使不是当天分数最高组合）
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="content">
+      <div class="loading-state">正在加载赛程数据…</div>
+    </div>
+    <p class="meta-footer" id="metaFooter"></p>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
