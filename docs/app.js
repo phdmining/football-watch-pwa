@@ -201,10 +201,12 @@ function buildDayGroups() {
 
 /* ===================== 渲染：比赛卡片 ===================== */
 function teamNameHtml(name) {
-  const tier = influenceTier(name);
+  const isWatched = (settings.watchedTeams || []).includes(name);
+  const tier = isWatched ? "tier-watched" : influenceTier(name);
   const logo = scheduleData.teamLogos && scheduleData.teamLogos[name];
   const logoHtml = logo ? `<img class="team-crest" src="${logo}" alt="" width="16" height="16">` : "";
-  return `${logoHtml}<span class="team-name ${tier}">${name}</span>`;
+  const star = isWatched ? "★ " : "";
+  return `${logoHtml}<span class="team-name ${tier}">${star}${name}</span>`;
 }
 
 function matchCardHtml(item) {
