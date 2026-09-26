@@ -35,7 +35,16 @@ def _position_score(position: int, total_teams: int) -> float:
 
 
 def get_club_influence(team_name: str) -> float:
-    return _INFLUENCE_MAP.get(team_name, _INFLUENCE_BASELINE)
+    if team_name in _INFLUENCE_MAP:
+        return _INFLUENCE_MAP[team_name]
+    # 精确匹配不到时，退回模糊匹配（应对football-data.org官方名字跟静态表用词不完全一致，
+    # 比如 "Real Madrid CF" vs 静态表里的 "Real Madrid"）
+    tn = team_name.strip().lower()
+    for key, value in _INFLUENCE_MAP.items():
+        k = key.strip().lower()
+        if tn == k or k in tn or tn in k:
+            return value
+    return _INFLUENCE_BASELINE
 
 
 def score_club_influence(home_name: str, away_name: str) -> float:
