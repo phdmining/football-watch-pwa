@@ -1,7 +1,7 @@
 {
   "matches": [
     {
-      "id": 500036,
+      "id": 500041,
       "utcDate": "2026-09-24T15:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -11,63 +11,6 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1014,
-        "name": "Real Betis Balompié"
-      },
-      "awayTeam": {
-        "id": 1015,
-        "name": "Valencia CF"
-      }
-    },
-    {
-      "id": 500039,
-      "utcDate": "2026-09-24T16:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
-        "id": 1012,
-        "name": "FC Barcelona"
-      },
-      "awayTeam": {
-        "id": 1011,
-        "name": "Atlético de Madrid"
-      }
-    },
-    {
-      "id": 500037,
-      "utcDate": "2026-09-24T21:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
-        "id": 1013,
-        "name": "Sevilla FC"
-      },
-      "awayTeam": {
-        "id": 1010,
-        "name": "Real Madrid"
-      }
-    },
-    {
-      "id": 500038,
-      "utcDate": "2026-09-24T21:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
         "id": 1017,
         "name": "Villarreal CF"
       },
@@ -77,8 +20,8 @@
       }
     },
     {
-      "id": 500041,
-      "utcDate": "2026-09-27T18:30:00Z",
+      "id": 500039,
+      "utcDate": "2026-09-24T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -87,17 +30,17 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1014,
-        "name": "Real Betis Balompié"
+        "id": 1015,
+        "name": "Valencia CF"
       },
       "awayTeam": {
-        "id": 1010,
-        "name": "Real Madrid"
+        "id": 1014,
+        "name": "Real Betis Balompié"
       }
     },
     {
-      "id": 500042,
-      "utcDate": "2026-09-27T18:30:00Z",
+      "id": 500040,
+      "utcDate": "2026-09-24T20:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -110,13 +53,51 @@
         "name": "Atlético de Madrid"
       },
       "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      }
+    },
+    {
+      "id": 500042,
+      "utcDate": "2026-09-24T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      },
+      "awayTeam": {
         "id": 1013,
         "name": "Sevilla FC"
       }
     },
     {
-      "id": 500040,
-      "utcDate": "2026-09-27T20:30:00Z",
+      "id": 500043,
+      "utcDate": "2026-09-27T16:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "awayTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      }
+    },
+    {
+      "id": 500044,
+      "utcDate": "2026-09-27T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -134,10 +115,48 @@
       }
     },
     {
-      "id": 500001,
-      "utcDate": "2026-09-29T15:00:00Z",
+      "id": 500046,
+      "utcDate": "2026-09-27T18:00:00Z",
       "status": "SCHEDULED",
-      "matchday": 10,
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "awayTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      }
+    },
+    {
+      "id": 500045,
+      "utcDate": "2026-09-27T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1016,
+        "name": "Real Sociedad de Fútbol"
+      },
+      "awayTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      }
+    },
+    {
+      "id": 500001,
+      "utcDate": "2026-09-29T21:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 9,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PD",
@@ -153,7 +172,7 @@
       }
     },
     {
-      "id": 500044,
+      "id": 500050,
       "utcDate": "2026-09-30T15:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -163,17 +182,17 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1016,
-        "name": "Real Sociedad de Fútbol"
+        "id": 1010,
+        "name": "Real Madrid"
       },
       "awayTeam": {
-        "id": 1014,
-        "name": "Real Betis Balompié"
+        "id": 1011,
+        "name": "Atlético de Madrid"
       }
     },
     {
-      "id": 500046,
-      "utcDate": "2026-09-30T16:00:00Z",
+      "id": 500048,
+      "utcDate": "2026-09-30T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -182,17 +201,17 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1013,
-        "name": "Sevilla FC"
-      },
-      "awayTeam": {
         "id": 1012,
         "name": "FC Barcelona"
+      },
+      "awayTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
       }
     },
     {
-      "id": 500043,
-      "utcDate": "2026-09-30T19:00:00Z",
+      "id": 500047,
+      "utcDate": "2026-09-30T18:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -205,13 +224,13 @@
         "name": "Villarreal CF"
       },
       "awayTeam": {
-        "id": 1010,
-        "name": "Real Madrid"
+        "id": 1015,
+        "name": "Valencia CF"
       }
     },
     {
-      "id": 500045,
-      "utcDate": "2026-09-30T20:00:00Z",
+      "id": 500049,
+      "utcDate": "2026-09-30T21:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -220,16 +239,16 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1015,
-        "name": "Valencia CF"
+        "id": 1014,
+        "name": "Real Betis Balompié"
       },
       "awayTeam": {
-        "id": 1011,
-        "name": "Atlético de Madrid"
+        "id": 1016,
+        "name": "Real Sociedad de Fútbol"
       }
     },
     {
-      "id": 500047,
+      "id": 500052,
       "utcDate": "2026-10-03T16:00:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
@@ -239,8 +258,8 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1012,
-        "name": "FC Barcelona"
+        "id": 1015,
+        "name": "Valencia CF"
       },
       "awayTeam": {
         "id": 1016,
@@ -248,7 +267,26 @@
       }
     },
     {
-      "id": 500048,
+      "id": 500053,
+      "utcDate": "2026-10-03T17:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      },
+      "awayTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      }
+    },
+    {
+      "id": 500051,
       "utcDate": "2026-10-03T20:30:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
@@ -258,95 +296,19 @@
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1013,
-        "name": "Sevilla FC"
+        "id": 1011,
+        "name": "Atlético de Madrid"
       },
       "awayTeam": {
-        "id": 1017,
-        "name": "Villarreal CF"
+        "id": 1014,
+        "name": "Real Betis Balompié"
       }
     },
     {
-      "id": 500049,
-      "utcDate": "2026-10-06T20:30:00Z",
+      "id": 500054,
+      "utcDate": "2026-10-06T15:00:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
-        "id": 1012,
-        "name": "FC Barcelona"
-      },
-      "awayTeam": {
-        "id": 1014,
-        "name": "Real Betis Balompié"
-      }
-    },
-    {
-      "id": 500050,
-      "utcDate": "2026-10-09T15:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
-        "id": 1011,
-        "name": "Atlético de Madrid"
-      },
-      "awayTeam": {
-        "id": 1017,
-        "name": "Villarreal CF"
-      }
-    },
-    {
-      "id": 500051,
-      "utcDate": "2026-10-18T15:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 4,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
-        "id": 1016,
-        "name": "Real Sociedad de Fútbol"
-      },
-      "awayTeam": {
-        "id": 1011,
-        "name": "Atlético de Madrid"
-      }
-    },
-    {
-      "id": 500052,
-      "utcDate": "2026-10-18T16:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 4,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PD",
-        "name": "La Liga"
-      },
-      "homeTeam": {
-        "id": 1014,
-        "name": "Real Betis Balompié"
-      },
-      "awayTeam": {
-        "id": 1013,
-        "name": "Sevilla FC"
-      }
-    },
-    {
-      "id": 500053,
-      "utcDate": "2026-10-21T15:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 4,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PD",
@@ -357,34 +319,34 @@
         "name": "Valencia CF"
       },
       "awayTeam": {
-        "id": 1013,
-        "name": "Sevilla FC"
+        "id": 1010,
+        "name": "Real Madrid"
       }
     },
     {
-      "id": 500054,
-      "utcDate": "2026-10-21T17:30:00Z",
+      "id": 500055,
+      "utcDate": "2026-10-06T19:30:00Z",
       "status": "SCHEDULED",
-      "matchday": 4,
+      "matchday": 2,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PD",
         "name": "La Liga"
       },
       "homeTeam": {
-        "id": 1010,
-        "name": "Real Madrid"
+        "id": 1017,
+        "name": "Villarreal CF"
       },
       "awayTeam": {
-        "id": 1011,
-        "name": "Atlético de Madrid"
+        "id": 1013,
+        "name": "Sevilla FC"
       }
     },
     {
-      "id": 500055,
-      "utcDate": "2026-10-21T17:30:00Z",
+      "id": 500056,
+      "utcDate": "2026-10-09T20:00:00Z",
       "status": "SCHEDULED",
-      "matchday": 4,
+      "matchday": 3,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PD",
@@ -397,6 +359,120 @@
       "awayTeam": {
         "id": 1017,
         "name": "Villarreal CF"
+      }
+    },
+    {
+      "id": 500058,
+      "utcDate": "2026-10-12T17:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
+      },
+      "awayTeam": {
+        "id": 1015,
+        "name": "Valencia CF"
+      }
+    },
+    {
+      "id": 500057,
+      "utcDate": "2026-10-12T18:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1017,
+        "name": "Villarreal CF"
+      },
+      "awayTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      }
+    },
+    {
+      "id": 500059,
+      "utcDate": "2026-10-15T18:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      },
+      "awayTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      }
+    },
+    {
+      "id": 500060,
+      "utcDate": "2026-10-18T19:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1012,
+        "name": "FC Barcelona"
+      },
+      "awayTeam": {
+        "id": 1016,
+        "name": "Real Sociedad de Fútbol"
+      }
+    },
+    {
+      "id": 500061,
+      "utcDate": "2026-10-21T18:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1014,
+        "name": "Real Betis Balompié"
+      },
+      "awayTeam": {
+        "id": 1010,
+        "name": "Real Madrid"
+      }
+    },
+    {
+      "id": 500062,
+      "utcDate": "2026-10-21T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PD",
+        "name": "La Liga"
+      },
+      "homeTeam": {
+        "id": 1011,
+        "name": "Atlético de Madrid"
+      },
+      "awayTeam": {
+        "id": 1013,
+        "name": "Sevilla FC"
       }
     }
   ]

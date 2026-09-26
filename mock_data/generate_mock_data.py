@@ -80,6 +80,8 @@ def get_team_id(name):
     return team_ids[name]
 
 def build_team_obj(name, city, lat, lon, capacity):
+    # 模拟历史平均上座率：60%~102%之间随机（有些球队常年一票难求，容量会有一点冗余空间）
+    occupancy_rate = random.uniform(0.6, 1.02)
     return {
         "id": get_team_id(name),
         "name": name,
@@ -90,6 +92,7 @@ def build_team_obj(name, city, lat, lon, capacity):
         "lat": lat,
         "lon": lon,
         "capacity": capacity,
+        "mock_avg_home_attendance": round(capacity * occupancy_rate),
     }
 
 def kickoff_hour():

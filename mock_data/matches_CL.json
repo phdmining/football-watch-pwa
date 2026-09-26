@@ -1,8 +1,8 @@
 {
   "matches": [
     {
-      "id": 500101,
-      "utcDate": "2026-09-28T20:00:00Z",
+      "id": 500103,
+      "utcDate": "2026-09-28T19:30:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "LEAGUE_STAGE",
@@ -20,8 +20,8 @@
       }
     },
     {
-      "id": 500102,
-      "utcDate": "2026-10-03T21:00:00Z",
+      "id": 500104,
+      "utcDate": "2026-10-03T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "LEAGUE_STAGE",
@@ -39,8 +39,8 @@
       }
     },
     {
-      "id": 500103,
-      "utcDate": "2026-10-08T21:30:00Z",
+      "id": 500105,
+      "utcDate": "2026-10-08T16:30:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "LEAGUE_STAGE",
@@ -58,8 +58,8 @@
       }
     },
     {
-      "id": 500104,
-      "utcDate": "2026-10-12T16:00:00Z",
+      "id": 500106,
+      "utcDate": "2026-10-12T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "LEAGUE_STAGE",
@@ -77,7 +77,7 @@
       }
     },
     {
-      "id": 500105,
+      "id": 500107,
       "utcDate": "2026-10-16T21:30:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
@@ -96,8 +96,8 @@
       }
     },
     {
-      "id": 500106,
-      "utcDate": "2026-10-21T15:00:00Z",
+      "id": 500108,
+      "utcDate": "2026-10-21T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "LEAGUE_STAGE",

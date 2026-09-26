@@ -3,31 +3,31 @@
     "team1": "Real Madrid",
     "team2": "FC Barcelona",
     "summary": {
-      "team1Wins": 7,
-      "team2Wins": 0,
-      "draws": 4,
-      "totalGames": 11
+      "team1Wins": 12,
+      "team2Wins": 2,
+      "draws": 6,
+      "totalGames": 20
     },
     "games": [
       {
-        "date": "2026-01-27",
+        "date": "2026-03-28",
+        "home": "Real Madrid",
+        "away": "FC Barcelona",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2025-04-02",
         "home": "Real Madrid",
         "away": "FC Barcelona",
         "homeScore": 3,
-        "awayScore": 2
+        "awayScore": 0
       },
       {
-        "date": "2025-07-31",
+        "date": "2025-01-02",
         "home": "Real Madrid",
         "away": "FC Barcelona",
-        "homeScore": 2,
-        "awayScore": 3
-      },
-      {
-        "date": "2024-07-06",
-        "home": "Real Madrid",
-        "away": "FC Barcelona",
-        "homeScore": 3,
+        "homeScore": 0,
         "awayScore": 1
       },
       {
@@ -35,49 +35,49 @@
         "home": "Real Madrid",
         "away": "FC Barcelona",
         "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2025-02-01",
-        "home": "Real Madrid",
-        "away": "FC Barcelona",
-        "homeScore": 4,
-        "awayScore": 1
-      },
-      {
-        "date": "2022-04-18",
-        "home": "Real Madrid",
-        "away": "FC Barcelona",
-        "homeScore": 2,
-        "awayScore": 1
-      },
-      {
-        "date": "2023-11-09",
-        "home": "Real Madrid",
-        "away": "FC Barcelona",
-        "homeScore": 2,
         "awayScore": 0
       },
       {
-        "date": "2023-06-12",
+        "date": "2024-04-07",
         "home": "Real Madrid",
         "away": "FC Barcelona",
         "homeScore": 2,
         "awayScore": 4
       },
       {
+        "date": "2022-10-15",
+        "home": "Real Madrid",
+        "away": "FC Barcelona",
+        "homeScore": 0,
+        "awayScore": 2
+      },
+      {
         "date": "2021-07-22",
         "home": "Real Madrid",
         "away": "FC Barcelona",
-        "homeScore": 3,
-        "awayScore": 1
+        "homeScore": 4,
+        "awayScore": 3
       },
       {
-        "date": "2021-10-20",
+        "date": "2023-06-12",
         "home": "Real Madrid",
         "away": "FC Barcelona",
         "homeScore": 3,
-        "awayScore": 2
+        "awayScore": 4
+      },
+      {
+        "date": "2024-07-06",
+        "home": "Real Madrid",
+        "away": "FC Barcelona",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2020-02-28",
+        "home": "Real Madrid",
+        "away": "FC Barcelona",
+        "homeScore": 2,
+        "awayScore": 1
       }
     ]
   },
@@ -85,60 +85,46 @@
     "team1": "Manchester United FC",
     "team2": "Liverpool FC",
     "summary": {
-      "team1Wins": 17,
-      "team2Wins": 1,
-      "draws": 0,
-      "totalGames": 18
+      "team1Wins": 6,
+      "team2Wins": 0,
+      "draws": 4,
+      "totalGames": 10
     },
     "games": [
       {
-        "date": "2026-03-28",
+        "date": "2025-12-28",
         "home": "Manchester United FC",
         "away": "Liverpool FC",
-        "homeScore": 1,
-        "awayScore": 1
+        "homeScore": 0,
+        "awayScore": 3
       },
       {
-        "date": "2025-07-31",
+        "date": "2026-01-27",
         "home": "Manchester United FC",
         "away": "Liverpool FC",
-        "homeScore": 1,
-        "awayScore": 3
+        "homeScore": 2,
+        "awayScore": 0
       },
       {
         "date": "2025-12-28",
         "home": "Manchester United FC",
         "away": "Liverpool FC",
-        "homeScore": 3,
-        "awayScore": 3
-      },
-      {
-        "date": "2024-10-04",
-        "home": "Manchester United FC",
-        "away": "Liverpool FC",
-        "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2025-07-01",
-        "home": "Manchester United FC",
-        "away": "Liverpool FC",
-        "homeScore": 4,
-        "awayScore": 4
-      },
-      {
-        "date": "2024-04-07",
-        "home": "Manchester United FC",
-        "away": "Liverpool FC",
-        "homeScore": 3,
-        "awayScore": 0
-      },
-      {
-        "date": "2022-09-15",
-        "home": "Manchester United FC",
-        "away": "Liverpool FC",
         "homeScore": 0,
+        "awayScore": 2
+      },
+      {
+        "date": "2025-02-01",
+        "home": "Manchester United FC",
+        "away": "Liverpool FC",
+        "homeScore": 3,
         "awayScore": 1
+      },
+      {
+        "date": "2025-02-01",
+        "home": "Manchester United FC",
+        "away": "Liverpool FC",
+        "homeScore": 3,
+        "awayScore": 4
       },
       {
         "date": "2022-10-15",
@@ -148,18 +134,32 @@
         "awayScore": 0
       },
       {
-        "date": "2022-04-18",
+        "date": "2025-01-02",
         "home": "Manchester United FC",
         "away": "Liverpool FC",
-        "homeScore": 2,
+        "homeScore": 3,
         "awayScore": 4
       },
       {
-        "date": "2020-02-28",
+        "date": "2021-06-22",
+        "home": "Manchester United FC",
+        "away": "Liverpool FC",
+        "homeScore": 3,
+        "awayScore": 1
+      },
+      {
+        "date": "2023-10-10",
+        "home": "Manchester United FC",
+        "away": "Liverpool FC",
+        "homeScore": 2,
+        "awayScore": 3
+      },
+      {
+        "date": "2022-08-16",
         "home": "Manchester United FC",
         "away": "Liverpool FC",
         "homeScore": 0,
-        "awayScore": 2
+        "awayScore": 3
       }
     ]
   },
@@ -167,81 +167,81 @@
     "team1": "Manchester United FC",
     "team2": "Manchester City FC",
     "summary": {
-      "team1Wins": 10,
-      "team2Wins": 10,
+      "team1Wins": 17,
+      "team2Wins": 0,
       "draws": 0,
-      "totalGames": 20
+      "totalGames": 17
     },
     "games": [
       {
-        "date": "2026-01-27",
+        "date": "2026-06-26",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
-        "homeScore": 4,
-        "awayScore": 0
+        "homeScore": 2,
+        "awayScore": 4
       },
       {
-        "date": "2025-07-31",
+        "date": "2025-11-28",
+        "home": "Manchester United FC",
+        "away": "Manchester City FC",
+        "homeScore": 3,
+        "awayScore": 2
+      },
+      {
+        "date": "2025-04-02",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
         "homeScore": 1,
+        "awayScore": 3
+      },
+      {
+        "date": "2023-10-10",
+        "home": "Manchester United FC",
+        "away": "Manchester City FC",
+        "homeScore": 0,
         "awayScore": 1
       },
       {
-        "date": "2025-09-29",
+        "date": "2024-04-07",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
-        "homeScore": 0,
-        "awayScore": 3
+        "homeScore": 2,
+        "awayScore": 4
       },
       {
-        "date": "2025-09-29",
-        "home": "Manchester United FC",
-        "away": "Manchester City FC",
-        "homeScore": 0,
-        "awayScore": 3
-      },
-      {
-        "date": "2025-02-01",
+        "date": "2024-04-07",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
         "homeScore": 2,
         "awayScore": 0
       },
       {
-        "date": "2025-04-02",
+        "date": "2021-07-22",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
-        "homeScore": 0,
+        "homeScore": 3,
         "awayScore": 2
       },
       {
-        "date": "2023-11-09",
+        "date": "2024-10-04",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
-        "homeScore": 3,
-        "awayScore": 1
-      },
-      {
-        "date": "2024-02-07",
-        "home": "Manchester United FC",
-        "away": "Manchester City FC",
-        "homeScore": 3,
+        "homeScore": 0,
         "awayScore": 4
       },
       {
         "date": "2020-10-25",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
-        "homeScore": 1,
-        "awayScore": 0
+        "homeScore": 2,
+        "awayScore": 1
       },
       {
-        "date": "2024-04-07",
+        "date": "2020-12-24",
         "home": "Manchester United FC",
         "away": "Manchester City FC",
-        "homeScore": 3,
-        "awayScore": 4
+        "homeScore": 1,
+        "awayScore": 1
       }
     ]
   },
@@ -249,80 +249,80 @@
     "team1": "Arsenal FC",
     "team2": "Tottenham Hotspur FC",
     "summary": {
-      "team1Wins": 15,
-      "team2Wins": 0,
-      "draws": 0,
-      "totalGames": 15
+      "team1Wins": 4,
+      "team2Wins": 10,
+      "draws": 2,
+      "totalGames": 16
     },
     "games": [
       {
-        "date": "2026-05-27",
-        "home": "Arsenal FC",
-        "away": "Tottenham Hotspur FC",
-        "homeScore": 2,
-        "awayScore": 3
-      },
-      {
-        "date": "2025-11-28",
+        "date": "2026-06-26",
         "home": "Arsenal FC",
         "away": "Tottenham Hotspur FC",
         "homeScore": 0,
-        "awayScore": 3
+        "awayScore": 2
+      },
+      {
+        "date": "2025-04-02",
+        "home": "Arsenal FC",
+        "away": "Tottenham Hotspur FC",
+        "homeScore": 0,
+        "awayScore": 4
       },
       {
         "date": "2025-07-01",
         "home": "Arsenal FC",
         "away": "Tottenham Hotspur FC",
-        "homeScore": 4,
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2025-02-01",
+        "home": "Arsenal FC",
+        "away": "Tottenham Hotspur FC",
+        "homeScore": 3,
         "awayScore": 1
       },
       {
-        "date": "2025-09-29",
+        "date": "2025-02-01",
+        "home": "Arsenal FC",
+        "away": "Tottenham Hotspur FC",
+        "homeScore": 4,
+        "awayScore": 2
+      },
+      {
+        "date": "2023-04-13",
         "home": "Arsenal FC",
         "away": "Tottenham Hotspur FC",
         "homeScore": 2,
-        "awayScore": 4
+        "awayScore": 1
       },
       {
-        "date": "2024-09-04",
+        "date": "2023-11-09",
+        "home": "Arsenal FC",
+        "away": "Tottenham Hotspur FC",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2020-10-25",
+        "home": "Arsenal FC",
+        "away": "Tottenham Hotspur FC",
+        "homeScore": 3,
+        "awayScore": 0
+      },
+      {
+        "date": "2023-10-10",
         "home": "Arsenal FC",
         "away": "Tottenham Hotspur FC",
         "homeScore": 3,
         "awayScore": 2
       },
       {
-        "date": "2023-10-10",
-        "home": "Arsenal FC",
-        "away": "Tottenham Hotspur FC",
-        "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2021-07-22",
+        "date": "2024-04-07",
         "home": "Arsenal FC",
         "away": "Tottenham Hotspur FC",
         "homeScore": 0,
-        "awayScore": 1
-      },
-      {
-        "date": "2022-10-15",
-        "home": "Arsenal FC",
-        "away": "Tottenham Hotspur FC",
-        "homeScore": 2,
-        "awayScore": 4
-      },
-      {
-        "date": "2023-01-13",
-        "home": "Arsenal FC",
-        "away": "Tottenham Hotspur FC",
-        "homeScore": 2,
-        "awayScore": 0
-      },
-      {
-        "date": "2019-05-04",
-        "home": "Arsenal FC",
-        "away": "Tottenham Hotspur FC",
-        "homeScore": 3,
         "awayScore": 2
       }
     ]
@@ -331,67 +331,81 @@
     "team1": "Juventus FC",
     "team2": "FC Internazionale Milano",
     "summary": {
-      "team1Wins": 0,
-      "team2Wins": 7,
-      "draws": 1,
-      "totalGames": 8
+      "team1Wins": 7,
+      "team2Wins": 2,
+      "draws": 2,
+      "totalGames": 11
     },
     "games": [
       {
-        "date": "2025-12-28",
+        "date": "2026-01-27",
         "home": "Juventus FC",
         "away": "FC Internazionale Milano",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 4
       },
       {
-        "date": "2025-04-02",
+        "date": "2025-09-29",
         "home": "Juventus FC",
         "away": "FC Internazionale Milano",
-        "homeScore": 1,
-        "awayScore": 1
-      },
-      {
-        "date": "2025-01-02",
-        "home": "Juventus FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 0
       },
       {
-        "date": "2024-02-07",
-        "home": "Juventus FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 0,
-        "awayScore": 2
-      },
-      {
-        "date": "2023-01-13",
-        "home": "Juventus FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 0,
-        "awayScore": 4
-      },
-      {
-        "date": "2024-04-07",
-        "home": "Juventus FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 1,
-        "awayScore": 0
-      },
-      {
-        "date": "2023-11-09",
+        "date": "2024-10-04",
         "home": "Juventus FC",
         "away": "FC Internazionale Milano",
         "homeScore": 3,
-        "awayScore": 1
+        "awayScore": 0
       },
       {
-        "date": "2024-02-07",
+        "date": "2024-06-06",
+        "home": "Juventus FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 2,
+        "awayScore": 4
+      },
+      {
+        "date": "2025-02-01",
+        "home": "Juventus FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 0,
+        "awayScore": 3
+      },
+      {
+        "date": "2022-10-15",
+        "home": "Juventus FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 3,
+        "awayScore": 0
+      },
+      {
+        "date": "2024-06-06",
+        "home": "Juventus FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2022-10-15",
+        "home": "Juventus FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2021-07-22",
+        "home": "Juventus FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 3,
+        "awayScore": 3
+      },
+      {
+        "date": "2022-08-16",
         "home": "Juventus FC",
         "away": "FC Internazionale Milano",
         "homeScore": 4,
-        "awayScore": 2
+        "awayScore": 3
       }
     ]
   },
@@ -399,21 +413,21 @@
     "team1": "FC Internazionale Milano",
     "team2": "AC Milan",
     "summary": {
-      "team1Wins": 16,
-      "team2Wins": 4,
-      "draws": 4,
-      "totalGames": 24
+      "team1Wins": 6,
+      "team2Wins": 5,
+      "draws": 1,
+      "totalGames": 12
     },
     "games": [
       {
-        "date": "2025-12-28",
+        "date": "2026-06-26",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
-        "homeScore": 2,
-        "awayScore": 1
+        "homeScore": 4,
+        "awayScore": 3
       },
       {
-        "date": "2025-04-02",
+        "date": "2025-11-28",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
         "homeScore": 2,
@@ -424,55 +438,55 @@
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
         "homeScore": 1,
-        "awayScore": 0
+        "awayScore": 2
       },
       {
-        "date": "2023-10-10",
+        "date": "2025-09-29",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
-        "homeScore": 3,
+        "homeScore": 2,
         "awayScore": 4
       },
       {
-        "date": "2024-09-04",
-        "home": "FC Internazionale Milano",
-        "away": "AC Milan",
-        "homeScore": 3,
-        "awayScore": 0
-      },
-      {
-        "date": "2024-04-07",
+        "date": "2023-06-12",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
         "homeScore": 0,
         "awayScore": 3
       },
       {
-        "date": "2023-11-09",
+        "date": "2024-04-07",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
-        "homeScore": 2,
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2025-01-02",
+        "home": "FC Internazionale Milano",
+        "away": "AC Milan",
+        "homeScore": 1,
         "awayScore": 4
       },
       {
-        "date": "2022-10-15",
+        "date": "2024-10-04",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
         "homeScore": 2,
         "awayScore": 0
       },
       {
-        "date": "2020-10-25",
+        "date": "2023-10-10",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
-        "homeScore": 3,
+        "homeScore": 1,
         "awayScore": 0
       },
       {
-        "date": "2020-12-24",
+        "date": "2019-05-04",
         "home": "FC Internazionale Milano",
         "away": "AC Milan",
-        "homeScore": 2,
+        "homeScore": 1,
         "awayScore": 4
       }
     ]
@@ -481,28 +495,28 @@
     "team1": "FC Bayern München",
     "team2": "Borussia Dortmund",
     "summary": {
-      "team1Wins": 2,
-      "team2Wins": 10,
-      "draws": 3,
-      "totalGames": 15
+      "team1Wins": 13,
+      "team2Wins": 0,
+      "draws": 1,
+      "totalGames": 14
     },
     "games": [
       {
-        "date": "2025-12-28",
+        "date": "2026-04-27",
         "home": "FC Bayern München",
         "away": "Borussia Dortmund",
-        "homeScore": 2,
-        "awayScore": 3
-      },
-      {
-        "date": "2026-03-28",
-        "home": "FC Bayern München",
-        "away": "Borussia Dortmund",
-        "homeScore": 0,
+        "homeScore": 4,
         "awayScore": 0
       },
       {
-        "date": "2025-07-01",
+        "date": "2025-11-28",
+        "home": "FC Bayern München",
+        "away": "Borussia Dortmund",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2024-07-06",
         "home": "FC Bayern München",
         "away": "Borussia Dortmund",
         "homeScore": 0,
@@ -512,50 +526,50 @@
         "date": "2025-06-01",
         "home": "FC Bayern München",
         "away": "Borussia Dortmund",
-        "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2024-04-07",
-        "home": "FC Bayern München",
-        "away": "Borussia Dortmund",
-        "homeScore": 4,
-        "awayScore": 3
-      },
-      {
-        "date": "2023-04-13",
-        "home": "FC Bayern München",
-        "away": "Borussia Dortmund",
-        "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2022-02-17",
-        "home": "FC Bayern München",
-        "away": "Borussia Dortmund",
-        "homeScore": 3,
-        "awayScore": 3
-      },
-      {
-        "date": "2023-06-12",
-        "home": "FC Bayern München",
-        "away": "Borussia Dortmund",
         "homeScore": 2,
         "awayScore": 0
       },
       {
-        "date": "2022-04-18",
+        "date": "2023-11-09",
         "home": "FC Bayern München",
         "away": "Borussia Dortmund",
-        "homeScore": 1,
-        "awayScore": 2
+        "homeScore": 0,
+        "awayScore": 1
       },
       {
         "date": "2024-04-07",
         "home": "FC Bayern München",
         "away": "Borussia Dortmund",
-        "homeScore": 2,
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2022-09-15",
+        "home": "FC Bayern München",
+        "away": "Borussia Dortmund",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2022-10-15",
+        "home": "FC Bayern München",
+        "away": "Borussia Dortmund",
+        "homeScore": 4,
         "awayScore": 4
+      },
+      {
+        "date": "2024-07-06",
+        "home": "FC Bayern München",
+        "away": "Borussia Dortmund",
+        "homeScore": 4,
+        "awayScore": 1
+      },
+      {
+        "date": "2020-12-24",
+        "home": "FC Bayern München",
+        "away": "Borussia Dortmund",
+        "homeScore": 4,
+        "awayScore": 2
       }
     ]
   },
@@ -563,81 +577,81 @@
     "team1": "Paris Saint-Germain FC",
     "team2": "Olympique de Marseille",
     "summary": {
-      "team1Wins": 1,
-      "team2Wins": 12,
-      "draws": 6,
-      "totalGames": 19
+      "team1Wins": 20,
+      "team2Wins": 0,
+      "draws": 2,
+      "totalGames": 22
     },
     "games": [
       {
-        "date": "2026-04-27",
+        "date": "2026-06-26",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
-        "homeScore": 0,
-        "awayScore": 0
+        "homeScore": 3,
+        "awayScore": 3
       },
       {
-        "date": "2026-03-28",
+        "date": "2025-06-01",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
-        "homeScore": 1,
-        "awayScore": 4
+        "homeScore": 3,
+        "awayScore": 3
       },
       {
         "date": "2025-12-28",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
         "homeScore": 2,
-        "awayScore": 0
+        "awayScore": 2
       },
       {
         "date": "2025-06-01",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
         "homeScore": 1,
-        "awayScore": 0
+        "awayScore": 1
       },
       {
-        "date": "2023-01-13",
+        "date": "2023-11-09",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
-        "homeScore": 1,
+        "homeScore": 4,
         "awayScore": 4
       },
       {
-        "date": "2024-10-04",
+        "date": "2022-10-15",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
-        "homeScore": 2,
-        "awayScore": 0
+        "homeScore": 3,
+        "awayScore": 4
       },
       {
-        "date": "2021-07-22",
+        "date": "2022-09-15",
+        "home": "Paris Saint-Germain FC",
+        "away": "Olympique de Marseille",
+        "homeScore": 3,
+        "awayScore": 4
+      },
+      {
+        "date": "2022-02-17",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
         "homeScore": 0,
-        "awayScore": 2
-      },
-      {
-        "date": "2020-10-25",
-        "home": "Paris Saint-Germain FC",
-        "away": "Olympique de Marseille",
-        "homeScore": 1,
-        "awayScore": 1
+        "awayScore": 0
       },
       {
         "date": "2020-01-29",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
-        "homeScore": 0,
-        "awayScore": 0
+        "homeScore": 4,
+        "awayScore": 1
       },
       {
-        "date": "2023-06-12",
+        "date": "2021-10-20",
         "home": "Paris Saint-Germain FC",
         "away": "Olympique de Marseille",
-        "homeScore": 2,
-        "awayScore": 0
+        "homeScore": 1,
+        "awayScore": 3
       }
     ]
   },
@@ -645,81 +659,81 @@
     "team1": "Real Madrid",
     "team2": "Manchester City FC",
     "summary": {
-      "team1Wins": 0,
-      "team2Wins": 5,
-      "draws": 13,
+      "team1Wins": 14,
+      "team2Wins": 3,
+      "draws": 1,
       "totalGames": 18
     },
     "games": [
       {
-        "date": "2026-04-27",
+        "date": "2026-03-28",
         "home": "Real Madrid",
         "away": "Manchester City FC",
-        "homeScore": 1,
-        "awayScore": 1
+        "homeScore": 0,
+        "awayScore": 2
       },
       {
-        "date": "2025-07-31",
+        "date": "2025-09-29",
+        "home": "Real Madrid",
+        "away": "Manchester City FC",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2025-09-29",
+        "home": "Real Madrid",
+        "away": "Manchester City FC",
+        "homeScore": 3,
+        "awayScore": 0
+      },
+      {
+        "date": "2025-09-29",
         "home": "Real Madrid",
         "away": "Manchester City FC",
         "homeScore": 0,
         "awayScore": 0
       },
       {
-        "date": "2025-04-02",
+        "date": "2025-07-01",
+        "home": "Real Madrid",
+        "away": "Manchester City FC",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "2023-04-13",
         "home": "Real Madrid",
         "away": "Manchester City FC",
         "homeScore": 4,
         "awayScore": 4
       },
       {
-        "date": "2025-09-29",
-        "home": "Real Madrid",
-        "away": "Manchester City FC",
-        "homeScore": 4,
-        "awayScore": 1
-      },
-      {
-        "date": "2023-11-09",
-        "home": "Real Madrid",
-        "away": "Manchester City FC",
-        "homeScore": 4,
-        "awayScore": 2
-      },
-      {
-        "date": "2023-10-10",
+        "date": "2022-09-15",
         "home": "Real Madrid",
         "away": "Manchester City FC",
         "homeScore": 0,
-        "awayScore": 0
+        "awayScore": 3
       },
       {
-        "date": "2023-04-13",
+        "date": "2023-06-12",
         "home": "Real Madrid",
         "away": "Manchester City FC",
         "homeScore": 3,
         "awayScore": 0
       },
       {
-        "date": "2022-10-15",
+        "date": "2023-01-13",
         "home": "Real Madrid",
         "away": "Manchester City FC",
-        "homeScore": 3,
-        "awayScore": 0
-      },
-      {
-        "date": "2024-07-06",
-        "home": "Real Madrid",
-        "away": "Manchester City FC",
-        "homeScore": 4,
-        "awayScore": 1
+        "homeScore": 2,
+        "awayScore": 2
       },
       {
         "date": "2024-04-07",
         "home": "Real Madrid",
         "away": "Manchester City FC",
-        "homeScore": 2,
-        "awayScore": 2
+        "homeScore": 4,
+        "awayScore": 1
       }
     ]
   },
@@ -727,81 +741,81 @@
     "team1": "FC Bayern München",
     "team2": "FC Barcelona",
     "summary": {
-      "team1Wins": 12,
-      "team2Wins": 4,
-      "draws": 2,
-      "totalGames": 18
+      "team1Wins": 10,
+      "team2Wins": 1,
+      "draws": 1,
+      "totalGames": 12
     },
     "games": [
       {
-        "date": "2026-02-26",
-        "home": "FC Bayern München",
-        "away": "FC Barcelona",
-        "homeScore": 3,
-        "awayScore": 4
-      },
-      {
-        "date": "2025-07-31",
-        "home": "FC Bayern München",
-        "away": "FC Barcelona",
-        "homeScore": 0,
-        "awayScore": 0
-      },
-      {
-        "date": "2024-07-06",
-        "home": "FC Bayern München",
-        "away": "FC Barcelona",
-        "homeScore": 4,
-        "awayScore": 1
-      },
-      {
-        "date": "2024-10-04",
-        "home": "FC Bayern München",
-        "away": "FC Barcelona",
-        "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2024-09-04",
-        "home": "FC Bayern München",
-        "away": "FC Barcelona",
-        "homeScore": 3,
-        "awayScore": 3
-      },
-      {
-        "date": "2022-10-15",
-        "home": "FC Bayern München",
-        "away": "FC Barcelona",
-        "homeScore": 2,
-        "awayScore": 1
-      },
-      {
-        "date": "2023-11-09",
+        "date": "2026-05-27",
         "home": "FC Bayern München",
         "away": "FC Barcelona",
         "homeScore": 2,
         "awayScore": 2
       },
       {
-        "date": "2024-02-07",
+        "date": "2025-11-28",
+        "home": "FC Bayern München",
+        "away": "FC Barcelona",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2025-09-29",
+        "home": "FC Bayern München",
+        "away": "FC Barcelona",
+        "homeScore": 4,
+        "awayScore": 4
+      },
+      {
+        "date": "2024-06-06",
+        "home": "FC Bayern München",
+        "away": "FC Barcelona",
+        "homeScore": 4,
+        "awayScore": 0
+      },
+      {
+        "date": "2023-11-09",
+        "home": "FC Bayern München",
+        "away": "FC Barcelona",
+        "homeScore": 2,
+        "awayScore": 0
+      },
+      {
+        "date": "2024-10-04",
+        "home": "FC Bayern München",
+        "away": "FC Barcelona",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2023-11-09",
+        "home": "FC Bayern München",
+        "away": "FC Barcelona",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2022-02-17",
         "home": "FC Bayern München",
         "away": "FC Barcelona",
         "homeScore": 3,
         "awayScore": 0
       },
       {
-        "date": "2024-07-06",
+        "date": "2023-10-10",
         "home": "FC Bayern München",
         "away": "FC Barcelona",
         "homeScore": 0,
         "awayScore": 0
       },
       {
-        "date": "2024-04-07",
+        "date": "2020-02-28",
         "home": "FC Bayern München",
         "away": "FC Barcelona",
-        "homeScore": 2,
-        "awayScore": 1
+        "homeScore": 1,
+        "awayScore": 3
       }
     ]
   },
@@ -809,74 +823,81 @@
     "team1": "Liverpool FC",
     "team2": "Paris Saint-Germain FC",
     "summary": {
-      "team1Wins": 9,
-      "team2Wins": 0,
-      "draws": 0,
-      "totalGames": 9
+      "team1Wins": 14,
+      "team2Wins": 5,
+      "draws": 2,
+      "totalGames": 21
     },
     "games": [
       {
-        "date": "2026-01-27",
+        "date": "2026-05-27",
         "home": "Liverpool FC",
         "away": "Paris Saint-Germain FC",
-        "homeScore": 3,
+        "homeScore": 2,
         "awayScore": 2
       },
       {
         "date": "2025-04-02",
         "home": "Liverpool FC",
         "away": "Paris Saint-Germain FC",
-        "homeScore": 3,
+        "homeScore": 4,
         "awayScore": 0
       },
       {
-        "date": "2025-07-01",
+        "date": "2025-12-28",
         "home": "Liverpool FC",
         "away": "Paris Saint-Germain FC",
-        "homeScore": 2,
-        "awayScore": 2
-      },
-      {
-        "date": "2025-09-29",
-        "home": "Liverpool FC",
-        "away": "Paris Saint-Germain FC",
-        "homeScore": 4,
-        "awayScore": 1
-      },
-      {
-        "date": "2025-02-01",
-        "home": "Liverpool FC",
-        "away": "Paris Saint-Germain FC",
-        "homeScore": 3,
-        "awayScore": 1
-      },
-      {
-        "date": "2022-04-18",
-        "home": "Liverpool FC",
-        "away": "Paris Saint-Germain FC",
-        "homeScore": 2,
-        "awayScore": 2
-      },
-      {
-        "date": "2023-11-09",
-        "home": "Liverpool FC",
-        "away": "Paris Saint-Germain FC",
-        "homeScore": 2,
-        "awayScore": 2
+        "homeScore": 1,
+        "awayScore": 0
       },
       {
         "date": "2024-02-07",
         "home": "Liverpool FC",
         "away": "Paris Saint-Germain FC",
-        "homeScore": 4,
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "2023-06-12",
+        "home": "Liverpool FC",
+        "away": "Paris Saint-Germain FC",
+        "homeScore": 3,
         "awayScore": 4
+      },
+      {
+        "date": "2023-10-10",
+        "home": "Liverpool FC",
+        "away": "Paris Saint-Germain FC",
+        "homeScore": 2,
+        "awayScore": 1
       },
       {
         "date": "2021-07-22",
         "home": "Liverpool FC",
         "away": "Paris Saint-Germain FC",
-        "homeScore": 4,
-        "awayScore": 0
+        "homeScore": 0,
+        "awayScore": 2
+      },
+      {
+        "date": "2022-10-15",
+        "home": "Liverpool FC",
+        "away": "Paris Saint-Germain FC",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2020-10-25",
+        "home": "Liverpool FC",
+        "away": "Paris Saint-Germain FC",
+        "homeScore": 3,
+        "awayScore": 4
+      },
+      {
+        "date": "2020-02-28",
+        "home": "Liverpool FC",
+        "away": "Paris Saint-Germain FC",
+        "homeScore": 0,
+        "awayScore": 1
       }
     ]
   },
@@ -884,81 +905,81 @@
     "team1": "Arsenal FC",
     "team2": "FC Internazionale Milano",
     "summary": {
-      "team1Wins": 0,
-      "team2Wins": 5,
-      "draws": 11,
-      "totalGames": 16
+      "team1Wins": 19,
+      "team2Wins": 0,
+      "draws": 1,
+      "totalGames": 20
     },
     "games": [
       {
-        "date": "2026-04-27",
+        "date": "2026-06-26",
         "home": "Arsenal FC",
         "away": "FC Internazionale Milano",
         "homeScore": 2,
-        "awayScore": 2
-      },
-      {
-        "date": "2025-11-28",
-        "home": "Arsenal FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 1,
         "awayScore": 0
       },
       {
-        "date": "2025-01-02",
-        "home": "Arsenal FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 3,
-        "awayScore": 0
-      },
-      {
-        "date": "2025-06-01",
-        "home": "Arsenal FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 0,
-        "awayScore": 0
-      },
-      {
-        "date": "2023-06-12",
-        "home": "Arsenal FC",
-        "away": "FC Internazionale Milano",
-        "homeScore": 1,
-        "awayScore": 3
-      },
-      {
-        "date": "2023-10-10",
+        "date": "2025-04-02",
         "home": "Arsenal FC",
         "away": "FC Internazionale Milano",
         "homeScore": 2,
         "awayScore": 1
       },
       {
-        "date": "2023-11-09",
+        "date": "2025-07-01",
         "home": "Arsenal FC",
         "away": "FC Internazionale Milano",
-        "homeScore": 2,
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2024-02-07",
+        "home": "Arsenal FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2024-04-07",
+        "home": "Arsenal FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 1,
         "awayScore": 4
       },
       {
-        "date": "2022-02-17",
+        "date": "2023-04-13",
         "home": "Arsenal FC",
         "away": "FC Internazionale Milano",
-        "homeScore": 0,
+        "homeScore": 2,
         "awayScore": 0
       },
       {
-        "date": "2023-10-10",
+        "date": "2023-04-13",
         "home": "Arsenal FC",
         "away": "FC Internazionale Milano",
         "homeScore": 0,
-        "awayScore": 0
+        "awayScore": 3
       },
       {
-        "date": "2022-08-16",
+        "date": "2024-10-04",
+        "home": "Arsenal FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 0,
+        "awayScore": 2
+      },
+      {
+        "date": "2021-07-22",
+        "home": "Arsenal FC",
+        "away": "FC Internazionale Milano",
+        "homeScore": 4,
+        "awayScore": 3
+      },
+      {
+        "date": "2020-02-28",
         "home": "Arsenal FC",
         "away": "FC Internazionale Milano",
         "homeScore": 3,
-        "awayScore": 3
+        "awayScore": 2
       }
     ]
   },
@@ -966,38 +987,45 @@
     "team1": "Juventus FC",
     "team2": "Borussia Dortmund",
     "summary": {
-      "team1Wins": 13,
-      "team2Wins": 4,
+      "team1Wins": 6,
+      "team2Wins": 0,
       "draws": 5,
-      "totalGames": 22
+      "totalGames": 11
     },
     "games": [
       {
-        "date": "2026-05-27",
+        "date": "2026-04-27",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
-        "homeScore": 0,
-        "awayScore": 2
+        "homeScore": 4,
+        "awayScore": 3
       },
       {
-        "date": "2025-09-29",
+        "date": "2025-04-02",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
         "homeScore": 2,
-        "awayScore": 2
+        "awayScore": 0
       },
       {
-        "date": "2024-10-04",
+        "date": "2025-04-02",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
-        "homeScore": 3,
-        "awayScore": 4
+        "homeScore": 1,
+        "awayScore": 1
       },
       {
-        "date": "2024-02-07",
+        "date": "2024-06-06",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
-        "homeScore": 0,
+        "homeScore": 4,
+        "awayScore": 0
+      },
+      {
+        "date": "2024-04-07",
+        "home": "Juventus FC",
+        "away": "Borussia Dortmund",
+        "homeScore": 2,
         "awayScore": 1
       },
       {
@@ -1008,38 +1036,31 @@
         "awayScore": 0
       },
       {
-        "date": "2024-10-04",
+        "date": "2022-09-15",
+        "home": "Juventus FC",
+        "away": "Borussia Dortmund",
+        "homeScore": 1,
+        "awayScore": 2
+      },
+      {
+        "date": "2023-06-12",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
         "homeScore": 1,
         "awayScore": 1
       },
       {
-        "date": "2021-07-22",
+        "date": "2024-07-06",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
         "homeScore": 2,
-        "awayScore": 2
+        "awayScore": 0
       },
       {
-        "date": "2024-10-04",
+        "date": "2023-06-12",
         "home": "Juventus FC",
         "away": "Borussia Dortmund",
-        "homeScore": 3,
-        "awayScore": 3
-      },
-      {
-        "date": "2023-10-10",
-        "home": "Juventus FC",
-        "away": "Borussia Dortmund",
-        "homeScore": 3,
-        "awayScore": 1
-      },
-      {
-        "date": "2020-12-24",
-        "home": "Juventus FC",
-        "away": "Borussia Dortmund",
-        "homeScore": 2,
+        "homeScore": 1,
         "awayScore": 0
       }
     ]
@@ -1048,80 +1069,80 @@
     "team1": "Manchester City FC",
     "team2": "FC Bayern München",
     "summary": {
-      "team1Wins": 1,
-      "team2Wins": 13,
-      "draws": 6,
-      "totalGames": 20
+      "team1Wins": 12,
+      "team2Wins": 1,
+      "draws": 0,
+      "totalGames": 13
     },
     "games": [
       {
-        "date": "2026-06-26",
-        "home": "Manchester City FC",
-        "away": "FC Bayern München",
-        "homeScore": 0,
-        "awayScore": 2
-      },
-      {
-        "date": "2025-07-31",
+        "date": "2026-03-28",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
         "homeScore": 4,
         "awayScore": 3
       },
       {
+        "date": "2025-06-01",
+        "home": "Manchester City FC",
+        "away": "FC Bayern München",
+        "homeScore": 4,
+        "awayScore": 2
+      },
+      {
+        "date": "2024-07-06",
+        "home": "Manchester City FC",
+        "away": "FC Bayern München",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
         "date": "2024-10-04",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
         "homeScore": 3,
-        "awayScore": 2
+        "awayScore": 3
       },
       {
-        "date": "2025-09-29",
+        "date": "2023-06-12",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
-        "homeScore": 0,
-        "awayScore": 2
-      },
-      {
-        "date": "2025-02-01",
-        "home": "Manchester City FC",
-        "away": "FC Bayern München",
-        "homeScore": 3,
-        "awayScore": 2
+        "homeScore": 2,
+        "awayScore": 4
       },
       {
         "date": "2025-04-02",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
-        "homeScore": 0,
-        "awayScore": 1
+        "homeScore": 4,
+        "awayScore": 0
       },
       {
-        "date": "2023-04-13",
+        "date": "2023-11-09",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
         "homeScore": 3,
-        "awayScore": 4
+        "awayScore": 0
       },
       {
         "date": "2024-10-04",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
         "homeScore": 2,
-        "awayScore": 2
+        "awayScore": 0
       },
       {
-        "date": "2023-10-10",
+        "date": "2020-10-25",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
-        "homeScore": 1,
-        "awayScore": 0
+        "homeScore": 4,
+        "awayScore": 4
       },
       {
         "date": "2020-12-24",
         "home": "Manchester City FC",
         "away": "FC Bayern München",
-        "homeScore": 0,
+        "homeScore": 3,
         "awayScore": 4
       }
     ]

@@ -6,67 +6,67 @@
         {
           "position": 1,
           "team": {
-            "id": 1033,
-            "name": "Olympique de Marseille"
-          },
-          "playedGames": 8,
-          "won": 7,
-          "draw": 1,
-          "lost": 0,
-          "points": 22,
-          "form": "WWLLD"
-        },
-        {
-          "position": 2,
-          "team": {
-            "id": 1034,
-            "name": "AS Monaco FC"
-          },
-          "playedGames": 6,
-          "won": 2,
-          "draw": 4,
-          "lost": 0,
-          "points": 10,
-          "form": "DLDDD"
-        },
-        {
-          "position": 3,
-          "team": {
-            "id": 1036,
-            "name": "LOSC Lille"
-          },
-          "playedGames": 8,
-          "won": 1,
-          "draw": 7,
-          "lost": 0,
-          "points": 10,
-          "form": "LLLDD"
-        },
-        {
-          "position": 4,
-          "team": {
-            "id": 1035,
-            "name": "Olympique Lyonnais"
-          },
-          "playedGames": 7,
-          "won": 2,
-          "draw": 0,
-          "lost": 5,
-          "points": 6,
-          "form": "WLDLL"
-        },
-        {
-          "position": 5,
-          "team": {
             "id": 1032,
             "name": "Paris Saint-Germain FC"
           },
           "playedGames": 5,
+          "won": 5,
+          "draw": 0,
+          "lost": 0,
+          "points": 15,
+          "form": "DLWDD"
+        },
+        {
+          "position": 2,
+          "team": {
+            "id": 1036,
+            "name": "LOSC Lille"
+          },
+          "playedGames": 5,
+          "won": 5,
+          "draw": 0,
+          "lost": 0,
+          "points": 15,
+          "form": "DWDLD"
+        },
+        {
+          "position": 3,
+          "team": {
+            "id": 1033,
+            "name": "Olympique de Marseille"
+          },
+          "playedGames": 7,
+          "won": 2,
+          "draw": 4,
+          "lost": 1,
+          "points": 10,
+          "form": "DLLDD"
+        },
+        {
+          "position": 4,
+          "team": {
+            "id": 1034,
+            "name": "AS Monaco FC"
+          },
+          "playedGames": 7,
           "won": 1,
-          "draw": 1,
-          "lost": 3,
-          "points": 4,
-          "form": "WWWDW"
+          "draw": 6,
+          "lost": 0,
+          "points": 9,
+          "form": "WDDDD"
+        },
+        {
+          "position": 5,
+          "team": {
+            "id": 1035,
+            "name": "Olympique Lyonnais"
+          },
+          "playedGames": 5,
+          "won": 3,
+          "draw": 0,
+          "lost": 2,
+          "points": 9,
+          "form": "WWLDD"
         }
       ]
     }

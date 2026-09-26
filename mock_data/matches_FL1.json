@@ -1,8 +1,8 @@
 {
   "matches": [
     {
-      "id": 500093,
-      "utcDate": "2026-09-24T17:30:00Z",
+      "id": 500095,
+      "utcDate": "2026-09-24T16:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -11,8 +11,8 @@
         "name": "Ligue 1"
       },
       "homeTeam": {
-        "id": 1032,
-        "name": "Paris Saint-Germain FC"
+        "id": 1034,
+        "name": "AS Monaco FC"
       },
       "awayTeam": {
         "id": 1033,
@@ -21,26 +21,7 @@
     },
     {
       "id": 500094,
-      "utcDate": "2026-09-24T20:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "FL1",
-        "name": "Ligue 1"
-      },
-      "homeTeam": {
-        "id": 1035,
-        "name": "Olympique Lyonnais"
-      },
-      "awayTeam": {
-        "id": 1034,
-        "name": "AS Monaco FC"
-      }
-    },
-    {
-      "id": 500096,
-      "utcDate": "2026-09-30T17:30:00Z",
+      "utcDate": "2026-09-24T18:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -53,13 +34,13 @@
         "name": "Paris Saint-Germain FC"
       },
       "awayTeam": {
-        "id": 1034,
-        "name": "AS Monaco FC"
+        "id": 1035,
+        "name": "Olympique Lyonnais"
       }
     },
     {
-      "id": 500095,
-      "utcDate": "2026-09-30T18:00:00Z",
+      "id": 500096,
+      "utcDate": "2026-09-27T16:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -78,7 +59,45 @@
     },
     {
       "id": 500097,
-      "utcDate": "2026-10-03T18:30:00Z",
+      "utcDate": "2026-09-30T16:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "FL1",
+        "name": "Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      },
+      "awayTeam": {
+        "id": 1033,
+        "name": "Olympique de Marseille"
+      }
+    },
+    {
+      "id": 500099,
+      "utcDate": "2026-10-03T16:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "FL1",
+        "name": "Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1036,
+        "name": "LOSC Lille"
+      },
+      "awayTeam": {
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
+      }
+    },
+    {
+      "id": 500098,
+      "utcDate": "2026-10-03T21:30:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
       "stage": "REGULAR_SEASON",
@@ -97,9 +116,9 @@
     },
     {
       "id": 500008,
-      "utcDate": "2026-10-09T16:30:00Z",
+      "utcDate": "2026-10-09T20:30:00Z",
       "status": "SCHEDULED",
-      "matchday": 9,
+      "matchday": 6,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "FL1",
@@ -115,37 +134,37 @@
       }
     },
     {
-      "id": 500098,
-      "utcDate": "2026-10-15T15:00:00Z",
+      "id": 500100,
+      "utcDate": "2026-10-12T16:30:00Z",
       "status": "SCHEDULED",
-      "matchday": 4,
+      "matchday": 3,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "FL1",
         "name": "Ligue 1"
       },
       "homeTeam": {
-        "id": 1036,
-        "name": "LOSC Lille"
+        "id": 1032,
+        "name": "Paris Saint-Germain FC"
       },
       "awayTeam": {
-        "id": 1033,
-        "name": "Olympique de Marseille"
-      }
-    },
-    {
-      "id": 500100,
-      "utcDate": "2026-10-21T16:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 4,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "FL1",
-        "name": "Ligue 1"
-      },
-      "homeTeam": {
         "id": 1034,
         "name": "AS Monaco FC"
+      }
+    },
+    {
+      "id": 500101,
+      "utcDate": "2026-10-12T17:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "FL1",
+        "name": "Ligue 1"
+      },
+      "homeTeam": {
+        "id": 1033,
+        "name": "Olympique de Marseille"
       },
       "awayTeam": {
         "id": 1036,
@@ -153,8 +172,8 @@
       }
     },
     {
-      "id": 500099,
-      "utcDate": "2026-10-21T18:30:00Z",
+      "id": 500102,
+      "utcDate": "2026-10-18T20:00:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "REGULAR_SEASON",
@@ -167,8 +186,8 @@
         "name": "Olympique Lyonnais"
       },
       "awayTeam": {
-        "id": 1032,
-        "name": "Paris Saint-Germain FC"
+        "id": 1034,
+        "name": "AS Monaco FC"
       }
     }
   ]

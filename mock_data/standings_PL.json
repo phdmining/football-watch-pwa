@@ -6,34 +6,8 @@
         {
           "position": 1,
           "team": {
-            "id": 1001,
-            "name": "Manchester City FC"
-          },
-          "playedGames": 8,
-          "won": 8,
-          "draw": 0,
-          "lost": 0,
-          "points": 24,
-          "form": "LDLLD"
-        },
-        {
-          "position": 2,
-          "team": {
-            "id": 1005,
-            "name": "Tottenham Hotspur FC"
-          },
-          "playedGames": 8,
-          "won": 6,
-          "draw": 2,
-          "lost": 0,
-          "points": 20,
-          "form": "LWLDD"
-        },
-        {
-          "position": 3,
-          "team": {
-            "id": 1008,
-            "name": "Aston Villa FC"
+            "id": 1002,
+            "name": "Liverpool FC"
           },
           "playedGames": 6,
           "won": 6,
@@ -43,23 +17,23 @@
           "form": "LLDLD"
         },
         {
-          "position": 4,
+          "position": 2,
           "team": {
             "id": 1004,
             "name": "Arsenal FC"
           },
-          "playedGames": 6,
+          "playedGames": 8,
           "won": 5,
-          "draw": 0,
+          "draw": 2,
           "lost": 1,
-          "points": 15,
-          "form": "WDDDW"
+          "points": 17,
+          "form": "LDLLW"
         },
         {
-          "position": 5,
+          "position": 3,
           "team": {
-            "id": 1006,
-            "name": "Chelsea FC"
+            "id": 1000,
+            "name": "Manchester United FC"
           },
           "playedGames": 7,
           "won": 4,
@@ -69,36 +43,23 @@
           "form": "LLDLD"
         },
         {
-          "position": 6,
-          "team": {
-            "id": 1002,
-            "name": "Liverpool FC"
-          },
-          "playedGames": 7,
-          "won": 3,
-          "draw": 2,
-          "lost": 2,
-          "points": 11,
-          "form": "LDDWW"
-        },
-        {
-          "position": 7,
-          "team": {
-            "id": 1003,
-            "name": "Everton FC"
-          },
-          "playedGames": 7,
-          "won": 3,
-          "draw": 2,
-          "lost": 2,
-          "points": 11,
-          "form": "DLWWD"
-        },
-        {
-          "position": 8,
+          "position": 4,
           "team": {
             "id": 1007,
             "name": "Newcastle United FC"
+          },
+          "playedGames": 6,
+          "won": 3,
+          "draw": 2,
+          "lost": 1,
+          "points": 11,
+          "form": "LWDLW"
+        },
+        {
+          "position": 5,
+          "team": {
+            "id": 1001,
+            "name": "Manchester City FC"
           },
           "playedGames": 6,
           "won": 3,
@@ -108,23 +69,36 @@
           "form": "WDDLL"
         },
         {
-          "position": 9,
+          "position": 6,
           "team": {
-            "id": 1000,
-            "name": "Manchester United FC"
+            "id": 1005,
+            "name": "Tottenham Hotspur FC"
           },
           "playedGames": 5,
           "won": 3,
           "draw": 0,
           "lost": 2,
           "points": 9,
-          "form": "LLLDL"
+          "form": "LWLWW"
         },
         {
-          "position": 10,
+          "position": 7,
           "team": {
-            "id": 1009,
-            "name": "Brighton & Hove Albion FC"
+            "id": 1008,
+            "name": "Aston Villa FC"
+          },
+          "playedGames": 6,
+          "won": 2,
+          "draw": 0,
+          "lost": 4,
+          "points": 6,
+          "form": "DLDLD"
+        },
+        {
+          "position": 8,
+          "team": {
+            "id": 1003,
+            "name": "Everton FC"
           },
           "playedGames": 5,
           "won": 0,
@@ -132,6 +106,32 @@
           "lost": 0,
           "points": 5,
           "form": "DLWWW"
+        },
+        {
+          "position": 9,
+          "team": {
+            "id": 1009,
+            "name": "Brighton & Hove Albion FC"
+          },
+          "playedGames": 6,
+          "won": 0,
+          "draw": 4,
+          "lost": 2,
+          "points": 4,
+          "form": "LDWLL"
+        },
+        {
+          "position": 10,
+          "team": {
+            "id": 1006,
+            "name": "Chelsea FC"
+          },
+          "playedGames": 5,
+          "won": 0,
+          "draw": 1,
+          "lost": 4,
+          "points": 1,
+          "form": "WWWWL"
         }
       ]
     }

@@ -1,27 +1,8 @@
 {
   "matches": [
     {
-      "id": 500079,
-      "utcDate": "2026-09-24T16:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "BL1",
-        "name": "Bundesliga"
-      },
-      "homeTeam": {
-        "id": 1030,
-        "name": "Eintracht Frankfurt"
-      },
-      "awayTeam": {
-        "id": 1026,
-        "name": "FC Bayern München"
-      }
-    },
-    {
-      "id": 500078,
-      "utcDate": "2026-09-24T19:00:00Z",
+      "id": 500083,
+      "utcDate": "2026-09-24T17:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -34,13 +15,13 @@
         "name": "RB Leipzig"
       },
       "awayTeam": {
-        "id": 1028,
-        "name": "Bayer 04 Leverkusen"
+        "id": 1030,
+        "name": "Eintracht Frankfurt"
       }
     },
     {
-      "id": 500080,
-      "utcDate": "2026-09-24T21:00:00Z",
+      "id": 500081,
+      "utcDate": "2026-09-24T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -49,8 +30,8 @@
         "name": "Bundesliga"
       },
       "homeTeam": {
-        "id": 1031,
-        "name": "VfB Stuttgart"
+        "id": 1026,
+        "name": "FC Bayern München"
       },
       "awayTeam": {
         "id": 1027,
@@ -59,7 +40,7 @@
     },
     {
       "id": 500082,
-      "utcDate": "2026-09-27T21:00:00Z",
+      "utcDate": "2026-09-24T18:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -68,27 +49,8 @@
         "name": "Bundesliga"
       },
       "homeTeam": {
-        "id": 1029,
-        "name": "RB Leipzig"
-      },
-      "awayTeam": {
-        "id": 1026,
-        "name": "FC Bayern München"
-      }
-    },
-    {
-      "id": 500081,
-      "utcDate": "2026-09-27T21:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "BL1",
-        "name": "Bundesliga"
-      },
-      "homeTeam": {
-        "id": 1030,
-        "name": "Eintracht Frankfurt"
+        "id": 1031,
+        "name": "VfB Stuttgart"
       },
       "awayTeam": {
         "id": 1028,
@@ -96,8 +58,8 @@
       }
     },
     {
-      "id": 500084,
-      "utcDate": "2026-09-30T16:00:00Z",
+      "id": 500085,
+      "utcDate": "2026-09-27T15:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -106,17 +68,55 @@
         "name": "Bundesliga"
       },
       "homeTeam": {
-        "id": 1029,
-        "name": "RB Leipzig"
-      },
-      "awayTeam": {
         "id": 1031,
         "name": "VfB Stuttgart"
+      },
+      "awayTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      }
+    },
+    {
+      "id": 500084,
+      "utcDate": "2026-09-27T17:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "BL1",
+        "name": "Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1027,
+        "name": "Borussia Dortmund"
+      },
+      "awayTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      }
+    },
+    {
+      "id": 500086,
+      "utcDate": "2026-09-27T19:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "BL1",
+        "name": "Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1028,
+        "name": "Bayer 04 Leverkusen"
+      },
+      "awayTeam": {
+        "id": 1030,
+        "name": "Eintracht Frankfurt"
       }
     },
     {
       "id": 500007,
-      "utcDate": "2026-09-30T19:00:00Z",
+      "utcDate": "2026-09-30T17:30:00Z",
       "status": "SCHEDULED",
       "matchday": 6,
       "stage": "REGULAR_SEASON",
@@ -134,27 +134,8 @@
       }
     },
     {
-      "id": 500083,
-      "utcDate": "2026-09-30T21:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "BL1",
-        "name": "Bundesliga"
-      },
-      "homeTeam": {
-        "id": 1026,
-        "name": "FC Bayern München"
-      },
-      "awayTeam": {
-        "id": 1028,
-        "name": "Bayer 04 Leverkusen"
-      }
-    },
-    {
-      "id": 500085,
-      "utcDate": "2026-09-30T21:30:00Z",
+      "id": 500088,
+      "utcDate": "2026-09-30T17:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -172,7 +153,26 @@
       }
     },
     {
-      "id": 500086,
+      "id": 500087,
+      "utcDate": "2026-09-30T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "BL1",
+        "name": "Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1028,
+        "name": "Bayer 04 Leverkusen"
+      },
+      "awayTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      }
+    },
+    {
+      "id": 500090,
       "utcDate": "2026-10-03T20:00:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
@@ -182,46 +182,8 @@
         "name": "Bundesliga"
       },
       "homeTeam": {
-        "id": 1030,
-        "name": "Eintracht Frankfurt"
-      },
-      "awayTeam": {
-        "id": 1029,
-        "name": "RB Leipzig"
-      }
-    },
-    {
-      "id": 500087,
-      "utcDate": "2026-10-06T17:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "BL1",
-        "name": "Bundesliga"
-      },
-      "homeTeam": {
-        "id": 1029,
-        "name": "RB Leipzig"
-      },
-      "awayTeam": {
-        "id": 1027,
-        "name": "Borussia Dortmund"
-      }
-    },
-    {
-      "id": 500088,
-      "utcDate": "2026-10-06T20:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "BL1",
-        "name": "Bundesliga"
-      },
-      "homeTeam": {
-        "id": 1031,
-        "name": "VfB Stuttgart"
+        "id": 1026,
+        "name": "FC Bayern München"
       },
       "awayTeam": {
         "id": 1030,
@@ -230,47 +192,28 @@
     },
     {
       "id": 500089,
-      "utcDate": "2026-10-09T15:00:00Z",
+      "utcDate": "2026-10-03T20:30:00Z",
       "status": "SCHEDULED",
-      "matchday": 3,
+      "matchday": 2,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "BL1",
         "name": "Bundesliga"
       },
       "homeTeam": {
-        "id": 1026,
-        "name": "FC Bayern München"
+        "id": 1027,
+        "name": "Borussia Dortmund"
       },
       "awayTeam": {
         "id": 1031,
         "name": "VfB Stuttgart"
-      }
-    },
-    {
-      "id": 500090,
-      "utcDate": "2026-10-12T18:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "BL1",
-        "name": "Bundesliga"
-      },
-      "homeTeam": {
-        "id": 1031,
-        "name": "VfB Stuttgart"
-      },
-      "awayTeam": {
-        "id": 1028,
-        "name": "Bayer 04 Leverkusen"
       }
     },
     {
       "id": 500091,
-      "utcDate": "2026-10-15T20:30:00Z",
+      "utcDate": "2026-10-09T18:30:00Z",
       "status": "SCHEDULED",
-      "matchday": 4,
+      "matchday": 3,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "BL1",
@@ -287,7 +230,26 @@
     },
     {
       "id": 500092,
-      "utcDate": "2026-10-21T20:30:00Z",
+      "utcDate": "2026-10-12T20:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "BL1",
+        "name": "Bundesliga"
+      },
+      "homeTeam": {
+        "id": 1026,
+        "name": "FC Bayern München"
+      },
+      "awayTeam": {
+        "id": 1029,
+        "name": "RB Leipzig"
+      }
+    },
+    {
+      "id": 500093,
+      "utcDate": "2026-10-15T20:30:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "REGULAR_SEASON",
@@ -296,12 +258,12 @@
         "name": "Bundesliga"
       },
       "homeTeam": {
-        "id": 1027,
-        "name": "Borussia Dortmund"
+        "id": 1029,
+        "name": "RB Leipzig"
       },
       "awayTeam": {
-        "id": 1026,
-        "name": "FC Bayern München"
+        "id": 1031,
+        "name": "VfB Stuttgart"
       }
     }
   ]

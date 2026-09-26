@@ -40,6 +40,27 @@ def _fetch_real_matches(comp_code: str, api_key: str, date_from: str, date_to: s
     return matches
 
 
+def get_recent_finished_matches(competitions: dict, lookback_days: int, mock_mode: bool, api_key: str):
+    """
+    额外拉取"最近几天已结束"的比赛（不进入schedule.json的赛程列表，只用于Drama Score归档）。
+    因为常规的未来窗口查询（今天~未来N天）一旦比赛打完、日期滚出窗口，就再也看不到这场比赛了，
+    这个函数专门补上"刚打完还没来得及被归档"的这一小段。
+    """
+    if mock_mode:
+        return {}  # mock模式下没有真实赛果，跳过
+
+    today = datetime.now(timezone.utc).date()
+    date_from = (today - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
+    date_to = today.strftime("%Y-%m-%d")
+
+    result = {}
+    for comp_code in competitions:
+        matches = _fetch_real_matches(comp_code, api_key, date_from, date_to)
+        finished = [m for m in matches if m.get("status") == "FINISHED"]
+        result[comp_code] = finished
+    return result
+
+
 def get_fixtures(competitions: dict, days_ahead: int, mock_mode: bool, api_key: str, cache_ttl_days: int = 1):
     """
     返回: { comp_code: [match, ...] }

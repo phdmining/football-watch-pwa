@@ -18,12 +18,13 @@ from datetime import datetime, timezone as dt_timezone, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from fetch_fixtures import get_fixtures
+from fetch_fixtures import get_fixtures, get_recent_finished_matches
 from fetch_standings import get_standings
 from fetch_h2h import get_h2h, get_skip_stats, get_team_extra_info
+from fetch_attendance import get_team_home_occupancy
 from fetch_teams import get_team_city_coords
 from derby import evaluate_derby
-from recommend import score_match, build_reason_text, get_club_influence
+from recommend import score_match, build_reason_text, get_club_influence, drama_score
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -96,6 +97,8 @@ def update_season_archives(history_dir: str, matches_out: list) -> set:
             "utcDate": m["utcDate"],
             "competition": m["competition"]["code"],
             "breakdown": m["breakdown"],
+            "status": m.get("status"),
+            "dramaScore": m.get("dramaScore"),
         }
 
     touched_seasons = set()
@@ -245,14 +248,21 @@ def main():
             if home_extra.get("capacity"):
                 team_capacity[home_name] = home_extra["capacity"]
 
+            # 历史主场平均上座率（football-data.org已结束比赛的attendance字段，长期缓存60天）
+            home_occupancy = get_team_home_occupancy(
+                home_id, home_extra.get("capacity"), mock_mode, fd_key, ttl_days=60)
+
             result = score_match(match, comp_code, comp_standings, h2h_data,
                                   coords1, coords2, WEIGHTS, DERBY_DISTANCE_KM,
-                                  home_capacity=home_extra.get("capacity"))
+                                  home_capacity=home_extra.get("capacity"),
+                                  home_occupancy_rate=home_occupancy)
             reason = build_reason_text(match, result)
 
             matches_out.append({
                 "id": match["id"],
                 "utcDate": match["utcDate"],
+                "status": match.get("status"),
+                "score": match.get("score"),
                 "competition": {"code": comp_code, "name": comp_name},
                 "homeTeam": {"id": home_id, "name": home_name},
                 "awayTeam": {"id": away_id, "name": away_name},
@@ -261,8 +271,43 @@ def main():
                 "derbyLabel": result["derby_info"]["derby_label"],
                 "isTopDerby": result["derby_info"]["is_top_derby"],
                 "isBigClubClash": result["derby_info"]["is_big_club_clash"],
+                "homeOccupancyRate": round(home_occupancy, 3) if home_occupancy is not None else None,
+                "dramaScore": drama_score(match) if match.get("status") == "FINISHED" else None,
                 "reason": reason,
             })
+
+    print("[3.5/5] 拉取近期已结束比赛（仅用于归档+Drama Score，不进入赛程列表）...")
+    finished_matches_out = []
+    RECENT_FINISHED_LOOKBACK_DAYS = 5
+    recent_finished = get_recent_finished_matches(COMPETITIONS, RECENT_FINISHED_LOOKBACK_DAYS, mock_mode, fd_key)
+    for comp_code, matches in recent_finished.items():
+        comp_name = COMPETITIONS[comp_code]
+        comp_standings = standings.get(comp_code, {})
+        for match in matches:
+            home_name = match["homeTeam"]["name"]
+            away_name = match["awayTeam"]["name"]
+            home_id = match["homeTeam"]["id"]
+            away_id = match["awayTeam"]["id"]
+            coords1 = get_team_city_coords(home_name, mock_mode)
+            coords2 = get_team_city_coords(away_name, mock_mode)
+            h2h_data = get_h2h(home_name, home_id, away_name, away_id,
+                                mock_mode, af_key, ttl_days=CACHE_TTL_DAYS["h2h"])
+            home_extra = get_team_extra_info(home_name, mock_mode, af_key)
+            home_occupancy = get_team_home_occupancy(
+                home_id, home_extra.get("capacity"), mock_mode, fd_key, ttl_days=60)
+            result = score_match(match, comp_code, comp_standings, h2h_data,
+                                  coords1, coords2, WEIGHTS, DERBY_DISTANCE_KM,
+                                  home_capacity=home_extra.get("capacity"),
+                                  home_occupancy_rate=home_occupancy)
+            finished_matches_out.append({
+                "id": match["id"],
+                "utcDate": match["utcDate"],
+                "status": match.get("status"),
+                "competition": {"code": comp_code, "name": comp_name},
+                "breakdown": result["breakdown"],
+                "dramaScore": drama_score(match),
+            })
+    print(f"      -> 补充归档了 {len(finished_matches_out)} 场近期已结束比赛（含Drama Score）")
 
     quota_exceeded, skipped = get_skip_stats()
     if quota_exceeded:
@@ -279,7 +324,7 @@ def main():
     os.makedirs(history_dir, exist_ok=True)
     today_str = datetime.now(dt_timezone.utc).strftime("%Y-%m-%d")
 
-    touched_seasons = update_season_archives(history_dir, matches_out)
+    touched_seasons = update_season_archives(history_dir, matches_out + finished_matches_out)
     seasons_info = rebuild_history_index(history_dir)
     print(f"      -> 更新了赛季归档: {', '.join(sorted(touched_seasons)) or '(无)'}；"
           f"当前共有 {len(seasons_info)} 个赛季有记录")
@@ -292,10 +337,30 @@ def main():
         print(f"      -> 用了 {samples_used} 场历史样本（含遗忘因子加权）计算标准化统计量")
 
     current_season = season_key_for_date(datetime.now(dt_timezone.utc).strftime("%Y-%m-%dT00:00:00Z"))
+    now_iso = datetime.now(dt_timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    data_sources = {
+        "fixtures_standings": {
+            "source": "football-data.org", "reliability": "A",
+            "note": "官方免费API，赛程/排名/比分/上座率", "retrievedAt": now_iso,
+        },
+        "h2h_logos_capacity": {
+            "source": "api-sports.io", "reliability": "B",
+            "note": "历史交锋、球队队徽、场馆容量", "retrievedAt": now_iso,
+        },
+        "club_influence": {
+            "source": "人工维护静态表（参考UEFA俱乐部积分排名）", "reliability": "C",
+            "note": "建议每年欧战结束后人工更新一次", "retrievedAt": None,
+        },
+        "derby_big_clubs": {
+            "source": "人工维护静态表 + 地理距离算法", "reliability": "C",
+            "note": "国家德比清单+同城判定+豪门名单", "retrievedAt": None,
+        },
+    }
 
     print("[5/5] 写入 docs/schedule.json ...")
     output = {
-        "generatedAt": datetime.now(dt_timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generatedAt": now_iso,
         "daysAhead": DAYS_AHEAD,
         "matchDurationMinutes": MATCH_DURATION_MINUTES,
         "weights": WEIGHTS,
@@ -308,6 +373,7 @@ def main():
         "statsColdStart": cold_start,
         "statsSampleCount": samples_used,
         "currentSeason": current_season,
+        "dataSources": data_sources,          # 数据溯源：来源/可信度等级/获取时间
         "matches": matches_out,
     }
 

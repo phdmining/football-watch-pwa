@@ -34,6 +34,29 @@ def _position_score(position: int, total_teams: int) -> float:
     return 1 - (position - 1) / (total_teams - 1)
 
 
+def drama_score(match: dict):
+    """
+    比赛精彩程度评分，0~100，只对已结束(FINISHED)的比赛计算。
+    V1简化版：只用"进球总数"和"比分接近程度"两个容易拿到的信号。
+    没有用到点球大战/读秒绝杀/红牌/逆转这些更精细的信号——那些需要比赛事件时间线数据，
+    免费API拿起来更复杂，先用这个简化版本，以后有更好的数据源再升级。
+    """
+    score_obj = match.get("score") or {}
+    full_time = score_obj.get("fullTime") or {}
+    home_goals = full_time.get("home")
+    away_goals = full_time.get("away")
+    if home_goals is None or away_goals is None:
+        return None
+
+    total_goals = home_goals + away_goals
+    margin = abs(home_goals - away_goals)
+
+    goal_component = min(60, total_goals * 12)          # 进球越多越精彩，封顶60分
+    closeness_component = 40 if margin <= 1 else (20 if margin == 2 else 0)  # 比分越接近越紧张
+
+    return min(100, goal_component + closeness_component)
+
+
 def get_club_influence(team_name: str) -> float:
     if team_name in _INFLUENCE_MAP:
         return _INFLUENCE_MAP[team_name]
@@ -52,16 +75,23 @@ def score_club_influence(home_name: str, away_name: str) -> float:
     return (get_club_influence(home_name) + get_club_influence(away_name)) / 2
 
 
-def score_stadium_scale(home_capacity, away_capacity) -> float:
+def score_stadium_scale(home_capacity, home_occupancy_rate=None) -> float:
     """
-    场馆规模评分，0~1。用对数压缩，避免容量数字直接线性主导。
-    这里用主队场馆容量（比赛实际在主队场馆进行），客队容量目前不参与计算，
-    保留参数是为了以后可能需要双方对比时扩展。
+    场馆规模+上座热度评分，0~1。
+    - 有历史平均上座率数据：60%权重给上座率（更能反映"这支球队主场氛围有多火爆"，
+      跨球场也能公平比较），40%权重给场馆容量对数值（体现"大场面"的量级感）
+    - 没有上座率数据（新球队、数据缺失）：退回纯容量对数值，不武断给低分
     """
     if not home_capacity or home_capacity <= 0:
-        return 0.3  # 拿不到容量数据时给中性偏低分，不武断给0
+        return 0.3
+
     ratio = math.log(home_capacity) / math.log(_MAX_KNOWN_CAPACITY)
-    return max(0.0, min(1.0, ratio))
+    capacity_score = max(0.0, min(1.0, ratio))
+
+    if home_occupancy_rate is None:
+        return capacity_score
+
+    return 0.6 * home_occupancy_rate + 0.4 * capacity_score
 
 
 def score_form_ranking(team1_standing: dict, team2_standing: dict) -> float:
@@ -174,11 +204,12 @@ def score_third_party_impact_v2(team1_standing, team2_standing, comp_team_map) -
 
 def score_match(match: dict, comp_code: str, standings: dict, h2h_data,
                  coords1, coords2, weights: dict, derby_distance_km: float,
-                 home_capacity=None) -> dict:
+                 home_capacity=None, home_occupancy_rate=None) -> dict:
     """
     match: {"homeTeam": {"name":...}, "awayTeam": {"name":...}, ...}
     standings: 本联赛 team_map（get_standings返回结果里对应comp_code的部分）
     home_capacity: 主队场馆容量（可选，拿不到时场馆规模维度给中性分）
+    home_occupancy_rate: 主队历史平均上座率0~1（可选，拿不到时退回纯容量评分）
     返回: {"total_score": 0~100, "breakdown": {...}, "derby_info": {...}}
     """
     home_name = match["homeTeam"]["name"]
@@ -197,7 +228,7 @@ def score_match(match: dict, comp_code: str, standings: dict, h2h_data,
         "title_relevance": score_title_relevance(s1, s2),
         "third_party_impact": score_third_party_impact_v2(s1, s2, standings),
         "club_influence": score_club_influence(home_name, away_name),
-        "stadium_scale": score_stadium_scale(home_capacity, None),
+        "stadium_scale": score_stadium_scale(home_capacity, home_occupancy_rate),
     }
 
     total = sum(scores[k] * weights.get(k, 0) for k in scores)

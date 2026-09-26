@@ -2,25 +2,6 @@
   "matches": [
     {
       "id": 500011,
-      "utcDate": "2026-09-24T15:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1001,
-        "name": "Manchester City FC"
-      },
-      "awayTeam": {
-        "id": 1000,
-        "name": "Manchester United FC"
-      }
-    },
-    {
-      "id": 500009,
       "utcDate": "2026-09-24T16:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -34,13 +15,13 @@
         "name": "Tottenham Hotspur FC"
       },
       "awayTeam": {
-        "id": 1002,
-        "name": "Liverpool FC"
+        "id": 1007,
+        "name": "Newcastle United FC"
       }
     },
     {
       "id": 500013,
-      "utcDate": "2026-09-24T17:30:00Z",
+      "utcDate": "2026-09-24T18:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -49,17 +30,17 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1007,
-        "name": "Newcastle United FC"
+        "id": 1002,
+        "name": "Liverpool FC"
       },
       "awayTeam": {
-        "id": 1003,
-        "name": "Everton FC"
+        "id": 1001,
+        "name": "Manchester City FC"
       }
     },
     {
-      "id": 500012,
-      "utcDate": "2026-09-24T18:00:00Z",
+      "id": 500009,
+      "utcDate": "2026-09-24T20:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -72,12 +53,31 @@
         "name": "Chelsea FC"
       },
       "awayTeam": {
-        "id": 1004,
-        "name": "Arsenal FC"
+        "id": 1000,
+        "name": "Manchester United FC"
       }
     },
     {
       "id": 500010,
+      "utcDate": "2026-09-24T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "awayTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      }
+    },
+    {
+      "id": 500012,
       "utcDate": "2026-09-24T21:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -87,27 +87,8 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1008,
-        "name": "Aston Villa FC"
-      },
-      "awayTeam": {
         "id": 1009,
         "name": "Brighton & Hove Albion FC"
-      }
-    },
-    {
-      "id": 500018,
-      "utcDate": "2026-09-27T15:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1001,
-        "name": "Manchester City FC"
       },
       "awayTeam": {
         "id": 1003,
@@ -116,9 +97,9 @@
     },
     {
       "id": 500002,
-      "utcDate": "2026-09-27T17:00:00Z",
+      "utcDate": "2026-09-27T16:00:00Z",
       "status": "SCHEDULED",
-      "matchday": 10,
+      "matchday": 9,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PL",
@@ -134,8 +115,8 @@
       }
     },
     {
-      "id": 500016,
-      "utcDate": "2026-09-27T19:00:00Z",
+      "id": 500015,
+      "utcDate": "2026-09-27T16:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -144,8 +125,27 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1007,
-        "name": "Newcastle United FC"
+        "id": 1004,
+        "name": "Arsenal FC"
+      },
+      "awayTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      }
+    },
+    {
+      "id": 500014,
+      "utcDate": "2026-09-27T16:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
       },
       "awayTeam": {
         "id": 1009,
@@ -153,7 +153,7 @@
       }
     },
     {
-      "id": 500014,
+      "id": 500018,
       "utcDate": "2026-09-27T19:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -167,13 +167,13 @@
         "name": "Aston Villa FC"
       },
       "awayTeam": {
-        "id": 1006,
-        "name": "Chelsea FC"
+        "id": 1000,
+        "name": "Manchester United FC"
       }
     },
     {
-      "id": 500017,
-      "utcDate": "2026-09-27T20:00:00Z",
+      "id": 500016,
+      "utcDate": "2026-09-27T20:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -182,17 +182,36 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1000,
-        "name": "Manchester United FC"
+        "id": 1002,
+        "name": "Liverpool FC"
       },
       "awayTeam": {
-        "id": 1005,
-        "name": "Tottenham Hotspur FC"
+        "id": 1003,
+        "name": "Everton FC"
       }
     },
     {
-      "id": 500015,
-      "utcDate": "2026-09-27T21:30:00Z",
+      "id": 500017,
+      "utcDate": "2026-09-27T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      },
+      "awayTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      }
+    },
+    {
+      "id": 500022,
+      "utcDate": "2026-09-30T18:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -210,45 +229,7 @@
       }
     },
     {
-      "id": 500019,
-      "utcDate": "2026-09-30T16:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1009,
-        "name": "Brighton & Hove Albion FC"
-      },
-      "awayTeam": {
-        "id": 1003,
-        "name": "Everton FC"
-      }
-    },
-    {
-      "id": 500020,
-      "utcDate": "2026-09-30T17:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1001,
-        "name": "Manchester City FC"
-      },
-      "awayTeam": {
-        "id": 1002,
-        "name": "Liverpool FC"
-      }
-    },
-    {
-      "id": 500023,
+      "id": 500021,
       "utcDate": "2026-09-30T19:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -262,12 +243,31 @@
         "name": "Chelsea FC"
       },
       "awayTeam": {
-        "id": 1007,
-        "name": "Newcastle United FC"
+        "id": 1008,
+        "name": "Aston Villa FC"
       }
     },
     {
-      "id": 500022,
+      "id": 500023,
+      "utcDate": "2026-09-30T19:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      },
+      "awayTeam": {
+        "id": 1003,
+        "name": "Everton FC"
+      }
+    },
+    {
+      "id": 500019,
       "utcDate": "2026-09-30T20:00:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
@@ -277,17 +277,17 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1000,
-        "name": "Manchester United FC"
+        "id": 1009,
+        "name": "Brighton & Hove Albion FC"
       },
       "awayTeam": {
-        "id": 1004,
-        "name": "Arsenal FC"
+        "id": 1007,
+        "name": "Newcastle United FC"
       }
     },
     {
-      "id": 500021,
-      "utcDate": "2026-09-30T20:30:00Z",
+      "id": 500020,
+      "utcDate": "2026-09-30T21:30:00Z",
       "status": "SCHEDULED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
@@ -296,19 +296,19 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1005,
-        "name": "Tottenham Hotspur FC"
+        "id": 1000,
+        "name": "Manchester United FC"
       },
       "awayTeam": {
-        "id": 1008,
-        "name": "Aston Villa FC"
+        "id": 1001,
+        "name": "Manchester City FC"
       }
     },
     {
       "id": 500004,
-      "utcDate": "2026-10-02T20:00:00Z",
+      "utcDate": "2026-10-02T15:00:00Z",
       "status": "SCHEDULED",
-      "matchday": 10,
+      "matchday": 7,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PL",
@@ -324,8 +324,8 @@
       }
     },
     {
-      "id": 500025,
-      "utcDate": "2026-10-03T16:00:00Z",
+      "id": 500024,
+      "utcDate": "2026-10-03T15:30:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
       "stage": "REGULAR_SEASON",
@@ -334,17 +334,55 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1007,
-        "name": "Newcastle United FC"
+        "id": 1003,
+        "name": "Everton FC"
       },
       "awayTeam": {
-        "id": 1001,
-        "name": "Manchester City FC"
+        "id": 1007,
+        "name": "Newcastle United FC"
       }
     },
     {
-      "id": 500024,
-      "utcDate": "2026-10-03T21:00:00Z",
+      "id": 500025,
+      "utcDate": "2026-10-03T18:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      },
+      "awayTeam": {
+        "id": 1009,
+        "name": "Brighton & Hove Albion FC"
+      }
+    },
+    {
+      "id": 500026,
+      "utcDate": "2026-10-03T18:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "awayTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
+      }
+    },
+    {
+      "id": 500028,
+      "utcDate": "2026-10-06T19:00:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
       "stage": "REGULAR_SEASON",
@@ -355,44 +393,6 @@
       "homeTeam": {
         "id": 1005,
         "name": "Tottenham Hotspur FC"
-      },
-      "awayTeam": {
-        "id": 1003,
-        "name": "Everton FC"
-      }
-    },
-    {
-      "id": 500026,
-      "utcDate": "2026-10-03T21:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1002,
-        "name": "Liverpool FC"
-      },
-      "awayTeam": {
-        "id": 1006,
-        "name": "Chelsea FC"
-      }
-    },
-    {
-      "id": 500003,
-      "utcDate": "2026-10-06T16:00:00Z",
-      "status": "SCHEDULED",
-      "matchday": 6,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1000,
-        "name": "Manchester United FC"
       },
       "awayTeam": {
         "id": 1001,
@@ -401,7 +401,7 @@
     },
     {
       "id": 500029,
-      "utcDate": "2026-10-06T16:00:00Z",
+      "utcDate": "2026-10-06T19:30:00Z",
       "status": "SCHEDULED",
       "matchday": 2,
       "stage": "REGULAR_SEASON",
@@ -410,8 +410,46 @@
         "name": "Premier League"
       },
       "homeTeam": {
+        "id": 1006,
+        "name": "Chelsea FC"
+      },
+      "awayTeam": {
         "id": 1004,
         "name": "Arsenal FC"
+      }
+    },
+    {
+      "id": 500003,
+      "utcDate": "2026-10-06T20:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      }
+    },
+    {
+      "id": 500027,
+      "utcDate": "2026-10-06T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
       },
       "awayTeam": {
         "id": 1007,
@@ -419,46 +457,8 @@
       }
     },
     {
-      "id": 500028,
-      "utcDate": "2026-10-06T16:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1001,
-        "name": "Manchester City FC"
-      },
-      "awayTeam": {
-        "id": 1008,
-        "name": "Aston Villa FC"
-      }
-    },
-    {
-      "id": 500027,
-      "utcDate": "2026-10-06T18:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1000,
-        "name": "Manchester United FC"
-      },
-      "awayTeam": {
-        "id": 1006,
-        "name": "Chelsea FC"
-      }
-    },
-    {
       "id": 500030,
-      "utcDate": "2026-10-09T16:30:00Z",
+      "utcDate": "2026-10-09T15:30:00Z",
       "status": "SCHEDULED",
       "matchday": 3,
       "stage": "REGULAR_SEASON",
@@ -467,57 +467,19 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1000,
-        "name": "Manchester United FC"
+        "id": 1007,
+        "name": "Newcastle United FC"
       },
       "awayTeam": {
-        "id": 1009,
-        "name": "Brighton & Hove Albion FC"
+        "id": 1006,
+        "name": "Chelsea FC"
       }
     },
     {
       "id": 500031,
-      "utcDate": "2026-10-12T18:30:00Z",
+      "utcDate": "2026-10-09T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1002,
-        "name": "Liverpool FC"
-      },
-      "awayTeam": {
-        "id": 1008,
-        "name": "Aston Villa FC"
-      }
-    },
-    {
-      "id": 500032,
-      "utcDate": "2026-10-12T19:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "competition": {
-        "code": "PL",
-        "name": "Premier League"
-      },
-      "homeTeam": {
-        "id": 1005,
-        "name": "Tottenham Hotspur FC"
-      },
-      "awayTeam": {
-        "id": 1004,
-        "name": "Arsenal FC"
-      }
-    },
-    {
-      "id": 500033,
-      "utcDate": "2026-10-15T15:30:00Z",
-      "status": "SCHEDULED",
-      "matchday": 4,
       "stage": "REGULAR_SEASON",
       "competition": {
         "code": "PL",
@@ -533,8 +495,46 @@
       }
     },
     {
-      "id": 500035,
-      "utcDate": "2026-10-18T21:00:00Z",
+      "id": 500032,
+      "utcDate": "2026-10-09T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      },
+      "awayTeam": {
+        "id": 1001,
+        "name": "Manchester City FC"
+      }
+    },
+    {
+      "id": 500033,
+      "utcDate": "2026-10-12T20:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      }
+    },
+    {
+      "id": 500034,
+      "utcDate": "2026-10-15T17:00:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "stage": "REGULAR_SEASON",
@@ -543,8 +543,27 @@
         "name": "Premier League"
       },
       "homeTeam": {
+        "id": 1000,
+        "name": "Manchester United FC"
+      },
+      "awayTeam": {
         "id": 1009,
         "name": "Brighton & Hove Albion FC"
+      }
+    },
+    {
+      "id": 500035,
+      "utcDate": "2026-10-15T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1003,
+        "name": "Everton FC"
       },
       "awayTeam": {
         "id": 1006,
@@ -552,7 +571,26 @@
       }
     },
     {
-      "id": 500034,
+      "id": 500037,
+      "utcDate": "2026-10-18T15:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
+        "id": 1002,
+        "name": "Liverpool FC"
+      },
+      "awayTeam": {
+        "id": 1008,
+        "name": "Aston Villa FC"
+      }
+    },
+    {
+      "id": 500036,
       "utcDate": "2026-10-18T21:30:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
@@ -562,12 +600,31 @@
         "name": "Premier League"
       },
       "homeTeam": {
-        "id": 1003,
-        "name": "Everton FC"
+        "id": 1004,
+        "name": "Arsenal FC"
       },
       "awayTeam": {
+        "id": 1007,
+        "name": "Newcastle United FC"
+      }
+    },
+    {
+      "id": 500038,
+      "utcDate": "2026-10-21T21:30:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "competition": {
+        "code": "PL",
+        "name": "Premier League"
+      },
+      "homeTeam": {
         "id": 1000,
         "name": "Manchester United FC"
+      },
+      "awayTeam": {
+        "id": 1005,
+        "name": "Tottenham Hotspur FC"
       }
     }
   ]

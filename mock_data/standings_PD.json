@@ -6,8 +6,8 @@
         {
           "position": 1,
           "team": {
-            "id": 1017,
-            "name": "Villarreal CF"
+            "id": 1011,
+            "name": "Atlético de Madrid"
           },
           "playedGames": 8,
           "won": 7,
@@ -19,21 +19,60 @@
         {
           "position": 2,
           "team": {
-            "id": 1010,
-            "name": "Real Madrid"
+            "id": 1012,
+            "name": "FC Barcelona"
           },
-          "playedGames": 8,
+          "playedGames": 6,
           "won": 5,
-          "draw": 2,
-          "lost": 1,
-          "points": 17,
-          "form": "LDLLW"
+          "draw": 1,
+          "lost": 0,
+          "points": 16,
+          "form": "DLLDL"
         },
         {
           "position": 3,
           "team": {
             "id": 1016,
             "name": "Real Sociedad de Fútbol"
+          },
+          "playedGames": 6,
+          "won": 5,
+          "draw": 1,
+          "lost": 0,
+          "points": 16,
+          "form": "DDLWW"
+        },
+        {
+          "position": 4,
+          "team": {
+            "id": 1013,
+            "name": "Sevilla FC"
+          },
+          "playedGames": 7,
+          "won": 5,
+          "draw": 0,
+          "lost": 2,
+          "points": 15,
+          "form": "LWLWD"
+        },
+        {
+          "position": 5,
+          "team": {
+            "id": 1014,
+            "name": "Real Betis Balompié"
+          },
+          "playedGames": 8,
+          "won": 5,
+          "draw": 0,
+          "lost": 3,
+          "points": 15,
+          "form": "DWDDW"
+        },
+        {
+          "position": 6,
+          "team": {
+            "id": 1010,
+            "name": "Real Madrid"
           },
           "playedGames": 5,
           "won": 4,
@@ -43,69 +82,30 @@
           "form": "DDDDD"
         },
         {
-          "position": 4,
-          "team": {
-            "id": 1013,
-            "name": "Sevilla FC"
-          },
-          "playedGames": 6,
-          "won": 3,
-          "draw": 2,
-          "lost": 1,
-          "points": 11,
-          "form": "LWDLW"
-        },
-        {
-          "position": 5,
-          "team": {
-            "id": 1011,
-            "name": "Atlético de Madrid"
-          },
-          "playedGames": 5,
-          "won": 3,
-          "draw": 0,
-          "lost": 2,
-          "points": 9,
-          "form": "LWLWW"
-        },
-        {
-          "position": 6,
-          "team": {
-            "id": 1014,
-            "name": "Real Betis Balompié"
-          },
-          "playedGames": 6,
-          "won": 2,
-          "draw": 0,
-          "lost": 4,
-          "points": 6,
-          "form": "DLDLD"
-        },
-        {
           "position": 7,
           "team": {
             "id": 1015,
             "name": "Valencia CF"
           },
-          "playedGames": 6,
-          "won": 0,
-          "draw": 4,
-          "lost": 2,
-          "points": 4,
-          "form": "LDWLL"
+          "playedGames": 7,
+          "won": 4,
+          "draw": 0,
+          "lost": 3,
+          "points": 12,
+          "form": "DWWDD"
         },
         {
           "position": 8,
           "team": {
-            "id": 1012,
-            "name": "FC Barcelona"
+            "id": 1017,
+            "name": "Villarreal CF"
           },
-          "playedGames": 5,
-          "won": 0,
-          "draw": 1,
-          "lost": 4,
-          "points": 1,
-          "form": "WWWWL"
+          "playedGames": 6,
+          "won": 2,
+          "draw": 4,
+          "lost": 0,
+          "points": 10,
+          "form": "DDDLD"
         }
       ]
     }

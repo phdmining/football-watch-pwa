@@ -8,7 +8,8 @@
     "city": "Manchester",
     "lat": 53.4631,
     "lon": -2.2913,
-    "capacity": 74310
+    "capacity": 74310,
+    "mock_avg_home_attendance": 64543
   },
   "Manchester City FC": {
     "id": 1001,
@@ -19,7 +20,8 @@
     "city": "Manchester",
     "lat": 53.4831,
     "lon": -2.2004,
-    "capacity": 53400
+    "capacity": 53400,
+    "mock_avg_home_attendance": 32601
   },
   "Liverpool FC": {
     "id": 1002,
@@ -30,7 +32,8 @@
     "city": "Liverpool",
     "lat": 53.4308,
     "lon": -2.9608,
-    "capacity": 61276
+    "capacity": 61276,
+    "mock_avg_home_attendance": 43844
   },
   "Everton FC": {
     "id": 1003,
@@ -41,7 +44,8 @@
     "city": "Liverpool",
     "lat": 53.4388,
     "lon": -2.9662,
-    "capacity": 52888
+    "capacity": 52888,
+    "mock_avg_home_attendance": 36691
   },
   "Arsenal FC": {
     "id": 1004,
@@ -52,7 +56,8 @@
     "city": "London",
     "lat": 51.5549,
     "lon": -0.1084,
-    "capacity": 60704
+    "capacity": 60704,
+    "mock_avg_home_attendance": 55199
   },
   "Tottenham Hotspur FC": {
     "id": 1005,
@@ -63,7 +68,8 @@
     "city": "London",
     "lat": 51.6043,
     "lon": -0.0664,
-    "capacity": 62850
+    "capacity": 62850,
+    "mock_avg_home_attendance": 55573
   },
   "Chelsea FC": {
     "id": 1006,
@@ -74,7 +80,8 @@
     "city": "London",
     "lat": 51.4816,
     "lon": -0.1909,
-    "capacity": 40343
+    "capacity": 40343,
+    "mock_avg_home_attendance": 39323
   },
   "Newcastle United FC": {
     "id": 1007,
@@ -85,7 +92,8 @@
     "city": "Newcastle",
     "lat": 54.9756,
     "lon": -1.6217,
-    "capacity": 52305
+    "capacity": 52305,
+    "mock_avg_home_attendance": 33293
   },
   "Aston Villa FC": {
     "id": 1008,
@@ -96,7 +104,8 @@
     "city": "Birmingham",
     "lat": 52.5092,
     "lon": -1.8848,
-    "capacity": 42918
+    "capacity": 42918,
+    "mock_avg_home_attendance": 33356
   },
   "Brighton & Hove Albion FC": {
     "id": 1009,
@@ -107,7 +116,8 @@
     "city": "Brighton",
     "lat": 50.8617,
     "lon": -0.0837,
-    "capacity": 31800
+    "capacity": 31800,
+    "mock_avg_home_attendance": 19478
   },
   "Real Madrid": {
     "id": 1010,
@@ -118,7 +128,8 @@
     "city": "Madrid",
     "lat": 40.4531,
     "lon": -3.6883,
-    "capacity": 85000
+    "capacity": 85000,
+    "mock_avg_home_attendance": 58805
   },
   "Atlético de Madrid": {
     "id": 1011,
@@ -129,7 +140,8 @@
     "city": "Madrid",
     "lat": 40.4362,
     "lon": -3.5995,
-    "capacity": 68456
+    "capacity": 68456,
+    "mock_avg_home_attendance": 55603
   },
   "FC Barcelona": {
     "id": 1012,
@@ -140,7 +152,8 @@
     "city": "Barcelona",
     "lat": 41.3809,
     "lon": 2.1228,
-    "capacity": 99354
+    "capacity": 99354,
+    "mock_avg_home_attendance": 60720
   },
   "Sevilla FC": {
     "id": 1013,
@@ -151,7 +164,8 @@
     "city": "Sevilla",
     "lat": 37.3841,
     "lon": -5.9709,
-    "capacity": 43883
+    "capacity": 43883,
+    "mock_avg_home_attendance": 29995
   },
   "Real Betis Balompié": {
     "id": 1014,
@@ -162,7 +176,8 @@
     "city": "Sevilla",
     "lat": 37.3568,
     "lon": -5.9821,
-    "capacity": 60720
+    "capacity": 60720,
+    "mock_avg_home_attendance": 53006
   },
   "Valencia CF": {
     "id": 1015,
@@ -173,7 +188,8 @@
     "city": "Valencia",
     "lat": 39.4747,
     "lon": -0.3583,
-    "capacity": 49430
+    "capacity": 49430,
+    "mock_avg_home_attendance": 40971
   },
   "Real Sociedad de Fútbol": {
     "id": 1016,
@@ -184,7 +200,8 @@
     "city": "San Sebastian",
     "lat": 43.3017,
     "lon": -1.9736,
-    "capacity": 39500
+    "capacity": 39500,
+    "mock_avg_home_attendance": 27357
   },
   "Villarreal CF": {
     "id": 1017,
@@ -195,7 +212,8 @@
     "city": "Villarreal",
     "lat": 39.9442,
     "lon": -0.1037,
-    "capacity": 23500
+    "capacity": 23500,
+    "mock_avg_home_attendance": 19916
   },
   "Juventus FC": {
     "id": 1018,
@@ -206,7 +224,8 @@
     "city": "Turin",
     "lat": 45.1096,
     "lon": 7.6413,
-    "capacity": 41507
+    "capacity": 41507,
+    "mock_avg_home_attendance": 39015
   },
   "Torino FC": {
     "id": 1019,
@@ -217,7 +236,8 @@
     "city": "Turin",
     "lat": 45.042,
     "lon": 7.6498,
-    "capacity": 27958
+    "capacity": 27958,
+    "mock_avg_home_attendance": 16851
   },
   "FC Internazionale Milano": {
     "id": 1020,
@@ -228,7 +248,8 @@
     "city": "Milan",
     "lat": 45.4781,
     "lon": 9.124,
-    "capacity": 75923
+    "capacity": 75923,
+    "mock_avg_home_attendance": 71249
   },
   "AC Milan": {
     "id": 1021,
@@ -239,7 +260,8 @@
     "city": "Milan",
     "lat": 45.4781,
     "lon": 9.124,
-    "capacity": 75923
+    "capacity": 75923,
+    "mock_avg_home_attendance": 67816
   },
   "AS Roma": {
     "id": 1022,
@@ -250,7 +272,8 @@
     "city": "Rome",
     "lat": 41.9339,
     "lon": 12.4547,
-    "capacity": 70634
+    "capacity": 70634,
+    "mock_avg_home_attendance": 52474
   },
   "SS Lazio": {
     "id": 1023,
@@ -261,7 +284,8 @@
     "city": "Rome",
     "lat": 41.9339,
     "lon": 12.4547,
-    "capacity": 70634
+    "capacity": 70634,
+    "mock_avg_home_attendance": 46993
   },
   "SSC Napoli": {
     "id": 1024,
@@ -272,7 +296,8 @@
     "city": "Naples",
     "lat": 40.828,
     "lon": 14.193,
-    "capacity": 54726
+    "capacity": 54726,
+    "mock_avg_home_attendance": 54837
   },
   "ACF Fiorentina": {
     "id": 1025,
@@ -283,7 +308,8 @@
     "city": "Florence",
     "lat": 43.7808,
     "lon": 11.2822,
-    "capacity": 43147
+    "capacity": 43147,
+    "mock_avg_home_attendance": 31988
   },
   "FC Bayern München": {
     "id": 1026,
@@ -294,7 +320,8 @@
     "city": "Munich",
     "lat": 48.2188,
     "lon": 11.6247,
-    "capacity": 75000
+    "capacity": 75000,
+    "mock_avg_home_attendance": 47921
   },
   "Borussia Dortmund": {
     "id": 1027,
@@ -305,7 +332,8 @@
     "city": "Dortmund",
     "lat": 51.4926,
     "lon": 7.4517,
-    "capacity": 81365
+    "capacity": 81365,
+    "mock_avg_home_attendance": 52124
   },
   "Bayer 04 Leverkusen": {
     "id": 1028,
@@ -316,7 +344,8 @@
     "city": "Leverkusen",
     "lat": 51.0382,
     "lon": 7.0023,
-    "capacity": 30210
+    "capacity": 30210,
+    "mock_avg_home_attendance": 28879
   },
   "RB Leipzig": {
     "id": 1029,
@@ -327,7 +356,8 @@
     "city": "Leipzig",
     "lat": 51.3458,
     "lon": 12.3483,
-    "capacity": 47069
+    "capacity": 47069,
+    "mock_avg_home_attendance": 40176
   },
   "Eintracht Frankfurt": {
     "id": 1030,
@@ -338,7 +368,8 @@
     "city": "Frankfurt",
     "lat": 50.0686,
     "lon": 8.6455,
-    "capacity": 51500
+    "capacity": 51500,
+    "mock_avg_home_attendance": 48358
   },
   "VfB Stuttgart": {
     "id": 1031,
@@ -349,7 +380,8 @@
     "city": "Stuttgart",
     "lat": 48.7928,
     "lon": 9.232,
-    "capacity": 60469
+    "capacity": 60469,
+    "mock_avg_home_attendance": 54814
   },
   "Paris Saint-Germain FC": {
     "id": 1032,
@@ -360,7 +392,8 @@
     "city": "Paris",
     "lat": 48.8414,
     "lon": 2.253,
-    "capacity": 47929
+    "capacity": 47929,
+    "mock_avg_home_attendance": 39552
   },
   "Olympique de Marseille": {
     "id": 1033,
@@ -371,7 +404,8 @@
     "city": "Marseille",
     "lat": 43.2698,
     "lon": 5.3958,
-    "capacity": 67394
+    "capacity": 67394,
+    "mock_avg_home_attendance": 67981
   },
   "AS Monaco FC": {
     "id": 1034,
@@ -382,7 +416,8 @@
     "city": "Monaco",
     "lat": 43.7276,
     "lon": 7.4152,
-    "capacity": 16360
+    "capacity": 16360,
+    "mock_avg_home_attendance": 12417
   },
   "Olympique Lyonnais": {
     "id": 1035,
@@ -393,7 +428,8 @@
     "city": "Lyon",
     "lat": 45.7653,
     "lon": 4.9822,
-    "capacity": 59186
+    "capacity": 59186,
+    "mock_avg_home_attendance": 49234
   },
   "LOSC Lille": {
     "id": 1036,
@@ -404,6 +440,7 @@
     "city": "Lille",
     "lat": 50.612,
     "lon": 3.1302,
-    "capacity": 50186
+    "capacity": 50186,
+    "mock_avg_home_attendance": 47594
   }
 }
