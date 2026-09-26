@@ -341,8 +341,28 @@ function render() {
   const statsNote = scheduleData.statsColdStart
     ? "（打分标准化模型数据积累中，暂用理论默认值）"
     : `（打分标准化基于${scheduleData.statsSampleCount}场历史样本，含遗忘因子）`;
-  footer.textContent = `数据更新于 ${genDate.toLocaleString("zh-CN", { timeZone: effectiveTimezone() })} · `
+  const summaryLine = `数据更新于 ${genDate.toLocaleString("zh-CN", { timeZone: effectiveTimezone() })} · `
     + `比赛时长按${scheduleData.matchDurationMinutes}分钟估算 ${statsNote}`;
+
+  footer.innerHTML = `
+    <p>${summaryLine}</p>
+    <details class="data-source-toggle">
+      <summary>ⓘ 数据来源与可信度</summary>
+      ${dataSourcesHtml()}
+    </details>`;
+}
+
+function dataSourcesHtml() {
+  const ds = scheduleData.dataSources;
+  if (!ds) return "";
+  const reliabilityLabel = { A: "A·官方/官方API", B: "B·稳定的专业数据服务", C: "C·人工维护静态表" };
+  const rows = Object.values(ds).map(s => `
+    <div class="data-source-row">
+      <span class="ds-source">${s.source}</span>
+      <span class="ds-reliability">${reliabilityLabel[s.reliability] || s.reliability}</span>
+      <span class="ds-note">${s.note}</span>
+    </div>`).join("");
+  return `<div class="data-source-list">${rows}</div>`;
 }
 
 /* ===================== 设置面板：草稿 + 确认 ===================== */
