@@ -261,42 +261,76 @@ function fullTableHtml(items) {
     </details>`;
 }
 
-function render() {
-  const content = document.getElementById("content");
-  if (!scheduleData) {
-    content.innerHTML = `<div class="loading-state">正在加载赛程数据…</div>`;
-    return;
+function dayOffset(dateStr, todayStr) {
+  const a = new Date(todayStr + "T00:00:00Z");
+  const b = new Date(dateStr + "T00:00:00Z");
+  return Math.round((b - a) / 86400000);
+}
+
+function dayRangeMatches(tabName, offset) {
+  if (tabName === "today") return offset >= 0 && offset <= 1;
+  if (tabName === "week") return offset >= 2 && offset <= 6;
+  if (tabName === "month") return offset >= 7;
+  return true;
+}
+
+function renderDaySection(dateStr, items) {
+  const watchedItems = items.filter(i => i.watchRank >= 0)
+    .sort((a, b) => a.watchRank - b.watchRank || a.startTs - b.startTs);
+  const forced = (settings.forceFavorite && watchedItems.length) ? watchedItems[0] : null;
+  const { planA, planB } = twoPlans(items, forced);
+
+  let html = `<section class="day-section">
+    <h2 class="day-heading">${dateStr} <span class="weekday">${weekdayCn(dateStr)}</span></h2>`;
+  if (watchedItems.length) {
+    html += blockHtml("favorite", "⭐ 关注球队今日比赛", watchedItems, false);
   }
-  const groups = buildDayGroups();
-  const dateStrs = Object.keys(groups).sort();
+  html += blockHtml("plan-a", "🌟 推荐观赛方案 A（无冲突，总分最高）", planA.selected);
+  if (planB.selected.length) {
+    html += blockHtml("plan-b", "🔄 备选方案 B（无冲突，方案A之外的最佳组合）", planB.selected);
+  }
+  html += fullTableHtml(items);
+  html += `</section>`;
+  return html;
+}
+
+function renderScheduleTab(tabName, groups, todayStr) {
+  const content = document.getElementById(`content-${tabName}`);
+  if (!content) return;
+
+  const dateStrs = Object.keys(groups).sort()
+    .filter(d => dayRangeMatches(tabName, dayOffset(d, todayStr)));
 
   if (dateStrs.length === 0) {
-    content.innerHTML = `<div class="empty-state">选中的联赛在未来这段时间内暂无赛程，试试勾选更多联赛。</div>`;
+    content.innerHTML = `<div class="empty-state">这个时间段内没有符合条件的比赛，试试在"设置"里勾选更多联赛。</div>`;
+    return;
+  }
+  content.innerHTML = dateStrs.map(d => renderDaySection(d, groups[d])).join("");
+}
+
+function render() {
+  if (!scheduleData) {
+    ["today", "week", "month"].forEach(t => {
+      const el = document.getElementById(`content-${t}`);
+      if (el) el.innerHTML = `<div class="loading-state">正在加载赛程数据…</div>`;
+    });
+    return;
+  }
+  const tz = effectiveTimezone();
+  const todayStr = partsInTz(new Date().toISOString(), tz).dateStr;
+  const groups = buildDayGroups();
+
+  if (Object.keys(groups).length === 0) {
+    ["today", "week", "month"].forEach(t => {
+      document.getElementById(`content-${t}`).innerHTML =
+        `<div class="empty-state">选中的联赛在未来这段时间内暂无赛程，试试勾选更多联赛。</div>`;
+    });
     return;
   }
 
-  let html = "";
-  for (const dateStr of dateStrs) {
-    const items = groups[dateStr];
-    const watchedItems = items.filter(i => i.watchRank >= 0)
-      .sort((a, b) => a.watchRank - b.watchRank || a.startTs - b.startTs);
-    const forced = (settings.forceFavorite && watchedItems.length) ? watchedItems[0] : null;
-    const { planA, planB } = twoPlans(items, forced);
-
-    html += `<section class="day-section">
-      <h2 class="day-heading">${dateStr} <span class="weekday">${weekdayCn(dateStr)}</span></h2>`;
-
-    if (watchedItems.length) {
-      html += blockHtml("favorite", "⭐ 关注球队今日比赛", watchedItems, false);
-    }
-    html += blockHtml("plan-a", "🌟 推荐观赛方案 A（无冲突，总分最高）", planA.selected);
-    if (planB.selected.length) {
-      html += blockHtml("plan-b", "🔄 备选方案 B（无冲突，方案A之外的最佳组合）", planB.selected);
-    }
-    html += fullTableHtml(items);
-    html += `</section>`;
-  }
-  content.innerHTML = html;
+  renderScheduleTab("today", groups, todayStr);
+  renderScheduleTab("week", groups, todayStr);
+  renderScheduleTab("month", groups, todayStr);
 
   const footer = document.getElementById("metaFooter");
   const genDate = new Date(scheduleData.generatedAt);
@@ -432,17 +466,9 @@ function openSettingsPanel() {
   document.getElementById("forceFavoriteCheckbox").checked = draft.forceFavorite !== false;
   updateTzHint();
   refreshDirtyUI();
-  document.getElementById("settingsPanel").classList.add("open");
-  document.getElementById("statsPanel").classList.remove("open");
 }
 
 function bindSettingsEvents() {
-  document.getElementById("settingsToggle").addEventListener("click", () => {
-    const panel = document.getElementById("settingsPanel");
-    if (panel.classList.contains("open")) { panel.classList.remove("open"); }
-    else { openSettingsPanel(); }
-  });
-
   document.getElementById("citySelect").addEventListener("change", (e) => {
     draft.cityTz = e.target.value || null;
     updateTzHint();
@@ -468,7 +494,7 @@ function bindSettingsEvents() {
     saveSettings(settings);
     refreshDirtyUI();
     render();
-    document.getElementById("settingsPanel").classList.remove("open");
+    switchTab("today");
   });
 }
 
@@ -521,8 +547,6 @@ function populateStatsLeagueGrid() {
 async function openStatsPanel() {
   if (!statsLeagues) statsLeagues = selectedLeagueCodes();
   populateStatsLeagueGrid();
-  document.getElementById("statsPanel").classList.add("open");
-  document.getElementById("settingsPanel").classList.remove("open");
 
   // 清掉上次动态插入的具体赛季选项，重新拉取最新索引插入
   const sel = document.getElementById("statsRangeSelect");
@@ -684,12 +708,6 @@ function renderStatsResult(matches) {
 }
 
 function bindStatsEvents() {
-  document.getElementById("statsToggle").addEventListener("click", () => {
-    const panel = document.getElementById("statsPanel");
-    if (panel.classList.contains("open")) panel.classList.remove("open");
-    else openStatsPanel();
-  });
-
   document.getElementById("statsRangeSelect").addEventListener("change", (e) => {
     document.getElementById("customRangeRow").style.display =
       e.target.value === "custom" ? "flex" : "none";
@@ -720,8 +738,37 @@ function bindStatsEvents() {
   });
 }
 
+/* ===================== Tab切换 ===================== */
+let currentTab = "today";
+const tabInitialized = new Set();
+
+function switchTab(tabName) {
+  currentTab = tabName;
+  document.querySelectorAll(".tab-page").forEach(el => {
+    el.classList.toggle("active", el.dataset.tabPage === tabName);
+  });
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tab === tabName);
+  });
+  const footer = document.getElementById("metaFooter");
+  footer.style.display = ["today", "week", "month"].includes(tabName) ? "" : "none";
+
+  if (!tabInitialized.has(tabName)) {
+    tabInitialized.add(tabName);
+    if (tabName === "settings") openSettingsPanel();
+    if (tabName === "stats") openStatsPanel();
+  }
+}
+
+function bindTabBar() {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  });
+}
+
 /* ===================== 启动 ===================== */
 async function init() {
+  bindTabBar();
   bindSettingsEvents();
   bindStatsEvents();
 
@@ -733,8 +780,9 @@ async function init() {
     scheduleData = await scheduleRes.json();
     cityList = await cityRes.json();
   } catch (e) {
-    document.getElementById("content").innerHTML =
+    document.getElementById("content-today").innerHTML =
       `<div class="empty-state">赛程数据加载失败，检查一下网络，或者稍后重试。</div>`;
+    switchTab("today");
     return;
   }
 
@@ -746,10 +794,12 @@ async function init() {
   try {
     render();
   } catch (e) {
-    document.getElementById("content").innerHTML =
+    document.getElementById("content-today").innerHTML =
       `<div class="empty-state">页面渲染出错了：${e.message}<br>试试强制刷新页面（下拉刷新，或者关掉标签页重新打开）。</div>`;
     console.error(e);
   }
+
+  switchTab("today");
 }
 
 init();

@@ -35,14 +35,62 @@ body {
   color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
   -webkit-font-smoothing: antialiased;
 }
 
 .wrap {
   max-width: 640px;
   margin: 0 auto;
-  padding: 0 16px 48px;
+  padding: 0 16px 24px;
+  /* 底部Tab栏高度 + safe-area，避免内容被遮住 */
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ---- Tab页面切换：默认全部隐藏，JS给当前激活的tab-page加 .active ---- */
+.tab-page { display: none; }
+.tab-page.active { display: block; }
+
+/* ---- 底部Tab导航栏 ---- */
+.tab-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 20;
+}
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 12px 4px 10px;
+  white-space: nowrap;
+}
+.tab-btn.active {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+/* ---- 设置/统计：现在是常驻Tab页面，不再是弹出面板 ---- */
+.settings-inline {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.settings-inline h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.settings-actions.static {
+  position: static;
+  background: none;
 }
 
 /* ---- Header ---- */
@@ -93,27 +141,7 @@ button.icon-btn {
   font-family: inherit;
 }
 
-/* ---- Settings panel ---- */
-.settings {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  margin-top: 16px;
-  padding: 16px 16px 0;
-  display: none;
-  max-height: 70vh;
-  overflow-y: auto;
-  position: relative;
-}
-.settings.open { display: block; }
-
-.settings h2 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 12px;
-}
-
+/* ---- Field布局（设置/统计Tab页内共用） ---- */
 .field {
   margin-bottom: 16px;
 }

@@ -18,91 +18,110 @@
     <div class="title-row">
       <div>
         <h1>观赛助手</h1>
-        <p class="tagline">欧洲五大联赛 + 欧冠 · 本地时间</p>
-      </div>
-      <div class="header-actions">
-        <button class="icon-btn" id="statsToggle">统计</button>
-        <button class="icon-btn" id="settingsToggle">设置</button>
-      </div>
-    </div>
-
-    <div class="settings" id="statsPanel">
-      <h2>比赛分值分布统计</h2>
-
-      <div class="field">
-        <label class="field-label">赛事（可多选）</label>
-        <div class="league-grid" id="statsLeagueGrid"></div>
-      </div>
-
-      <div class="field">
-        <label class="field-label">时间范围</label>
-        <select id="statsRangeSelect">
-          <option value="future30">未来30天（当前已加载）</option>
-          <option value="currentSeason">本赛季</option>
-          <option value="all">全部（有记录以来）</option>
-          <option value="custom">自定义范围…</option>
-        </select>
-        <div class="custom-range-row" id="customRangeRow" style="display:none;">
-          <input type="date" id="statsDateFrom">
-          <span>至</span>
-          <input type="date" id="statsDateTo">
-        </div>
-      </div>
-
-      <div class="settings-actions">
-        <span class="dirty-hint" id="statsHint"></span>
-        <button class="confirm-btn" id="generateStatsBtn">生成统计图</button>
-      </div>
-
-      <div id="statsResult"></div>
-    </div>
-
-    <div class="settings" id="settingsPanel">
-      <h2>观赛设置</h2>
-
-      <div class="field">
-        <label class="field-label">所在城市</label>
-        <div class="city-row">
-          <select id="citySelect"></select>
-          <button id="autoLocateBtn">自动检测</button>
-        </div>
-        <p class="current-tz" id="currentTzHint"></p>
-      </div>
-
-      <div class="field">
-        <label class="field-label">关注的联赛（可多选）</label>
-        <div class="league-grid" id="leagueGrid"></div>
-      </div>
-
-      <div class="field">
-        <label class="field-label">关注球队（按顺序，排第一优先级最高）</label>
-        <div class="team-search-row">
-          <input type="text" id="teamSearchInput" placeholder="搜索球队，比如「利物浦」或「Liverpool」">
-        </div>
-        <div class="team-search-results" id="teamSearchResults"></div>
-        <div class="watched-team-list" id="watchedTeamList"></div>
-      </div>
-
-      <div class="field">
-        <label class="checkbox-row">
-          <input type="checkbox" id="forceFavoriteCheckbox" checked>
-          方案A优先安排关注球队的比赛（即使不是当天分数最高组合）
-        </label>
-      </div>
-
-      <div class="settings-actions">
-        <span class="dirty-hint" id="dirtyHint"></span>
-        <button class="confirm-btn" id="confirmSettingsBtn">确认更新</button>
+        <p class="tagline" id="tabSubtitle">欧洲五大联赛 + 欧冠 · 本地时间</p>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <div id="content">
-      <div class="loading-state">正在加载赛程数据…</div>
-    </div>
+
+    <!-- ---- 今明2日 / 3-7天 / 2-4周：共用一个渲染容器 ---- -->
+    <section class="tab-page" data-tab-page="today">
+      <div id="content-today"><div class="loading-state">正在加载赛程数据…</div></div>
+    </section>
+    <section class="tab-page" data-tab-page="week">
+      <div id="content-week"></div>
+    </section>
+    <section class="tab-page" data-tab-page="month">
+      <div id="content-month"></div>
+    </section>
     <p class="meta-footer" id="metaFooter"></p>
+
+    <!-- ---- 统计 ---- -->
+    <section class="tab-page" data-tab-page="stats">
+      <div class="settings-inline">
+        <h2>比赛分值分布统计</h2>
+
+        <div class="field">
+          <label class="field-label">赛事（可多选）</label>
+          <div class="league-grid" id="statsLeagueGrid"></div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">时间范围</label>
+          <select id="statsRangeSelect">
+            <option value="future30">未来30天（当前已加载）</option>
+            <option value="currentSeason">本赛季</option>
+            <option value="all">全部（有记录以来）</option>
+            <option value="custom">自定义范围…</option>
+          </select>
+          <div class="custom-range-row" id="customRangeRow" style="display:none;">
+            <input type="date" id="statsDateFrom">
+            <span>至</span>
+            <input type="date" id="statsDateTo">
+          </div>
+        </div>
+
+        <div class="settings-actions static">
+          <span class="dirty-hint" id="statsHint"></span>
+          <button class="confirm-btn" id="generateStatsBtn">生成统计图</button>
+        </div>
+
+        <div id="statsResult"></div>
+      </div>
+    </section>
+
+    <!-- ---- 设置 ---- -->
+    <section class="tab-page" data-tab-page="settings">
+      <div class="settings-inline">
+        <h2>观赛设置</h2>
+
+        <div class="field">
+          <label class="field-label">所在城市</label>
+          <div class="city-row">
+            <select id="citySelect"></select>
+            <button id="autoLocateBtn">自动检测</button>
+          </div>
+          <p class="current-tz" id="currentTzHint"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label">关注的联赛（可多选）</label>
+          <div class="league-grid" id="leagueGrid"></div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">关注球队（按顺序，排第一优先级最高）</label>
+          <div class="team-search-row">
+            <input type="text" id="teamSearchInput" placeholder="搜索球队，比如「利物浦」或「Liverpool」">
+          </div>
+          <div class="team-search-results" id="teamSearchResults"></div>
+          <div class="watched-team-list" id="watchedTeamList"></div>
+        </div>
+
+        <div class="field">
+          <label class="checkbox-row">
+            <input type="checkbox" id="forceFavoriteCheckbox" checked>
+            方案A优先安排关注球队的比赛（即使不是当天分数最高组合）
+          </label>
+        </div>
+
+        <div class="settings-actions static">
+          <span class="dirty-hint" id="dirtyHint"></span>
+          <button class="confirm-btn" id="confirmSettingsBtn">确认更新</button>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <nav class="tab-bar">
+    <button class="tab-btn" data-tab="today">今明2日</button>
+    <button class="tab-btn" data-tab="week">3-7天</button>
+    <button class="tab-btn" data-tab="month">2-4周</button>
+    <button class="tab-btn" data-tab="stats">统计</button>
+    <button class="tab-btn" data-tab="settings">设置</button>
+  </nav>
 
   <script src="app.js"></script>
   <script>

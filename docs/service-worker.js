@@ -1,8 +1,11 @@
-const CACHE_NAME = "football-watch-shell-v2";
+const CACHE_NAME = "football-watch-shell-v4";
 const SHELL_FILES = [
   "./index.html", "./style.css", "./app.js",
   "./manifest.json", "./icon.svg", "./city_timezones.json",
 ];
+// 这些文件的更新频率高，用"网络优先"，保证每次打开都尽量是最新代码；
+// 只有离线/网络失败时才退回缓存版本
+const NETWORK_FIRST_FILES = ["index.html", "app.js", "style.css", "city_timezones.json"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -22,9 +25,10 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
+  const isNetworkFirst = url.pathname.endsWith("schedule.json") ||
+    NETWORK_FIRST_FILES.some((f) => url.pathname.endsWith(f));
 
-  // schedule.json 每天都会更新，用"网络优先，失败才用缓存"，保证尽量拿到最新数据
-  if (url.pathname.endsWith("schedule.json")) {
+  if (isNetworkFirst) {
     event.respondWith(
       fetch(event.request)
         .then((resp) => {
@@ -37,7 +41,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 其他静态资源：缓存优先，加快打开速度
+  // 其他静态资源（图标等不常变的）：缓存优先，加快打开速度
   event.respondWith(
     caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
