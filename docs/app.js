@@ -276,8 +276,10 @@ function dayRangeMatches(tabName, offset) {
 
 function renderDaySection(dateStr, items) {
   const watchedItems = items.filter(i => i.watchRank >= 0)
-    .sort((a, b) => a.watchRank - b.watchRank || a.startTs - b.startTs);
-  const forced = (settings.forceFavorite && watchedItems.length) ? watchedItems[0] : null;
+    .sort((a, b) => a.startTs - b.startTs);
+  const forced = (settings.forceFavorite && watchedItems.length)
+    ? watchedItems.slice().sort((a, b) => a.watchRank - b.watchRank)[0]  // 冲突时仍优先"关注优先级最高"的那场强制进方案A
+    : null;
   const { planA, planB } = twoPlans(items, forced);
 
   let html = `<section class="day-section">
