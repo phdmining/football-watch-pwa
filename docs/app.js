@@ -209,9 +209,9 @@ function teamNameHtml(name) {
   const isWatched = (settings.watchedTeams || []).includes(name);
   const tier = isWatched ? "tier-watched" : influenceTier(name);
   const logo = scheduleData.teamLogos && scheduleData.teamLogos[name];
-  const logoHtml = logo ? `<img class="team-crest" src="${logo}" alt="" width="16" height="16">` : "";
+  const logoHtml = logo ? `<img class="team-crest" src="${logo}" alt="" width="22" height="22">` : "";
   const star = isWatched ? "★ " : "";
-  return `${logoHtml}<span class="team-name ${tier}">${star}${name}</span>`;
+  return `${logoHtml}<span class="team-name ${tier}">${star}${abbreviateTeamName(name)}</span>`;
 }
 
 function matchCardHtml(item) {
@@ -250,6 +250,57 @@ function blockHtml(cls, title, items, showScore) {
 const LEAGUE_SHORT = { PL: "英超", PD: "西甲", SA: "意甲", BL1: "德甲", FL1: "法甲", CL: "欧冠" };
 const LEAGUE_ORDER = ["PL", "PD", "SA", "BL1", "FL1", "CL"];
 
+// 球队缩写对照表：覆盖五大联赛+欧冠常见球队，没收录到的用通用规则兜底
+const TEAM_ABBR = {
+  // 英超
+  "Manchester United FC": "Man Utd", "Manchester City FC": "Man City", "Liverpool FC": "Liverpool",
+  "Arsenal FC": "Arsenal", "Chelsea FC": "Chelsea", "Tottenham Hotspur FC": "Spurs",
+  "Newcastle United FC": "Newcastle", "Aston Villa FC": "Aston Villa",
+  "Brighton & Hove Albion FC": "Brighton", "Everton FC": "Everton", "West Ham United FC": "West Ham",
+  "Wolverhampton Wanderers FC": "Wolves", "Crystal Palace FC": "Crystal Palace", "Fulham FC": "Fulham",
+  "Brentford FC": "Brentford", "Nottingham Forest FC": "Forest", "AFC Bournemouth": "Bournemouth",
+  "Leeds United FC": "Leeds", "Sunderland AFC": "Sunderland", "Burnley FC": "Burnley",
+  // 西甲
+  "Real Madrid": "Real Madrid", "Real Madrid CF": "Real Madrid", "FC Barcelona": "Barcelona",
+  "Atlético de Madrid": "Atlético", "Sevilla FC": "Sevilla", "Real Betis Balompié": "Betis",
+  "Valencia CF": "Valencia", "Real Sociedad de Fútbol": "Real Sociedad", "Villarreal CF": "Villarreal",
+  "Athletic Club": "Athletic", "RC Celta de Vigo": "Celta", "Getafe CF": "Getafe", "Girona FC": "Girona",
+  "Rayo Vallecano de Madrid": "Rayo", "RCD Mallorca": "Mallorca", "CA Osasuna": "Osasuna",
+  "Deportivo Alavés": "Alavés", "RCD Espanyol de Barcelona": "Espanyol", "Real Oviedo": "Oviedo",
+  "Levante UD": "Levante", "Elche CF": "Elche",
+  // 意甲
+  "Juventus FC": "Juventus", "FC Internazionale Milano": "Inter", "AC Milan": "Milan",
+  "AS Roma": "Roma", "SSC Napoli": "Napoli", "SS Lazio": "Lazio", "ACF Fiorentina": "Fiorentina",
+  "Atalanta BC": "Atalanta", "Torino FC": "Torino", "Bologna FC 1909": "Bologna",
+  "Udinese Calcio": "Udinese", "Genoa CFC": "Genoa", "Hellas Verona FC": "Verona",
+  "Cagliari Calcio": "Cagliari", "Parma Calcio 1913": "Parma", "Como 1907": "Como",
+  "US Lecce": "Lecce", "US Cremonese": "Cremonese", "Pisa Sporting Club": "Pisa",
+  "US Sassuolo Calcio": "Sassuolo",
+  // 德甲
+  "FC Bayern München": "Bayern", "Borussia Dortmund": "Dortmund", "Bayer 04 Leverkusen": "Leverkusen",
+  "RB Leipzig": "RB Leipzig", "Eintracht Frankfurt": "Frankfurt", "VfB Stuttgart": "Stuttgart",
+  "SC Freiburg": "Freiburg", "Borussia Mönchengladbach": "Gladbach", "1. FC Union Berlin": "Union Berlin",
+  "VfL Wolfsburg": "Wolfsburg", "TSG 1899 Hoffenheim": "Hoffenheim", "1. FSV Mainz 05": "Mainz",
+  "FC Augsburg": "Augsburg", "SV Werder Bremen": "Bremen", "1. FC Köln": "Köln",
+  "FC St. Pauli 1910": "St. Pauli", "Hamburger SV": "Hamburg", "1. FC Heidenheim 1846": "Heidenheim",
+  // 法甲
+  "Paris Saint-Germain FC": "PSG", "Olympique de Marseille": "Marseille", "AS Monaco FC": "Monaco",
+  "Olympique Lyonnais": "Lyon", "LOSC Lille": "Lille", "OGC Nice": "Nice",
+  "Stade Rennais FC 1901": "Rennes", "RC Strasbourg Alsace": "Strasbourg",
+  "Racing Club de Lens": "Lens", "Stade de Reims": "Reims", "Toulouse FC": "Toulouse",
+  "FC Nantes": "Nantes", "AJ Auxerre": "Auxerre", "Angers SCO": "Angers",
+  "Le Havre AC": "Le Havre", "FC Metz": "Metz", "Paris FC": "Paris FC", "FC Lorient": "Lorient",
+  "Stade Brestois 29": "Brest", "Le Mans FC": "Le Mans",
+};
+
+function abbreviateTeamName(fullName) {
+  if (TEAM_ABBR[fullName]) return TEAM_ABBR[fullName];
+  // 没收录到的，用通用规则兜底：去掉常见后缀词，太长再截断
+  let s = fullName.replace(/\s+(FC|CF|AFC|SC|AC|BC|CFC|CFC|SV|BV|UD)$/i, "").trim();
+  if (s.length > 14) s = s.slice(0, 13) + "…";
+  return s;
+}
+
 // 把同一联赛内时间上有重叠（或紧挨）的比赛聚成一簇，簇内按时间顺序排列，
 // 后面会渲染成"一个大块，里面横向堆小条"，而不是拆成并排的窄栏
 function clusterOverlapping(items) {
@@ -267,23 +318,23 @@ function clusterOverlapping(items) {
   return clusters;
 }
 
-// 按"每个联赛一栏"分配位置：每个联赛占一整栏的宽度，栏内按时间聚类，
-// 同一时间段重叠的比赛合并成一个大块（块内部再细分横向小条，渲染时处理）
-function buildTimelineClusters(items) {
-  const leaguesPresent = LEAGUE_ORDER.filter(code => items.some(it => it.match.competition.code === code));
-  const numLeagueCols = Math.max(1, leaguesPresent.length);
-  const leagueColWidth = 100 / numLeagueCols;
+// 按"每个联赛一栏、栏宽固定"分配位置：固定6栏（LEAGUE_ORDER顺序），不管当天
+// 实际有几个联赛有比赛，栏的宽度和位置都不变——这样同一个联赛每天都在同一个位置，
+// 跨天对比的时候不会因为"今天少一个联赛"就导致其他栏跟着挪位置、宽度跟着变。
+const FIXED_LEAGUE_COL_WIDTH = 100 / LEAGUE_ORDER.length;
 
+function buildTimelineClusters(items) {
   let result = [];
-  leaguesPresent.forEach((code, leagueIndex) => {
+  LEAGUE_ORDER.forEach((code, leagueIndex) => {
     const leagueItems = items.filter(it => it.match.competition.code === code);
+    if (!leagueItems.length) return; // 这个联赛当天没比赛，栏位留空，不渲染内容
     const clusters = clusterOverlapping(leagueItems);
     clusters.forEach(cluster => {
       result.push({
         ...cluster,
         code,
-        leftPct: leagueIndex * leagueColWidth,
-        widthPct: leagueColWidth,
+        leftPct: leagueIndex * FIXED_LEAGUE_COL_WIDTH,
+        widthPct: FIXED_LEAGUE_COL_WIDTH,
       });
     });
   });
@@ -291,19 +342,21 @@ function buildTimelineClusters(items) {
 }
 
 function renderTimelineHeader(items) {
-  const leaguesPresent = LEAGUE_ORDER.filter(code => items.some(it => it.match.competition.code === code));
-  const colWidth = 100 / Math.max(1, leaguesPresent.length);
-  const cells = leaguesPresent.map(code => `
-    <div style="width:${colWidth}%;display:flex;justify-content:center;padding-bottom:4px;">
+  const leaguesPresent = new Set(items.map(it => it.match.competition.code));
+  const cells = LEAGUE_ORDER.map(code => {
+    const hasMatches = leaguesPresent.has(code);
+    return `
+    <div style="width:${FIXED_LEAGUE_COL_WIDTH}%;display:flex;justify-content:center;padding-bottom:4px;">
       <span style="background:var(--league-${code}-line);color:#FFFFFF;font-size:10px;font-weight:600;
-                   padding:2px 8px;border-radius:8px;white-space:nowrap;">
+                   padding:2px 8px;border-radius:8px;white-space:nowrap;opacity:${hasMatches ? 1 : 0.3};">
         ${LEAGUE_SHORT[code] || code}
       </span>
-    </div>`).join("");
+    </div>`;
+  }).join("");
   return `<div style="display:flex;margin-left:40px;border-bottom:1px solid var(--line);padding-bottom:4px;">${cells}</div>`;
 }
 
-function matchStripHtml(it, code) {
+function matchStripHtml(it, code, showTime) {
   const m = it.match;
   let extraClass = "";
   let badge = "";
@@ -315,13 +368,18 @@ function matchStripHtml(it, code) {
   const imgFallback = `onerror="this.style.display='none'"`;
   const homeImg = homeLogo ? `<img src="${homeLogo}" alt="" ${imgFallback}>` : "";
   const awayImg = awayLogo ? `<img src="${awayLogo}" alt="" ${imgFallback}>` : "";
+  // 块内所有比赛时间一样的话，时间已经在联赛标签旁边统一标过了，每条小条里就不重复显示了
+  const timeHtml = showTime ? `<span class="tl-strip-time">${it.startLabel}</span>` : "";
+  const homeAbbr = abbreviateTeamName(m.homeTeam.name);
+  const awayAbbr = abbreviateTeamName(m.awayTeam.name);
 
   return `
     <div class="tl-strip ${extraClass}">
-      <span class="tl-strip-time">${it.startLabel}</span>
-      <span class="tl-strip-team">${homeImg}<span>${m.homeTeam.name}</span></span>
-      <span class="tl-strip-vs">vs</span>
-      <span class="tl-strip-team">${awayImg}<span>${m.awayTeam.name}</span></span>
+      ${timeHtml}
+      <div class="tl-strip-teams">
+        <span class="tl-strip-team">${homeImg}<span>${homeAbbr}</span></span>
+        <span class="tl-strip-team">${awayImg}<span>${awayAbbr}</span></span>
+      </div>
       ${badge}
     </div>`;
 }
@@ -354,21 +412,25 @@ function renderTimeline(items) {
     const startMin = toMin(cluster.startTs);
     const endMin = toMin(cluster.endTs);
     const top = (startMin - gridStartMin) * PX_PER_MIN;
-    // 块高度要能装下里面堆叠的所有小条：每条约30px，另外留一点给联赛标签行
-    const stripsHeight = cluster.items.length * 30 + 20;
+    // 块高度要能装下里面堆叠的所有小条：主客队分两行显示，每条约40px，另外留一点给联赛标签行
+    const stripsHeight = cluster.items.length * 40 + 22;
     const timeBasedHeight = (endMin - startMin) * PX_PER_MIN - 3;
     const height = Math.max(58, stripsHeight, timeBasedHeight);
 
+    const uniformTime = cluster.items.every(it => it.startLabel === cluster.items[0].startLabel);
     const strips = cluster.items.map(it => {
       if (it.watchRank >= 0) hasWatched = true;
       if (it.match.isTopDerby) hasDerby = true;
-      return matchStripHtml(it, cluster.code);
+      return matchStripHtml(it, cluster.code, !uniformTime);
     }).join("");
+    const chipTimeHtml = uniformTime
+      ? `<span class="tl-chip-time">${cluster.items[0].startLabel}</span>` : "";
 
     blocks += `
       <div class="timeline-block"
            style="top:${top}px;height:${height}px;left:calc(${cluster.leftPct}% + 2px);width:calc(${cluster.widthPct}% - 4px);">
         <span class="tl-chip" style="background:var(--league-${cluster.code}-line);">${LEAGUE_SHORT[cluster.code] || cluster.code}</span>
+        ${chipTimeHtml}
         <div class="tl-strip-list">${strips}</div>
       </div>`;
   });
@@ -415,10 +477,24 @@ function dayOffset(dateStr, todayStr) {
   return Math.round((b - a) / 86400000);
 }
 
-function dayRangeMatches(tabName, offset) {
+// 算出"本周还剩几天"和"下周是哪个范围"，周一到周日算一周（ISO标准）
+function weekBoundaries(todayStr) {
+  const jsDay = new Date(todayStr + "T12:00:00Z").getUTCDay(); // 0=周日...6=周六
+  const isoDow = (jsDay + 6) % 7; // 转成 0=周一...6=周日
+  const offsetToSunday = 6 - isoDow; // 从今天到本周日还有几天
+  return {
+    thisWeekEnd: offsetToSunday,           // "本周"覆盖到这个offset为止
+    // "下周"的起点至少要排在offset 2之后（避开"今明2日"占用的0、1），
+    // 今天刚好是周日/周六时，offsetToSunday+1 可能小于2，这时候要兜底
+    nextWeekStart: Math.max(offsetToSunday + 1, 2),
+    nextWeekEnd: offsetToSunday + 7,        // "下周"覆盖这个范围
+  };
+}
+
+function dayRangeMatches(tabName, offset, bounds) {
   if (tabName === "today") return offset >= 0 && offset <= 1;
-  if (tabName === "week") return offset >= 2 && offset <= 6;
-  if (tabName === "month") return offset >= 7;
+  if (tabName === "week") return offset >= 2 && offset <= bounds.thisWeekEnd;
+  if (tabName === "month") return offset >= bounds.nextWeekStart && offset <= bounds.nextWeekEnd;
   return true;
 }
 
@@ -446,12 +522,12 @@ function renderDaySection(dateStr, items) {
   return html;
 }
 
-function renderScheduleTab(tabName, groups, todayStr) {
+function renderScheduleTab(tabName, groups, todayStr, bounds) {
   const content = document.getElementById(`content-${tabName}`);
   if (!content) return;
 
   const dateStrs = Object.keys(groups).sort()
-    .filter(d => dayRangeMatches(tabName, dayOffset(d, todayStr)));
+    .filter(d => dayRangeMatches(tabName, dayOffset(d, todayStr), bounds));
 
   if (dateStrs.length === 0) {
     content.innerHTML = `<div class="empty-state">这个时间段内没有符合条件的比赛，试试在"设置"里勾选更多联赛。</div>`;
@@ -480,9 +556,10 @@ function render() {
     return;
   }
 
-  renderScheduleTab("today", groups, todayStr);
-  renderScheduleTab("week", groups, todayStr);
-  renderScheduleTab("month", groups, todayStr);
+  const bounds = weekBoundaries(todayStr);
+  renderScheduleTab("today", groups, todayStr, bounds);
+  renderScheduleTab("week", groups, todayStr, bounds);
+  renderScheduleTab("month", groups, todayStr, bounds);
 
   const footer = document.getElementById("metaFooter");
   const genDate = new Date(scheduleData.generatedAt);

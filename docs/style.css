@@ -47,7 +47,7 @@ body {
 }
 
 .wrap {
-  max-width: 640px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 0 16px 24px;
   /* 底部Tab栏高度 + safe-area，避免内容被遮住 */
@@ -115,7 +115,7 @@ header.app-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  max-width: 640px;
+  max-width: 920px;
   margin: 0 auto;
 }
 .header-actions {
@@ -443,7 +443,7 @@ select, .city-row input {
   gap: 4px;
 }
 .match-teams .fav { color: var(--amber); font-weight: 600; }
-.team-crest { width: 16px; height: 16px; object-fit: contain; vertical-align: -3px; }
+.team-crest { width: 22px; height: 22px; object-fit: contain; vertical-align: -5px; margin-right: 2px; }
 
 .match-meta {
   display: flex;
@@ -528,10 +528,16 @@ select, .city-row input {
   flex-direction: column;
   gap: 2px;
 }
+.timeline-block .tl-chip-time {
+  font-size: 9.5px;
+  color: var(--text-dim);
+  margin-left: 4px;
+  font-weight: 500;
+}
 .timeline-block .tl-strip {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   background: var(--surface);
   border-radius: 5px;
   padding: 3px 6px;
@@ -542,16 +548,24 @@ select, .city-row input {
   color: var(--text-dim);
   flex-shrink: 0;
   white-space: nowrap;
+  align-self: flex-start;
+  margin-top: 1px;
+}
+.timeline-block .tl-strip-teams {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
 }
 .timeline-block .tl-strip-team {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   min-width: 0;
-  flex: 1;
 }
 .timeline-block .tl-strip-team img {
-  width: 13px; height: 13px; flex-shrink: 0; object-fit: contain;
+  width: 12px; height: 12px; flex-shrink: 0; object-fit: contain;
 }
 .timeline-block .tl-strip-team span {
   font-size: 10.5px;
@@ -560,11 +574,6 @@ select, .city-row input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.timeline-block .tl-strip-vs {
-  font-size: 9px;
-  color: var(--text-dim);
-  flex-shrink: 0;
 }
 .timeline-block .tl-strip.tl-watched { outline: 1.5px solid var(--amber); }
 .timeline-block .tl-strip.tl-derby { outline: 1.5px solid #E8935D; }
