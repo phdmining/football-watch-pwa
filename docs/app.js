@@ -248,10 +248,12 @@ function blockHtml(cls, title, items, showScore) {
 }
 
 const LEAGUE_SHORT = { PL: "英超", PD: "西甲", SA: "意甲", BL1: "德甲", FL1: "法甲", CL: "欧冠" };
+const LEAGUE_ORDER = ["PL", "PD", "SA", "BL1", "FL1", "CL"];
 
-function assignTimelineColumns(items) {
+// 同一组内部的时间重叠处理（用在"同一联赛内部"这个更小的范围里，不再是跨联赛抢位置）
+function assignOverlapColumns(items) {
   const sorted = [...items].sort((a, b) => a.startTs - b.startTs);
-  const colEndTimes = []; // 每栏当前排到的结束时间
+  const colEndTimes = [];
   const placed = sorted.map(it => {
     let col = colEndTimes.findIndex(end => end <= it.startTs);
     if (col === -1) { col = colEndTimes.length; colEndTimes.push(it.endTs); }
@@ -261,9 +263,44 @@ function assignTimelineColumns(items) {
   return { placed, maxCols: Math.max(1, colEndTimes.length) };
 }
 
+// 按"每个联赛一栏"分配位置：先按联赛分组占一个大栏，联赛内部如果时间重叠，
+// 再在这个大栏内部细分小栏（而不是让所有联赛的比赛互相抢位置）
+function assignTimelineColumns(items) {
+  const leaguesPresent = LEAGUE_ORDER.filter(code => items.some(it => it.match.competition.code === code));
+  const numLeagueCols = Math.max(1, leaguesPresent.length);
+  const leagueColWidth = 100 / numLeagueCols;
+
+  let placed = [];
+  leaguesPresent.forEach((code, leagueIndex) => {
+    const leagueItems = items.filter(it => it.match.competition.code === code);
+    const { placed: subPlaced, maxCols: subMaxCols } = assignOverlapColumns(leagueItems);
+    subPlaced.forEach(it => {
+      placed.push({
+        ...it,
+        leftPct: leagueIndex * leagueColWidth + it.col * (leagueColWidth / subMaxCols),
+        widthPct: leagueColWidth / subMaxCols,
+      });
+    });
+  });
+  return placed;
+}
+
+function renderTimelineHeader(items) {
+  const leaguesPresent = LEAGUE_ORDER.filter(code => items.some(it => it.match.competition.code === code));
+  const colWidth = 100 / Math.max(1, leaguesPresent.length);
+  const cells = leaguesPresent.map(code => `
+    <div style="width:${colWidth}%;display:flex;justify-content:center;padding-bottom:4px;">
+      <span style="background:var(--league-${code}-line);color:#FFFFFF;font-size:10px;font-weight:600;
+                   padding:2px 8px;border-radius:8px;white-space:nowrap;">
+        ${LEAGUE_SHORT[code] || code}
+      </span>
+    </div>`).join("");
+  return `<div style="display:flex;margin-left:40px;border-bottom:1px solid var(--line);padding-bottom:4px;">${cells}</div>`;
+}
+
 function renderTimeline(items) {
   if (!items.length) return "";
-  const { placed, maxCols } = assignTimelineColumns(items);
+  const placed = assignTimelineColumns(items);
 
   const toMin = ts => { const d = new Date(ts); return d.getHours() * 60 + d.getMinutes(); };
   let minStart = Math.min(...placed.map(it => toMin(it.startTs)));
@@ -280,7 +317,6 @@ function renderTimeline(items) {
     hourLabels += `<span class="timeline-hour-label" style="top:${top}px;">${h}</span>`;
   }
 
-  const colWidthPct = 100 / maxCols;
   let blocks = "";
   const leaguesUsed = new Set();
   let hasWatched = false, hasDerby = false;
@@ -293,7 +329,6 @@ function renderTimeline(items) {
     const endMin = toMin(it.endTs);
     const top = (startMin - gridStartMin) * PX_PER_MIN;
     const height = Math.max(54, (endMin - startMin) * PX_PER_MIN - 3);
-    const left = it.col * colWidthPct;
     let extraClass = "";
     let badge = "";
     if (it.watchRank >= 0) { extraClass = "tl-watched"; badge = `<span class="tl-badge">⭐</span>`; hasWatched = true; }
@@ -301,12 +336,13 @@ function renderTimeline(items) {
 
     const homeLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.homeTeam.name];
     const awayLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.awayTeam.name];
-    const homeImg = homeLogo ? `<img src="${homeLogo}" alt="">` : "";
-    const awayImg = awayLogo ? `<img src="${awayLogo}" alt="">` : "";
+    const imgFallback = `onerror="this.style.display='none'"`;
+    const homeImg = homeLogo ? `<img src="${homeLogo}" alt="" ${imgFallback}>` : "";
+    const awayImg = awayLogo ? `<img src="${awayLogo}" alt="" ${imgFallback}>` : "";
 
     blocks += `
       <div class="timeline-block ${extraClass}"
-           style="top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${colWidthPct}% - 4px);">
+           style="top:${top}px;height:${height}px;left:calc(${it.leftPct}% + 2px);width:calc(${it.widthPct}% - 4px);">
         <div class="tl-top-row">
           <span class="tl-chip" style="background:var(--league-${code}-line);">${LEAGUE_SHORT[code] || code}</span>
           <span class="tl-time">${it.startLabel}</span>
@@ -324,6 +360,7 @@ function renderTimeline(items) {
   if (hasDerby) legend += `<span><span class="dot" style="background:#E8935D;"></span>⚔️ 顶级德比</span>`;
 
   return `
+    ${renderTimelineHeader(items)}
     <div class="timeline-wrap">
       <div class="timeline-hours" style="height:${totalHeight}px;">${hourLabels}</div>
       <div class="timeline-track" style="height:${totalHeight}px;">${blocks}</div>
