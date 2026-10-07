@@ -506,57 +506,68 @@ select, .city-row input {
 .timeline-block {
   position: absolute;
   border-radius: 7px;
-  padding: 5px 6px;
+  padding: 4px 6px 5px;
   overflow: hidden;
   cursor: default;
   background: var(--surface-raised);
   border: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.timeline-block .tl-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
 }
 .timeline-block .tl-chip {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
   font-size: 9px;
   font-weight: 600;
-  padding: 1px 5px;
+  padding: 1px 6px;
   border-radius: 8px;
   white-space: nowrap;
   color: #FFFFFF;
+  margin-bottom: 3px;
 }
-.timeline-block .tl-time {
-  font-size: 9px;
-  color: var(--text-dim);
-  white-space: nowrap;
-  flex-shrink: 0;
+.timeline-block .tl-strip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.timeline-block .tl-team-row {
+.timeline-block .tl-strip {
   display: flex;
   align-items: center;
   gap: 4px;
+  background: var(--surface);
+  border-radius: 5px;
+  padding: 3px 6px;
   min-width: 0;
 }
-.timeline-block .tl-team-row img {
-  width: 14px; height: 14px; flex-shrink: 0; object-fit: contain;
+.timeline-block .tl-strip-time {
+  font-size: 9px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
-.timeline-block .tl-team-row span {
-  font-size: 11px;
+.timeline-block .tl-strip-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+.timeline-block .tl-strip-team img {
+  width: 13px; height: 13px; flex-shrink: 0; object-fit: contain;
+}
+.timeline-block .tl-strip-team span {
+  font-size: 10.5px;
   color: var(--text);
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.timeline-block.tl-watched { border-color: var(--amber); border-width: 1.5px; }
-.timeline-block.tl-derby { border-color: #E8935D; border-width: 1.5px; }
+.timeline-block .tl-strip-vs {
+  font-size: 9px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+.timeline-block .tl-strip.tl-watched { outline: 1.5px solid var(--amber); }
+.timeline-block .tl-strip.tl-derby { outline: 1.5px solid #E8935D; }
 .timeline-block .tl-badge {
   font-size: 10px;
   flex-shrink: 0;

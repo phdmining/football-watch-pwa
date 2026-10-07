@@ -250,39 +250,44 @@ function blockHtml(cls, title, items, showScore) {
 const LEAGUE_SHORT = { PL: "英超", PD: "西甲", SA: "意甲", BL1: "德甲", FL1: "法甲", CL: "欧冠" };
 const LEAGUE_ORDER = ["PL", "PD", "SA", "BL1", "FL1", "CL"];
 
-// 同一组内部的时间重叠处理（用在"同一联赛内部"这个更小的范围里，不再是跨联赛抢位置）
-function assignOverlapColumns(items) {
+// 把同一联赛内时间上有重叠（或紧挨）的比赛聚成一簇，簇内按时间顺序排列，
+// 后面会渲染成"一个大块，里面横向堆小条"，而不是拆成并排的窄栏
+function clusterOverlapping(items) {
   const sorted = [...items].sort((a, b) => a.startTs - b.startTs);
-  const colEndTimes = [];
-  const placed = sorted.map(it => {
-    let col = colEndTimes.findIndex(end => end <= it.startTs);
-    if (col === -1) { col = colEndTimes.length; colEndTimes.push(it.endTs); }
-    else { colEndTimes[col] = it.endTs; }
-    return { ...it, col };
-  });
-  return { placed, maxCols: Math.max(1, colEndTimes.length) };
+  const clusters = [];
+  for (const it of sorted) {
+    const last = clusters[clusters.length - 1];
+    if (last && it.startTs < last.endTs) {
+      last.items.push(it);
+      last.endTs = Math.max(last.endTs, it.endTs);
+    } else {
+      clusters.push({ startTs: it.startTs, endTs: it.endTs, items: [it] });
+    }
+  }
+  return clusters;
 }
 
-// 按"每个联赛一栏"分配位置：先按联赛分组占一个大栏，联赛内部如果时间重叠，
-// 再在这个大栏内部细分小栏（而不是让所有联赛的比赛互相抢位置）
-function assignTimelineColumns(items) {
+// 按"每个联赛一栏"分配位置：每个联赛占一整栏的宽度，栏内按时间聚类，
+// 同一时间段重叠的比赛合并成一个大块（块内部再细分横向小条，渲染时处理）
+function buildTimelineClusters(items) {
   const leaguesPresent = LEAGUE_ORDER.filter(code => items.some(it => it.match.competition.code === code));
   const numLeagueCols = Math.max(1, leaguesPresent.length);
   const leagueColWidth = 100 / numLeagueCols;
 
-  let placed = [];
+  let result = [];
   leaguesPresent.forEach((code, leagueIndex) => {
     const leagueItems = items.filter(it => it.match.competition.code === code);
-    const { placed: subPlaced, maxCols: subMaxCols } = assignOverlapColumns(leagueItems);
-    subPlaced.forEach(it => {
-      placed.push({
-        ...it,
-        leftPct: leagueIndex * leagueColWidth + it.col * (leagueColWidth / subMaxCols),
-        widthPct: leagueColWidth / subMaxCols,
+    const clusters = clusterOverlapping(leagueItems);
+    clusters.forEach(cluster => {
+      result.push({
+        ...cluster,
+        code,
+        leftPct: leagueIndex * leagueColWidth,
+        widthPct: leagueColWidth,
       });
     });
   });
-  return placed;
+  return result;
 }
 
 function renderTimelineHeader(items) {
@@ -298,13 +303,36 @@ function renderTimelineHeader(items) {
   return `<div style="display:flex;margin-left:40px;border-bottom:1px solid var(--line);padding-bottom:4px;">${cells}</div>`;
 }
 
+function matchStripHtml(it, code) {
+  const m = it.match;
+  let extraClass = "";
+  let badge = "";
+  if (it.watchRank >= 0) { extraClass = "tl-watched"; badge = `<span class="tl-badge">⭐</span>`; }
+  else if (m.isTopDerby) { extraClass = "tl-derby"; badge = `<span class="tl-badge">⚔️</span>`; }
+
+  const homeLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.homeTeam.name];
+  const awayLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.awayTeam.name];
+  const imgFallback = `onerror="this.style.display='none'"`;
+  const homeImg = homeLogo ? `<img src="${homeLogo}" alt="" ${imgFallback}>` : "";
+  const awayImg = awayLogo ? `<img src="${awayLogo}" alt="" ${imgFallback}>` : "";
+
+  return `
+    <div class="tl-strip ${extraClass}">
+      <span class="tl-strip-time">${it.startLabel}</span>
+      <span class="tl-strip-team">${homeImg}<span>${m.homeTeam.name}</span></span>
+      <span class="tl-strip-vs">vs</span>
+      <span class="tl-strip-team">${awayImg}<span>${m.awayTeam.name}</span></span>
+      ${badge}
+    </div>`;
+}
+
 function renderTimeline(items) {
   if (!items.length) return "";
-  const placed = assignTimelineColumns(items);
+  const clusters = buildTimelineClusters(items);
 
   const toMin = ts => { const d = new Date(ts); return d.getHours() * 60 + d.getMinutes(); };
-  let minStart = Math.min(...placed.map(it => toMin(it.startTs)));
-  let maxEnd = Math.max(...placed.map(it => toMin(it.endTs)));
+  let minStart = Math.min(...items.map(it => toMin(it.startTs)));
+  let maxEnd = Math.max(...items.map(it => toMin(it.endTs)));
   const gridStartHour = Math.max(0, Math.floor((minStart - 20) / 60));
   const gridEndHour = Math.min(24, Math.ceil((maxEnd + 20) / 60));
   const gridStartMin = gridStartHour * 60;
@@ -321,35 +349,27 @@ function renderTimeline(items) {
   const leaguesUsed = new Set();
   let hasWatched = false, hasDerby = false;
 
-  placed.forEach(it => {
-    const m = it.match;
-    const code = m.competition.code;
-    leaguesUsed.add(code);
-    const startMin = toMin(it.startTs);
-    const endMin = toMin(it.endTs);
+  clusters.forEach(cluster => {
+    leaguesUsed.add(cluster.code);
+    const startMin = toMin(cluster.startTs);
+    const endMin = toMin(cluster.endTs);
     const top = (startMin - gridStartMin) * PX_PER_MIN;
-    const height = Math.max(54, (endMin - startMin) * PX_PER_MIN - 3);
-    let extraClass = "";
-    let badge = "";
-    if (it.watchRank >= 0) { extraClass = "tl-watched"; badge = `<span class="tl-badge">⭐</span>`; hasWatched = true; }
-    else if (m.isTopDerby) { extraClass = "tl-derby"; badge = `<span class="tl-badge">⚔️</span>`; hasDerby = true; }
+    // 块高度要能装下里面堆叠的所有小条：每条约30px，另外留一点给联赛标签行
+    const stripsHeight = cluster.items.length * 30 + 20;
+    const timeBasedHeight = (endMin - startMin) * PX_PER_MIN - 3;
+    const height = Math.max(58, stripsHeight, timeBasedHeight);
 
-    const homeLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.homeTeam.name];
-    const awayLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.awayTeam.name];
-    const imgFallback = `onerror="this.style.display='none'"`;
-    const homeImg = homeLogo ? `<img src="${homeLogo}" alt="" ${imgFallback}>` : "";
-    const awayImg = awayLogo ? `<img src="${awayLogo}" alt="" ${imgFallback}>` : "";
+    const strips = cluster.items.map(it => {
+      if (it.watchRank >= 0) hasWatched = true;
+      if (it.match.isTopDerby) hasDerby = true;
+      return matchStripHtml(it, cluster.code);
+    }).join("");
 
     blocks += `
-      <div class="timeline-block ${extraClass}"
-           style="top:${top}px;height:${height}px;left:calc(${it.leftPct}% + 2px);width:calc(${it.widthPct}% - 4px);">
-        <div class="tl-top-row">
-          <span class="tl-chip" style="background:var(--league-${code}-line);">${LEAGUE_SHORT[code] || code}</span>
-          <span class="tl-time">${it.startLabel}</span>
-          ${badge}
-        </div>
-        <div class="tl-team-row">${homeImg}<span>${m.homeTeam.name}</span></div>
-        <div class="tl-team-row">${awayImg}<span>${m.awayTeam.name}</span></div>
+      <div class="timeline-block"
+           style="top:${top}px;height:${height}px;left:calc(${cluster.leftPct}% + 2px);width:calc(${cluster.widthPct}% - 4px);">
+        <span class="tl-chip" style="background:var(--league-${cluster.code}-line);">${LEAGUE_SHORT[cluster.code] || cluster.code}</span>
+        <div class="tl-strip-list">${strips}</div>
       </div>`;
   });
 
