@@ -406,32 +406,61 @@ function renderTimeline(items) {
   let blocks = "";
   const leaguesUsed = new Set();
   let hasWatched = false, hasDerby = false;
+  const STRIP_H = 40;       // 每条小条大致需要的高度
+  const CHIP_ROW_H = 22;    // 联赛标签那一行占的高度
+  const BLOCK_GAP = 4;      // 块与块之间留的间隙，避免贴死
+
+  // 按联赛分组、按时间排序，这样才能知道"同一栏里，这个块到下一个块之间实际有多少空间"
+  const byLeague = {};
+  clusters.forEach(c => { (byLeague[c.code] = byLeague[c.code] || []).push(c); });
+  Object.values(byLeague).forEach(list => list.sort((a, b) => a.startTs - b.startTs));
 
   clusters.forEach(cluster => {
     leaguesUsed.add(cluster.code);
     const startMin = toMin(cluster.startTs);
     const endMin = toMin(cluster.endTs);
     const top = (startMin - gridStartMin) * PX_PER_MIN;
-    // 块高度要能装下里面堆叠的所有小条：主客队分两行显示，每条约40px，另外留一点给联赛标签行
-    const stripsHeight = cluster.items.length * 40 + 22;
+
+    // 算这一栏里，下一个块的起始时间（没有下一个块的话，就用整个时间轴的底部）
+    const sameColList = byLeague[cluster.code];
+    const myIdx = sameColList.indexOf(cluster);
+    const nextClusterStartMin = myIdx < sameColList.length - 1
+      ? toMin(sameColList[myIdx + 1].startTs) : (gridEndHour * 60);
+    const availablePx = (nextClusterStartMin - startMin) * PX_PER_MIN - BLOCK_GAP;
+
     const timeBasedHeight = (endMin - startMin) * PX_PER_MIN - 3;
-    const height = Math.max(58, stripsHeight, timeBasedHeight);
+    const fullNeededHeight = cluster.items.length * STRIP_H + CHIP_ROW_H;
+    const desiredHeight = Math.max(58, fullNeededHeight, timeBasedHeight);
+    // 实际高度不能超过"到下一个块之间真实能用的空间"，不然会跟下一个块叠在一起
+    const height = Math.min(desiredHeight, Math.max(58, availablePx));
+
+    // 这个高度装得下几条小条，算出来，塞不下的折叠成"还有N场"文字
+    const maxStripsFit = Math.max(1, Math.floor((height - CHIP_ROW_H) / STRIP_H));
+    const visibleItems = cluster.items.slice(0, maxStripsFit);
+    const hiddenCount = cluster.items.length - visibleItems.length;
 
     const uniformTime = cluster.items.every(it => it.startLabel === cluster.items[0].startLabel);
-    const strips = cluster.items.map(it => {
+    const strips = visibleItems.map(it => {
       if (it.watchRank >= 0) hasWatched = true;
       if (it.match.isTopDerby) hasDerby = true;
       return matchStripHtml(it, cluster.code, !uniformTime);
     }).join("");
+    // 被折叠起来的那些比赛，关注球队/德比标记也要照常统计进图例，不能因为折叠就漏掉
+    cluster.items.slice(maxStripsFit).forEach(it => {
+      if (it.watchRank >= 0) hasWatched = true;
+      if (it.match.isTopDerby) hasDerby = true;
+    });
     const chipTimeHtml = uniformTime
       ? `<span class="tl-chip-time">${cluster.items[0].startLabel}</span>` : "";
+    const moreHtml = hiddenCount > 0
+      ? `<div class="tl-more">还有${hiddenCount}场，点"以列表形式查看"看全部</div>` : "";
 
     blocks += `
       <div class="timeline-block"
            style="top:${top}px;height:${height}px;left:calc(${cluster.leftPct}% + 2px);width:calc(${cluster.widthPct}% - 4px);">
         <span class="tl-chip" style="background:var(--league-${cluster.code}-line);">${LEAGUE_SHORT[cluster.code] || cluster.code}</span>
         ${chipTimeHtml}
-        <div class="tl-strip-list">${strips}</div>
+        <div class="tl-strip-list">${strips}${moreHtml}</div>
       </div>`;
   });
 

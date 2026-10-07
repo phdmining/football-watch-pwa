@@ -577,6 +577,12 @@ select, .city-row input {
 }
 .timeline-block .tl-strip.tl-watched { outline: 1.5px solid var(--amber); }
 .timeline-block .tl-strip.tl-derby { outline: 1.5px solid #E8935D; }
+.timeline-block .tl-more {
+  font-size: 9px;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 2px 0;
+}
 .timeline-block .tl-badge {
   font-size: 10px;
   flex-shrink: 0;
