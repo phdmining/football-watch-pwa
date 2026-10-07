@@ -10,6 +10,14 @@
   --red: #C1443B;
   --green-ok: #6FA37A;
   --radius: 6px;
+
+  /* 联赛配色：每个联赛一个独立识别色，跟--amber（关注/重要标注专用）区分开 */
+  --league-PL-bg: #2A2548;  --league-PL-text: #AFA9EC;  --league-PL-line: #534AB7;
+  --league-PD-bg: #4A1B28;  --league-PD-text: #ED93B1;  --league-PD-line: #993556;
+  --league-SA-bg: #042C53;  --league-SA-text: #85B7EB;  --league-SA-line: #185FA5;
+  --league-BL1-bg: #4A1B0C; --league-BL1-text: #F0997B; --league-BL1-line: #993C1D;
+  --league-FL1-bg: #04342C; --league-FL1-text: #5DCAA5; --league-FL1-line: #0F6E56;
+  --league-CL-bg: #0C1F3D;  --league-CL-text: #9FC3F0;  --league-CL-line: #1E4D8C;
 }
 
 @media (prefers-color-scheme: light) {
@@ -463,6 +471,82 @@ select, .city-row input {
 .team-name.tier-silver { color: #C9CDD6; font-weight: 600; }
 .team-name.tier-normal { color: var(--text); }
 .team-name.tier-watched { color: var(--amber); font-weight: 700; text-decoration: underline; text-decoration-color: var(--amber-dim); text-underline-offset: 3px; }
+
+/* ---- 日历时间轴 ---- */
+.timeline-wrap {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.timeline-hours {
+  width: 32px;
+  flex-shrink: 0;
+  position: relative;
+}
+.timeline-hour-label {
+  position: absolute;
+  font-size: 10px;
+  color: var(--text-dim);
+  transform: translateY(-50%);
+}
+.timeline-track {
+  flex: 1;
+  position: relative;
+  border-left: 1px solid var(--line);
+}
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background-image: repeating-linear-gradient(
+    to bottom, var(--line) 0, var(--line) 1px, transparent 1px, transparent 60px
+  );
+  pointer-events: none;
+}
+.timeline-block {
+  position: absolute;
+  border-radius: 6px;
+  padding: 4px 7px;
+  overflow: hidden;
+  cursor: default;
+}
+.timeline-block .tl-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+.timeline-block .tl-teams {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.timeline-block.tl-watched { border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; }
+.timeline-block.tl-derby { border-left: 3px solid #E8935D; border-radius: 0 6px 6px 0; }
+.timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.timeline-legend span {
+  font-size: 11px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.timeline-legend .dot {
+  width: 8px; height: 8px; border-radius: 2px; display: inline-block;
+}
 
 /* ---- Full schedule table ---- */
 .full-table {

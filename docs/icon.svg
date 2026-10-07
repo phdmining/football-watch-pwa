@@ -1,13 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" rx="40" fill="#0b1220"/>
-  <circle cx="100" cy="100" r="70" fill="#ffffff"/>
-  <g fill="#0b1220">
-    <polygon points="100,55 122,72 113,98 87,98 78,72"/>
-    <polygon points="100,55 100,30 130,40 122,72"/>
-    <polygon points="122,72 150,80 150,115 113,98"/>
-    <polygon points="113,98 150,115 135,145 100,140"/>
-    <polygon points="87,98 100,140 65,145 50,115"/>
-    <polygon points="78,72 50,80 50,115 87,98"/>
-    <polygon points="78,72 100,30 70,40"/>
+  <rect width="200" height="200" rx="40" fill="#0F1C16"/>
+
+  <!-- 日历装订环 -->
+  <rect x="62" y="38" width="12" height="24" rx="6" fill="#E8B34C"/>
+  <rect x="126" y="38" width="12" height="24" rx="6" fill="#E8B34C"/>
+
+  <!-- 日历主体 -->
+  <rect x="42" y="52" width="116" height="112" rx="14" fill="none" stroke="#E8B34C" stroke-width="7"/>
+  <!-- 日历头部（月份条） -->
+  <rect x="42" y="52" width="116" height="30" rx="14" fill="#E8B34C"/>
+  <rect x="42" y="68" width="116" height="14" fill="#E8B34C"/>
+
+  <!-- 足球（嵌在日历内容区，代表"这天有场比赛"） -->
+  <g transform="translate(100,124)">
+    <circle r="32" fill="#F2F5F1"/>
+    <circle r="32" fill="none" stroke="#0F1C16" stroke-width="3"/>
+    <polygon points="0,-14 13,-4 8,12 -8,12 -13,-4" fill="#0F1C16"/>
+    <path d="M 0,-14 L 0,-32" stroke="#0F1C16" stroke-width="3"/>
+    <path d="M 13,-4 L 29,-10" stroke="#0F1C16" stroke-width="3"/>
+    <path d="M 8,12 L 17,26" stroke="#0F1C16" stroke-width="3"/>
+    <path d="M -8,12 L -17,26" stroke="#0F1C16" stroke-width="3"/>
+    <path d="M -13,-4 L -29,-10" stroke="#0F1C16" stroke-width="3"/>
   </g>
 </svg>

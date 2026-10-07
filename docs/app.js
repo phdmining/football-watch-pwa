@@ -1,3 +1,8 @@
+/* ===================== 后端API配置 ===================== */
+// 部署到Render后，把这里换成你的实际后端地址，比如：
+// const API_BASE = "https://football-watch-backend.onrender.com";
+const API_BASE = "https://football-watch-backend.onrender.com";
+
 /* ===================== 状态与持久化 ===================== */
 const STORAGE_KEY = "football_watch_settings_v2";
 
@@ -242,6 +247,81 @@ function blockHtml(cls, title, items, showScore) {
     </div>`;
 }
 
+const LEAGUE_SHORT = { PL: "英超", PD: "西甲", SA: "意甲", BL1: "德甲", FL1: "法甲", CL: "欧冠" };
+
+function assignTimelineColumns(items) {
+  const sorted = [...items].sort((a, b) => a.startTs - b.startTs);
+  const colEndTimes = []; // 每栏当前排到的结束时间
+  const placed = sorted.map(it => {
+    let col = colEndTimes.findIndex(end => end <= it.startTs);
+    if (col === -1) { col = colEndTimes.length; colEndTimes.push(it.endTs); }
+    else { colEndTimes[col] = it.endTs; }
+    return { ...it, col };
+  });
+  return { placed, maxCols: Math.max(1, colEndTimes.length) };
+}
+
+function renderTimeline(items) {
+  if (!items.length) return "";
+  const { placed, maxCols } = assignTimelineColumns(items);
+
+  const toMin = ts => { const d = new Date(ts); return d.getHours() * 60 + d.getMinutes(); };
+  let minStart = Math.min(...placed.map(it => toMin(it.startTs)));
+  let maxEnd = Math.max(...placed.map(it => toMin(it.endTs)));
+  const gridStartHour = Math.max(0, Math.floor((minStart - 20) / 60));
+  const gridEndHour = Math.min(24, Math.ceil((maxEnd + 20) / 60));
+  const gridStartMin = gridStartHour * 60;
+  const PX_PER_MIN = 1.1;
+  const totalHeight = (gridEndHour - gridStartHour) * 60 * PX_PER_MIN;
+
+  let hourLabels = "";
+  for (let h = gridStartHour; h <= gridEndHour; h++) {
+    const top = (h * 60 - gridStartMin) * PX_PER_MIN;
+    hourLabels += `<span class="timeline-hour-label" style="top:${top}px;">${h}</span>`;
+  }
+
+  const colWidthPct = 100 / maxCols;
+  let blocks = "";
+  const leaguesUsed = new Set();
+  let hasWatched = false, hasDerby = false;
+
+  placed.forEach(it => {
+    const m = it.match;
+    const code = m.competition.code;
+    leaguesUsed.add(code);
+    const startMin = toMin(it.startTs);
+    const endMin = toMin(it.endTs);
+    const top = (startMin - gridStartMin) * PX_PER_MIN;
+    const height = Math.max(34, (endMin - startMin) * PX_PER_MIN - 3);
+    const left = it.col * colWidthPct;
+    let extraClass = "";
+    let metaIcon = "";
+    if (it.watchRank >= 0) { extraClass = "tl-watched"; metaIcon = "⭐ "; hasWatched = true; }
+    else if (m.isTopDerby) { extraClass = "tl-derby"; metaIcon = "⚔️ "; hasDerby = true; }
+
+    blocks += `
+      <div class="timeline-block ${extraClass}"
+           style="top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${colWidthPct}% - 4px);
+                  background:var(--league-${code}-bg);color:var(--league-${code}-text);">
+        <div class="tl-meta">${metaIcon}${LEAGUE_SHORT[code] || code} ${it.startLabel}</div>
+        <div class="tl-teams">${m.homeTeam.name} vs ${m.awayTeam.name}</div>
+      </div>`;
+  });
+
+  let legend = [...leaguesUsed].map(code => `
+    <span><span class="dot" style="background:var(--league-${code}-line);"></span>${LEAGUE_SHORT[code] || code}</span>
+  `).join("");
+  if (hasWatched) legend += `<span><span class="dot" style="background:var(--amber);"></span>⭐ 关注球队</span>`;
+  if (hasDerby) legend += `<span><span class="dot" style="background:#E8935D;"></span>⚔️ 顶级德比</span>`;
+
+  return `
+    <div class="timeline-wrap">
+      <div class="timeline-hours" style="height:${totalHeight}px;">${hourLabels}</div>
+      <div class="timeline-track" style="height:${totalHeight}px;">${blocks}</div>
+    </div>
+    <div class="timeline-legend">${legend}</div>`;
+}
+
 function fullTableHtml(items) {
   const sorted = [...items].sort((a, b) => a.startTs - b.startTs);
   const rows = sorted.map(it => {
@@ -255,7 +335,7 @@ function fullTableHtml(items) {
   }).join("");
   return `
     <details class="full-toggle">
-      <summary>查看今日全部 ${items.length} 场比赛</summary>
+      <summary>以列表形式查看今日全部 ${items.length} 场比赛</summary>
       <table class="full-table">
         <thead><tr><th>开始</th><th>结束</th><th>赛事</th><th>对阵</th><th>指数</th></tr></thead>
         <tbody>${rows}</tbody>
@@ -293,6 +373,8 @@ function renderDaySection(dateStr, items) {
   if (planB.selected.length) {
     html += blockHtml("plan-b", "🔄 备选方案 B（无冲突，方案A之外的最佳组合）", planB.selected);
   }
+  html += `<p class="block-title" style="margin-top:20px;">📅 今日赛程总览</p>`;
+  html += renderTimeline(items);
   html += fullTableHtml(items);
   html += `</section>`;
   return html;
@@ -530,7 +612,7 @@ const seasonArchiveCache = {};    // season -> {matchId: {...}}
 async function fetchHistoryIndex() {
   if (historyIndexCache) return historyIndexCache;
   try {
-    const res = await fetch("history/index.json", { cache: "no-cache" });
+    const res = await fetch(`${API_BASE}/api/history/index`, { cache: "no-cache" });
     if (!res.ok) throw new Error("no index");
     historyIndexCache = await res.json();
   } catch (e) {
@@ -542,7 +624,7 @@ async function fetchHistoryIndex() {
 async function fetchSeasonArchive(season) {
   if (seasonArchiveCache[season]) return seasonArchiveCache[season];
   try {
-    const res = await fetch(`history/season_${season}.json`, { cache: "no-cache" });
+    const res = await fetch(`${API_BASE}/api/history/season/${season}`, { cache: "no-cache" });
     if (!res.ok) throw new Error("not found");
     const data = await res.json();
     seasonArchiveCache[season] = data;
@@ -798,7 +880,7 @@ async function init() {
 
   try {
     const [scheduleRes, cityRes] = await Promise.all([
-      fetch("schedule.json", { cache: "no-cache" }),
+      fetch(`${API_BASE}/api/schedule`, { cache: "no-cache" }),
       fetch("city_timezones.json", { cache: "no-cache" }),
     ]);
     scheduleData = await scheduleRes.json();
