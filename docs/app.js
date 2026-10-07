@@ -292,19 +292,28 @@ function renderTimeline(items) {
     const startMin = toMin(it.startTs);
     const endMin = toMin(it.endTs);
     const top = (startMin - gridStartMin) * PX_PER_MIN;
-    const height = Math.max(34, (endMin - startMin) * PX_PER_MIN - 3);
+    const height = Math.max(54, (endMin - startMin) * PX_PER_MIN - 3);
     const left = it.col * colWidthPct;
     let extraClass = "";
-    let metaIcon = "";
-    if (it.watchRank >= 0) { extraClass = "tl-watched"; metaIcon = "⭐ "; hasWatched = true; }
-    else if (m.isTopDerby) { extraClass = "tl-derby"; metaIcon = "⚔️ "; hasDerby = true; }
+    let badge = "";
+    if (it.watchRank >= 0) { extraClass = "tl-watched"; badge = `<span class="tl-badge">⭐</span>`; hasWatched = true; }
+    else if (m.isTopDerby) { extraClass = "tl-derby"; badge = `<span class="tl-badge">⚔️</span>`; hasDerby = true; }
+
+    const homeLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.homeTeam.name];
+    const awayLogo = scheduleData.teamLogos && scheduleData.teamLogos[m.awayTeam.name];
+    const homeImg = homeLogo ? `<img src="${homeLogo}" alt="">` : "";
+    const awayImg = awayLogo ? `<img src="${awayLogo}" alt="">` : "";
 
     blocks += `
       <div class="timeline-block ${extraClass}"
-           style="top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${colWidthPct}% - 4px);
-                  background:var(--league-${code}-bg);color:var(--league-${code}-text);">
-        <div class="tl-meta">${metaIcon}${LEAGUE_SHORT[code] || code} ${it.startLabel}</div>
-        <div class="tl-teams">${m.homeTeam.name} vs ${m.awayTeam.name}</div>
+           style="top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${colWidthPct}% - 4px);">
+        <div class="tl-top-row">
+          <span class="tl-chip" style="background:var(--league-${code}-line);">${LEAGUE_SHORT[code] || code}</span>
+          <span class="tl-time">${it.startLabel}</span>
+          ${badge}
+        </div>
+        <div class="tl-team-row">${homeImg}<span>${m.homeTeam.name}</span></div>
+        <div class="tl-team-row">${awayImg}<span>${m.awayTeam.name}</span></div>
       </div>`;
   });
 
