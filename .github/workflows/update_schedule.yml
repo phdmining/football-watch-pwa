@@ -10,40 +10,61 @@ jobs:
   trigger-refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: 触发后端刷新，并持续轮询直到跑完
+      - name: 按赛事依次触发刷新（每个赛事单独跑，避免单次任务时间过长被Render免费层打断）
         env:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
         run: |
-          echo "触发 $BACKEND_URL/api/refresh ..."
-          trigger_status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 120 \
-            -X POST "$BACKEND_URL/api/refresh?token=$REFRESH_TOKEN")
-          if [ "$trigger_status" != "200" ]; then
-            echo "触发失败，HTTP状态码: $trigger_status"
-            exit 1
-          fi
-          echo "已触发，开始轮询进度（每2分钟查一次，这个轮询本身也能防止Render免费层把服务闲置睡着导致后台任务被杀掉）..."
+          COMPS="PL PD SA BL1 FL1 CL"
+          FAILED_COMPS=""
 
-          # 最多等 70 分钟（35次 * 2分钟）。实测跑一次大概要40多分钟，这里留出余量，
-          # 避免刚好卡在临界点被误判成失败（之前40分钟上限时就踩过这个坑）
-          for i in $(seq 1 35); do
-            sleep 120
-            resp=$(curl -s --max-time 60 "$BACKEND_URL/api/refresh/status")
-            echo "[第${i}次轮询] $resp"
-            status=$(echo "$resp" | grep -o '"status":"[a-z_]*"' | cut -d'"' -f4)
-
-            if [ "$status" = "done" ]; then
-              echo "✅ 刷新成功完成"
-              exit 0
-            elif [ "$status" = "done_but_empty" ]; then
-              echo "⚠️ 跑完了，但这次一场比赛都没处理到（matchesProcessed=0），可能数据源那边有问题，需要去看后端日志"
-              exit 1
-            elif [ "$status" = "error" ]; then
-              echo "❌ 刷新过程中出错了"
-              exit 1
+          for comp in $COMPS; do
+            echo ""
+            echo "========== 开始处理赛事: $comp =========="
+            trigger_status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 120 \
+              -X POST "$BACKEND_URL/api/refresh?token=$REFRESH_TOKEN&comp=$comp")
+            if [ "$trigger_status" != "200" ]; then
+              echo "触发失败，HTTP状态码: $trigger_status"
+              FAILED_COMPS="$FAILED_COMPS $comp(触发失败)"
+              continue
             fi
-            # status还是running，继续下一轮轮询
+            echo "已触发 $comp，开始轮询（每90秒查一次，这个轮询本身也能防止Render把服务闲置睡着）..."
+
+            # 单个赛事最多等20分钟（15次 * 90秒），正常情况下几分钟就该跑完
+            comp_done=false
+            for i in $(seq 1 15); do
+              sleep 90
+              resp=$(curl -s --max-time 60 "$BACKEND_URL/api/refresh/status")
+              echo "  [$comp 第${i}次轮询] $resp"
+              status=$(echo "$resp" | grep -o '"status":"[a-z_]*"' | cut -d'"' -f4)
+
+              if [ "$status" = "done" ]; then
+                echo "  ✅ $comp 刷新成功完成"
+                comp_done=true
+                break
+              elif [ "$status" = "done_but_empty" ]; then
+                echo "  ⚠️ $comp 跑完了但没处理到比赛（matchesProcessed=0）"
+                FAILED_COMPS="$FAILED_COMPS $comp(空结果)"
+                comp_done=true
+                break
+              elif [ "$status" = "error" ]; then
+                echo "  ❌ $comp 刷新出错了"
+                FAILED_COMPS="$FAILED_COMPS $comp(出错)"
+                comp_done=true
+                break
+              fi
+            done
+
+            if [ "$comp_done" = false ]; then
+              echo "  ⏱️ $comp 等了20分钟还没跑完，可能卡住了"
+              FAILED_COMPS="$FAILED_COMPS $comp(超时)"
+            fi
           done
 
-          echo "⏱️ 等了70分钟还没跑完，可能是真的卡住了，去Render后台查一下日志"
-          exit 1
+          echo ""
+          echo "========== 全部6个赛事处理完毕 =========="
+          if [ -n "$FAILED_COMPS" ]; then
+            echo "有赛事没有正常完成:$FAILED_COMPS"
+            exit 1
+          fi
+          echo "全部赛事都成功刷新完成"
