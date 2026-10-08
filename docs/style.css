@@ -578,10 +578,21 @@ select, .city-row input {
 .timeline-block .tl-strip.tl-watched { outline: 1.5px solid var(--amber); }
 .timeline-block .tl-strip.tl-derby { outline: 1.5px solid #E8935D; }
 .timeline-block .tl-more {
-  font-size: 9px;
-  color: var(--text-dim);
+  font-size: 9.5px;
+  color: var(--amber);
+  font-weight: 600;
   text-align: center;
-  padding: 2px 0;
+  padding: 3px 0;
+  cursor: pointer;
+}
+.timeline-block .tl-more:active { opacity: 0.7; }
+
+.full-table tr.row-highlight {
+  animation: row-flash 2.5s ease-out;
+}
+@keyframes row-flash {
+  0% { background: var(--amber-dim); }
+  100% { background: transparent; }
 }
 .timeline-block .tl-badge {
   font-size: 10px;

@@ -384,7 +384,7 @@ function matchStripHtml(it, code, showTime) {
     </div>`;
 }
 
-function renderTimeline(items) {
+function renderTimeline(items, dateStr) {
   if (!items.length) return "";
   const clusters = buildTimelineClusters(items);
 
@@ -434,10 +434,14 @@ function renderTimeline(items) {
     // 实际高度不能超过"到下一个块之间真实能用的空间"，不然会跟下一个块叠在一起
     const height = Math.min(desiredHeight, Math.max(58, availablePx));
 
+    // 块内比赛按推荐指数从高到低排——空间不够要折叠的时候，优先保留重要的场次，
+    // 不是谁排在数据里前面谁就占位（之前那样会出现"关注球队/德比被挤没了"的问题）
+    const sortedByScore = [...cluster.items].sort((a, b) => b.score - a.score);
+
     // 这个高度装得下几条小条，算出来，塞不下的折叠成"还有N场"文字
     const maxStripsFit = Math.max(1, Math.floor((height - CHIP_ROW_H) / STRIP_H));
-    const visibleItems = cluster.items.slice(0, maxStripsFit);
-    const hiddenCount = cluster.items.length - visibleItems.length;
+    const visibleItems = sortedByScore.slice(0, maxStripsFit);
+    const hiddenItems = sortedByScore.slice(maxStripsFit);
 
     const uniformTime = cluster.items.every(it => it.startLabel === cluster.items[0].startLabel);
     const strips = visibleItems.map(it => {
@@ -446,14 +450,15 @@ function renderTimeline(items) {
       return matchStripHtml(it, cluster.code, !uniformTime);
     }).join("");
     // 被折叠起来的那些比赛，关注球队/德比标记也要照常统计进图例，不能因为折叠就漏掉
-    cluster.items.slice(maxStripsFit).forEach(it => {
+    hiddenItems.forEach(it => {
       if (it.watchRank >= 0) hasWatched = true;
       if (it.match.isTopDerby) hasDerby = true;
     });
     const chipTimeHtml = uniformTime
       ? `<span class="tl-chip-time">${cluster.items[0].startLabel}</span>` : "";
-    const moreHtml = hiddenCount > 0
-      ? `<div class="tl-more">还有${hiddenCount}场，点"以列表形式查看"看全部</div>` : "";
+    const moreHtml = hiddenItems.length > 0
+      ? `<div class="tl-more" onclick="jumpToFullList('${dateStr}', ${JSON.stringify(hiddenItems.map(it => it.match.id))})">还有${hiddenItems.length}场 →</div>`
+      : "";
 
     blocks += `
       <div class="timeline-block"
@@ -479,11 +484,12 @@ function renderTimeline(items) {
     <div class="timeline-legend">${legend}</div>`;
 }
 
-function fullTableHtml(items) {
+function fullTableHtml(items, dateStr) {
   const sorted = [...items].sort((a, b) => a.startTs - b.startTs);
   const rows = sorted.map(it => {
     const m = it.match;
-    return `<tr>
+    const rowId = `match-row-${it.match.id}`;
+    return `<tr id="${rowId}">
       <td>${it.startLabel}</td><td>${it.endLabel}</td>
       <td>${m.competition.name}</td>
       <td class="teams">${teamNameHtml(m.homeTeam.name)} vs ${teamNameHtml(m.awayTeam.name)}</td>
@@ -491,13 +497,28 @@ function fullTableHtml(items) {
     </tr>`;
   }).join("");
   return `
-    <details class="full-toggle">
+    <details class="full-toggle" id="full-table-${dateStr}">
       <summary>以列表形式查看今日全部 ${items.length} 场比赛</summary>
       <table class="full-table">
         <thead><tr><th>开始</th><th>结束</th><th>赛事</th><th>对阵</th><th>指数</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </details>`;
+}
+
+// "还有N场"点击后：展开当天的完整列表，并滚动定位过去，顺手高亮一下方便找
+function jumpToFullList(dateStr, matchIds) {
+  const details = document.getElementById(`full-table-${dateStr}`);
+  if (!details) return;
+  details.open = true;
+  if (details.scrollIntoView) details.scrollIntoView({ behavior: "smooth", block: "start" });
+  (matchIds || []).forEach(id => {
+    const row = document.getElementById(`match-row-${id}`);
+    if (row) {
+      row.classList.add("row-highlight");
+      setTimeout(() => row.classList.remove("row-highlight"), 2500);
+    }
+  });
 }
 
 function dayOffset(dateStr, todayStr) {
@@ -545,8 +566,8 @@ function renderDaySection(dateStr, items) {
     html += blockHtml("plan-b", "🔄 备选方案 B（无冲突，方案A之外的最佳组合）", planB.selected);
   }
   html += `<p class="block-title" style="margin-top:20px;">📅 今日赛程总览</p>`;
-  html += renderTimeline(items);
-  html += fullTableHtml(items);
+  html += renderTimeline(items, dateStr);
+  html += fullTableHtml(items, dateStr);
   html += `</section>`;
   return html;
 }
