@@ -522,6 +522,12 @@ select, .city-row input {
 .team-name.tier-silver { color: #C9CDD6; font-weight: 600; }
 .team-name.tier-normal { color: var(--text); }
 .team-name.tier-watched { color: var(--amber); font-weight: 700; text-decoration: underline; text-decoration-color: var(--amber-dim); text-underline-offset: 3px; }
+.team-pos {
+  font-weight: 400;
+  font-size: 0.78em;
+  color: var(--text-dim);
+  margin-left: 3px;
+}
 
 /* ---- 日历时间轴 ---- */
 .timeline-wrap {

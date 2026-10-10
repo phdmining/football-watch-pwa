@@ -208,13 +208,14 @@ function buildDayGroups() {
 }
 
 /* ===================== 渲染：比赛卡片 ===================== */
-function teamNameHtml(name) {
+function teamNameHtml(name, position) {
   const isWatched = (settings.watchedTeams || []).includes(name);
   const tier = isWatched ? "tier-watched" : influenceTier(name);
   const logo = scheduleData.teamLogos && scheduleData.teamLogos[name];
   const logoHtml = logo ? `<img class="team-crest" src="${logo}" alt="" width="22" height="22">` : "";
   const star = isWatched ? "★ " : "";
-  return `${logoHtml}<span class="team-name ${tier}">${star}${abbreviateTeamName(name)}</span>`;
+  const posHtml = (position !== undefined && position !== null) ? `<span class="team-pos">#${position}</span>` : "";
+  return `${logoHtml}<span class="team-name ${tier}">${star}${abbreviateTeamName(name)}${posHtml}</span>`;
 }
 
 function matchCardHtml(item) {
@@ -228,7 +229,7 @@ function matchCardHtml(item) {
         <span class="match-score">推荐指数 <b>${item.score}</b>/100</span>
       </div>
       <div class="match-teams">
-        ${teamNameHtml(m.homeTeam.name)} vs ${teamNameHtml(m.awayTeam.name)}
+        ${teamNameHtml(m.homeTeam.name, m.homeTeam.position)} vs ${teamNameHtml(m.awayTeam.name, m.awayTeam.position)}
       </div>
       <div class="match-meta">
         <span class="tag comp">${m.competition.name}</span>
@@ -495,7 +496,7 @@ function fullTableHtml(items, dateStr) {
     return `<tr id="${rowId}">
       <td>${it.startLabel}</td><td>${it.endLabel}</td>
       <td>${m.competition.name}</td>
-      <td class="teams">${teamNameHtml(m.homeTeam.name)} vs ${teamNameHtml(m.awayTeam.name)}</td>
+      <td class="teams">${teamNameHtml(m.homeTeam.name, m.homeTeam.position)} vs ${teamNameHtml(m.awayTeam.name, m.awayTeam.position)}</td>
       <td>${it.score}</td>
     </tr>`;
   }).join("");
