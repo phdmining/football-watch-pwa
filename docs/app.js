@@ -7,7 +7,10 @@ const API_BASE = "https://football-watch-backend.onrender.com";
 const STORAGE_KEY = "football_watch_settings_v2";
 
 function defaultSettings() {
-  return { cityTz: null, leagues: null, watchedTeams: [], forceFavorite: true };
+  // forceFavorite默认关掉：关注球队本来就在打分里有加分(watchRank bonus)，
+  // 让它凭真实分数去跟别的比赛公平竞争方案A的名额，而不是不管分数高低都强行占位——
+  // 反正关注球队的比赛本来就有独立的"⭐关注球队今日比赛"区块，不会因为没进方案A就看不见。
+  return { cityTz: null, leagues: null, watchedTeams: [], forceFavorite: false };
 }
 
 function loadSettings() {
@@ -972,6 +975,111 @@ function renderHistogramSvg(counts, binLabels) {
   </svg>`;
 }
 
+// 维度名字的中文显示（没收录到的维度，直接显示原始key，不会挂）
+const DIMENSION_LABELS = {
+  form_ranking: "近期战绩排名", h2h_history: "历史交锋", derby: "德比",
+  big_club_clash: "豪门对决", title_relevance: "争冠/保级相关性",
+  third_party_impact: "第三方影响", club_influence: "俱乐部影响力(欧战积分)",
+  stadium_scale: "场馆规模/上座率",
+};
+
+/* ---- 基础统计量 ---- */
+function mean(arr) { return arr.reduce((a, b) => a + b, 0) / arr.length; }
+function variance(arr, m) { return arr.reduce((s, x) => s + (x - m) ** 2, 0) / arr.length; }
+function stdDev(arr, m) { return Math.sqrt(variance(arr, m)); }
+function percentile(sortedArr, p) {
+  // 线性插值法取分位数，p是0-1之间的小数
+  const idx = p * (sortedArr.length - 1);
+  const lo = Math.floor(idx), hi = Math.ceil(idx);
+  if (lo === hi) return sortedArr[lo];
+  return sortedArr[lo] + (sortedArr[hi] - sortedArr[lo]) * (idx - lo);
+}
+// 偏度(skewness)：描述分布往哪边"拖尾"，正态分布理论值≈0
+function skewness(arr, m, sd) {
+  if (sd === 0) return 0;
+  const n = arr.length;
+  const m3 = arr.reduce((s, x) => s + (x - m) ** 3, 0) / n;
+  return m3 / (sd ** 3);
+}
+// 峰度(excess kurtosis)：描述分布"尖不尖、尾巴厚不厚"，正态分布理论值≈0
+function kurtosis(arr, m, sd) {
+  if (sd === 0) return 0;
+  const n = arr.length;
+  const m4 = arr.reduce((s, x) => s + (x - m) ** 4, 0) / n;
+  return m4 / (sd ** 4) - 3;
+}
+// Jarque-Bera正态性检验：基于偏度+峰度构造统计量，自由度2的卡方分布，
+// 好处是df=2时卡方分布的p值有闭式解(1-e^(-JB/2))，不需要查表或近似，JS里能精确算。
+function jarqueBera(arr) {
+  const n = arr.length;
+  if (n < 8) return null; // 样本太少，检验不可靠，不给结果
+  const m0 = mean(arr);
+  const sd = stdDev(arr, m0);
+  const S = skewness(arr, m0, sd);
+  const K = kurtosis(arr, m0, sd);
+  const JB = (n / 6) * (S ** 2 + (K ** 2) / 4);
+  const pValue = Math.exp(-JB / 2); // 卡方分布(df=2)的生存函数精确解
+  return { JB: Math.round(JB * 100) / 100, pValue, skewness: Math.round(S * 100) / 100, kurtosis: Math.round(K * 100) / 100 };
+}
+// Sturges公式定直方图区间数，5~15之间兜底
+function sturgesBins(n) {
+  return Math.min(15, Math.max(5, Math.ceil(Math.log2(n) + 1)));
+}
+
+function histogramCounts(arr, binCount, lo, hi) {
+  const bins = new Array(binCount).fill(0);
+  const span = (hi - lo) || 1;
+  arr.forEach(v => {
+    let idx = Math.floor(((v - lo) / span) * binCount);
+    idx = Math.max(0, Math.min(binCount - 1, idx));
+    bins[idx]++;
+  });
+  const labels = [];
+  for (let i = 0; i < binCount; i++) {
+    labels.push(Math.round(lo + (span * i) / binCount));
+  }
+  return { bins, labels };
+}
+
+function distributionPanelHtml(title, values, { compact } = {}) {
+  const n = values.length;
+  if (n < 2) return `<div class="dist-panel"><p class="dist-title">${title}</p><div class="stats-empty">样本太少</div></div>`;
+  const sorted = [...values].sort((a, b) => a - b);
+  const m = mean(values);
+  const sd = stdDev(values, m);
+  const binCount = sturgesBins(n);
+  const lo = sorted[0], hi = sorted[n - 1];
+  const { bins, labels } = histogramCounts(values, binCount, lo, hi);
+  const jb = jarqueBera(values);
+
+  const jbHtml = jb
+    ? `<span class="jb-result ${jb.pValue < 0.05 ? "jb-reject" : "jb-ok"}">
+         Jarque-Bera检验：JB=${jb.JB}，p=${jb.pValue.toFixed(3)}
+         ${jb.pValue < 0.05 ? "（偏离正态，偏度" + jb.skewness + "/峰度" + jb.kurtosis + "）" : "（形状接近正态）"}
+       </span>`
+    : `<span class="jb-result">样本不足8场，不做正态性检验</span>`;
+
+  const pctHtml = !compact ? `
+    <div class="pct-table">
+      ${[10, 25, 50, 75, 90, 95].map(p =>
+        `<span>p${p} <b>${percentile(sorted, p / 100).toFixed(1)}</b></span>`).join("")}
+    </div>` : "";
+
+  return `
+    <div class="dist-panel">
+      <p class="dist-title">${title}</p>
+      <div class="stats-summary">
+        <span>样本 <b>${n}</b></span>
+        <span>均值 <b>${m.toFixed(2)}</b></span>
+        <span>中位数 <b>${percentile(sorted, 0.5).toFixed(2)}</b></span>
+        <span>标准差 <b>${sd.toFixed(2)}</b></span>
+      </div>
+      ${renderHistogramSvg(bins, labels)}
+      ${pctHtml}
+      <p class="jb-line">${jbHtml}</p>
+    </div>`;
+}
+
 function renderStatsResult(matches) {
   const box = document.getElementById("statsResult");
   if (!matches.length) {
@@ -979,30 +1087,49 @@ function renderStatsResult(matches) {
     return;
   }
 
-  const scores = matches.map(m => scoreBase(m.breakdown, scheduleData.weights, scheduleData.dimensionStats));
-  scores.sort((a, b) => a - b);
-  const n = scores.length;
-  const mean = scores.reduce((a, b) => a + b, 0) / n;
-  const median = n % 2 === 0 ? (scores[n / 2 - 1] + scores[n / 2]) / 2 : scores[(n - 1) / 2];
-  const variance = scores.reduce((s, x) => s + (x - mean) ** 2, 0) / n;
-  const std = Math.sqrt(variance);
+  const weights = scheduleData.weights || {};
+  const dimStats = scheduleData.dimensionStats || {};
+  const dims = Object.keys(weights);
 
-  const bins = new Array(10).fill(0);
-  const labels = [];
-  for (let i = 0; i < 10; i++) labels.push(`${i * 10}`);
-  scores.forEach(s => {
-    const idx = Math.min(9, Math.floor(s / 10));
-    bins[idx]++;
+  const scores = matches.map(m => scoreBase(m.breakdown, weights, dimStats) * 100);
+
+  // 每个维度：既看"原始值"（判断这个维度本身有没有区分度），
+  // 也看"z-score标准化之后、真正参与加权求和的值"（判断标准化有没有把分布搞歪）
+  const dimRows = dims.map(dim => {
+    const raw = matches.map(m => (m.breakdown[dim] !== undefined ? m.breakdown[dim] : 0.5));
+    const st = dimStats[dim] || { mean: 0.5, std: 0.2 };
+    const std = st.std > 0.001 ? st.std : 0.2;
+    const z = raw.map(v => (v - st.mean) / std);
+    const rawMean = mean(raw);
+    const rawSd = stdDev(raw, rawMean);
+    const cv = rawMean !== 0 ? Math.abs(rawSd / rawMean) : 0;
+    return { dim, label: DIMENSION_LABELS[dim] || dim, raw, z, rawMean, rawSd, cv };
   });
 
+  // 变异系数(CV)太小说明这个维度原始值几乎不变，这个维度再怎么加权重也分不出比赛高低——
+  // 按CV从小到大排，最该怀疑的排最前面
+  const cvRows = [...dimRows].sort((a, b) => a.cv - b.cv).map(r => `
+    <tr class="${r.cv < 0.1 ? "cv-warn" : ""}">
+      <td>${r.label}</td><td>${r.rawMean.toFixed(3)}</td><td>${r.rawSd.toFixed(3)}</td>
+      <td>${r.cv.toFixed(3)}${r.cv < 0.1 ? " ⚠️区分度低" : ""}</td>
+    </tr>`).join("");
+
+  const totalPanel = distributionPanelHtml("🎯 最终推荐指数（总分）分布", scores);
+  const dimPanels = dimRows.map(r =>
+    distributionPanelHtml(`${r.label}（标准化后，实际参与加权求和的值）`, r.z, { compact: true })
+  ).join("");
+
   box.innerHTML = `
-    <div class="stats-summary">
-      <span>样本 <b>${n}</b> 场</span>
-      <span>平均分 <b>${mean.toFixed(1)}</b></span>
-      <span>中位数 <b>${median.toFixed(1)}</b></span>
-      <span>标准差 <b>${std.toFixed(1)}</b></span>
-    </div>
-    ${renderHistogramSvg(bins, labels)}
+    ${totalPanel}
+    <details class="dim-detail-toggle">
+      <summary>按维度分别查看分布（共${dims.length}个维度）——用来判断哪个维度的权重可能需要调整</summary>
+      <table class="cv-table">
+        <caption>各维度原始值的变异系数(CV=标准差/均值)——CV越小，这个维度区分比赛的能力越弱</caption>
+        <thead><tr><th>维度</th><th>均值</th><th>标准差</th><th>CV</th></tr></thead>
+        <tbody>${cvRows}</tbody>
+      </table>
+      ${dimPanels}
+    </details>
   `;
 }
 

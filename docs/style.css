@@ -359,6 +359,48 @@ select, .city-row input {
 .histogram-svg .count-label { fill: var(--text); font-size: 11px; font-weight: 600; }
 .histogram-svg .axis-line { stroke: var(--line); stroke-width: 1; }
 
+/* ---- 分布面板(每个维度/总分共用) ---- */
+.dist-panel {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.dist-title { font-size: 13px; font-weight: 600; margin: 0 0 4px; }
+.pct-table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  padding: 6px 0 2px;
+  border-top: 1px dashed var(--line);
+  margin-top: 6px;
+}
+.pct-table b { color: var(--text); }
+.jb-line { margin: 6px 0 0; font-size: 11.5px; }
+.jb-result { color: var(--text-dim); }
+.jb-result.jb-ok { color: var(--ok, #4a9a6a); }
+.jb-result.jb-reject { color: var(--amber); }
+
+.dim-detail-toggle { margin-top: 10px; }
+.dim-detail-toggle summary {
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  padding: 6px 0;
+}
+.cv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  margin: 8px 0 16px;
+}
+.cv-table caption { text-align: left; color: var(--text-dim); font-size: 10.5px; padding-bottom: 4px; }
+.cv-table th, .cv-table td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: right; }
+.cv-table th:first-child, .cv-table td:first-child { text-align: left; }
+.cv-table tr.cv-warn td { color: var(--amber); }
+
 /* ---- Day sections ---- */
 .day-section {
   margin-top: 28px;
