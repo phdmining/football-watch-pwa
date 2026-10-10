@@ -1021,9 +1021,19 @@ function jarqueBera(arr) {
   const pValue = Math.exp(-JB / 2); // 卡方分布(df=2)的生存函数精确解
   return { JB: Math.round(JB * 100) / 100, pValue, skewness: Math.round(S * 100) / 100, kurtosis: Math.round(K * 100) / 100 };
 }
-// Sturges公式定直方图区间数，5~15之间兜底
+// Sturges公式定直方图区间数，5~15之间兜底——适合大致连续、不太偏态的分布
 function sturgesBins(n) {
   return Math.min(15, Math.max(5, Math.ceil(Math.log2(n) + 1)));
+}
+// Freedman-Diaconis公式：按四分位距(IQR)算区间宽度，不受极端值影响，
+// 数据实际分布得密的地方会自动切得更细——比Sturges更适合偏态分布
+function freedmanDiaconisBins(sortedArr) {
+  const n = sortedArr.length;
+  const iqr = percentile(sortedArr, 0.75) - percentile(sortedArr, 0.25);
+  const span = sortedArr[n - 1] - sortedArr[0];
+  if (iqr <= 0 || span <= 0) return null; // 数据退化(中间一半的值完全相同)，交给调用方走分类展示
+  const h = 2 * iqr / Math.cbrt(n);
+  return Math.min(20, Math.max(5, Math.ceil(span / h)));
 }
 
 function histogramCounts(arr, binCount, lo, hi) {
@@ -1041,15 +1051,53 @@ function histogramCounts(arr, binCount, lo, hi) {
   return { bins, labels };
 }
 
-function distributionPanelHtml(title, values, { compact } = {}) {
+// 退化/近乎二元分布(比如"是不是德比"这种，绝大多数比赛原始值完全相同)
+// 不适合画直方图——不管切多少份，占大头的那一类永远死死挤在一个格子里。
+// 改成按"原始值"分类计数，直接告诉你"多少场是、多少场不是"。
+function categoricalBreakdownHtml(rawValues) {
+  const counts = new Map();
+  rawValues.forEach(v => {
+    const key = Math.round(v * 100) / 100; // 四舍五入到2位小数归并，避免浮点误差拆成好几类
+    counts.set(key, (counts.get(key) || 0) + 1);
+  });
+  const n = rawValues.length;
+  const rows = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([val, cnt]) => `<span>原始值=${val} <b>${cnt}场</b>（${(cnt / n * 100).toFixed(1)}%）</span>`)
+    .join("");
+  return `<div class="cat-breakdown">${rows}</div>
+    <p class="jb-line"><span class="jb-result">这个维度大部分比赛取值相同(近乎二元)，不适合画直方图，改为按原始值分类计数。</span></p>`;
+}
+
+function distributionPanelHtml(title, values, { compact, rawValues } = {}) {
   const n = values.length;
   if (n < 2) return `<div class="dist-panel"><p class="dist-title">${title}</p><div class="stats-empty">样本太少</div></div>`;
   const sorted = [...values].sort((a, b) => a - b);
   const m = mean(values);
   const sd = stdDev(values, m);
-  const binCount = sturgesBins(n);
+
+  const summaryHtml = `
+    <div class="stats-summary">
+      <span>样本 <b>${n}</b></span>
+      <span>均值 <b>${m.toFixed(2)}</b></span>
+      <span>中位数 <b>${percentile(sorted, 0.5).toFixed(2)}</b></span>
+      <span>标准差 <b>${sd.toFixed(2)}</b></span>
+    </div>`;
+
+  const fdBinCount = freedmanDiaconisBins(sorted);
+  if (fdBinCount === null) {
+    // 退化分布：不画直方图，走分类计数
+    return `
+      <div class="dist-panel">
+        <p class="dist-title">${title}</p>
+        ${summaryHtml}
+        ${categoricalBreakdownHtml(rawValues || values)}
+      </div>`;
+  }
+
   const lo = sorted[0], hi = sorted[n - 1];
-  const { bins, labels } = histogramCounts(values, binCount, lo, hi);
+  const { bins, labels } = histogramCounts(values, fdBinCount, lo, hi);
   const jb = jarqueBera(values);
 
   const jbHtml = jb
@@ -1068,12 +1116,7 @@ function distributionPanelHtml(title, values, { compact } = {}) {
   return `
     <div class="dist-panel">
       <p class="dist-title">${title}</p>
-      <div class="stats-summary">
-        <span>样本 <b>${n}</b></span>
-        <span>均值 <b>${m.toFixed(2)}</b></span>
-        <span>中位数 <b>${percentile(sorted, 0.5).toFixed(2)}</b></span>
-        <span>标准差 <b>${sd.toFixed(2)}</b></span>
-      </div>
+      ${summaryHtml}
       ${renderHistogramSvg(bins, labels)}
       ${pctHtml}
       <p class="jb-line">${jbHtml}</p>
@@ -1116,7 +1159,7 @@ function renderStatsResult(matches) {
 
   const totalPanel = distributionPanelHtml("🎯 最终推荐指数（总分）分布", scores);
   const dimPanels = dimRows.map(r =>
-    distributionPanelHtml(`${r.label}（标准化后，实际参与加权求和的值）`, r.z, { compact: true })
+    distributionPanelHtml(`${r.label}（标准化后，实际参与加权求和的值）`, r.z, { compact: true, rawValues: r.raw })
   ).join("");
 
   box.innerHTML = `

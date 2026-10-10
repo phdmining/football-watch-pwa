@@ -378,6 +378,15 @@ select, .city-row input {
   margin-top: 6px;
 }
 .pct-table b { color: var(--text); }
+.cat-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 8px 0 2px;
+}
+.cat-breakdown b { color: var(--text); }
 .jb-line { margin: 6px 0 0; font-size: 11.5px; }
 .jb-result { color: var(--text-dim); }
 .jb-result.jb-ok { color: var(--ok, #4a9a6a); }
