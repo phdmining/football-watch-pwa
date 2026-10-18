@@ -10,7 +10,10 @@ function defaultSettings() {
   // forceFavorite默认关掉：关注球队本来就在打分里有加分(watchRank bonus)，
   // 让它凭真实分数去跟别的比赛公平竞争方案A的名额，而不是不管分数高低都强行占位——
   // 反正关注球队的比赛本来就有独立的"⭐关注球队今日比赛"区块，不会因为没进方案A就看不见。
-  return { cityTz: null, leagues: null, watchedTeams: [], forceFavorite: false };
+  // weightOverrides：用户在设置里手动调过的维度权重（只记录调过的，没调过的维度沿用后端默认值）。
+  // 纯前端生效——后端存的八个维度原始分(0~1)本来就已经随每场比赛一起返回了，
+  // 调权重不需要重新请求数据，改完立刻用同一份breakdown重新算分、重新排序。
+  return { cityTz: null, leagues: null, watchedTeams: [], forceFavorite: false, weightOverrides: {} };
 }
 
 function loadSettings() {
@@ -97,8 +100,17 @@ function scoreBase(breakdown, weights, dimensionStats) {
   return logistic(zTotal, 1.1);
 }
 
+// 后端默认权重(scheduleData.weights) + 用户在设置里手动调过的覆盖值(settings.weightOverrides)。
+// 只有调过的维度才会被覆盖，没调过的维度照旧用后端默认值——这样"恢复默认"只需清空overrides，
+// 也不用把后端那套默认权重硬编码进前端两份、改了还要对齐。
+function effectiveWeights(baseSettings) {
+  const base = (scheduleData && scheduleData.weights) || {};
+  const overrides = (baseSettings || settings).weightOverrides || {};
+  return Object.assign({}, base, overrides);
+}
+
 function computeScore(match) {
-  let total = scoreBase(match.breakdown, scheduleData.weights, scheduleData.dimensionStats);
+  let total = scoreBase(match.breakdown, effectiveWeights(), scheduleData.dimensionStats);
   const rank = watchRankFor(match);
   if (rank >= 0) {
     const bonus = WATCH_BONUS_TIERS[Math.min(rank, WATCH_BONUS_TIERS.length - 1)];
@@ -218,6 +230,44 @@ function teamNameHtml(name, position) {
   return `${logoHtml}<span class="team-name ${tier}">${star}${abbreviateTeamName(name)}${posHtml}</span>`;
 }
 
+// 每个维度：原始得分(0~100)、跟全样本平均比起来怎么样、当前生效权重、这场比赛这个维度
+// 是不是真有数据支撑还是用的中性兜底值。覆盖率 = 有真实数据支撑的维度权重 / 全部权重，
+// 让用户一眼看出"这个推荐指数有多少是真算出来的，有多少是猜的中性值"。
+function scoreBreakdownHtml(m) {
+  const weights = effectiveWeights();
+  const dimStats = scheduleData.dimensionStats || {};
+  const missing = m.breakdownMissing || {};
+  const dims = Object.keys(DIMENSION_LABELS);
+
+  let coveredWeight = 0, totalWeight = 0;
+  const rows = dims.map(dim => {
+    const w = weights[dim] || 0;
+    totalWeight += w;
+    const isMissing = !!missing[dim];
+    if (!isMissing) coveredWeight += w;
+    const raw = m.breakdown && m.breakdown[dim] !== undefined ? m.breakdown[dim] : null;
+    const rawPct = raw !== null ? Math.round(raw * 100) : null;
+    const st = dimStats[dim];
+    const avgPct = st && st.mean !== undefined ? Math.round(st.mean * 100) : null;
+    const badge = isMissing
+      ? `<span class="dim-missing-badge" title="该维度缺真实数据，当前用中性值估算，不是算出来的">⚠️ 数据缺失/估算</span>` : "";
+    return `
+      <div class="dim-row ${isMissing ? "dim-row-missing" : ""}">
+        <span class="dim-label">${DIMENSION_LABELS[dim]}</span>
+        <span class="dim-value">${rawPct === null ? "—" : rawPct}${avgPct !== null ? ` <span class="dim-avg">(均值${avgPct})</span>` : ""}</span>
+        <span class="dim-weight">权重${Math.round(w * 100)}%</span>
+        ${badge}
+      </div>`;
+  }).join("");
+
+  const coverage = totalWeight > 0 ? Math.round((coveredWeight / totalWeight) * 100) : 100;
+  return `
+    <details class="score-breakdown">
+      <summary>打分依据 · 数据覆盖度 ${coverage}%</summary>
+      <div class="dim-rows">${rows}</div>
+    </details>`;
+}
+
 function matchCardHtml(item) {
   const m = item.match;
   const tags = reasonTags(m, item.watchRank);
@@ -236,6 +286,7 @@ function matchCardHtml(item) {
         ${tagsHtml}
         <span class="tag reason">${m.reason}</span>
       </div>
+      ${scoreBreakdownHtml(m)}
     </div>`;
 }
 
@@ -767,8 +818,37 @@ function openSettingsPanel() {
   populateLeagueGrid();
   renderWatchedTeamList();
   document.getElementById("forceFavoriteCheckbox").checked = draft.forceFavorite !== false;
+  populateWeightSliders();
   updateTzHint();
   refreshDirtyUI();
+}
+
+// 滑块固定按 DIMENSION_LABELS 的顺序显示（跟比赛卡片里"打分依据"展开面板顺序保持一致）。
+// 滑块的"满格"给50%方便拖动——8个维度后端默认权重最大的那个(form_ranking)也只有22%，
+// 留足空间让用户想往上调也调得动，不会一下就顶到头。
+function populateWeightSliders() {
+  const container = document.getElementById("weightSlidersContainer");
+  if (!container) return;
+  const weights = effectiveWeights(draft);
+  container.innerHTML = Object.keys(DIMENSION_LABELS).map(dim => {
+    const pct = Math.round((weights[dim] || 0) * 100);
+    return `
+      <div class="weight-slider-row" data-dim="${dim}">
+        <span class="weight-slider-label">${DIMENSION_LABELS[dim]}</span>
+        <input type="range" min="0" max="50" step="1" value="${pct}" class="weight-slider-input" data-dim="${dim}">
+        <span class="weight-slider-value" data-dim-value="${dim}">${pct}%</span>
+      </div>`;
+  }).join("");
+  container.querySelectorAll(".weight-slider-input").forEach(input => {
+    input.addEventListener("input", (e) => {
+      const dim = e.target.dataset.dim;
+      const pct = parseInt(e.target.value, 10);
+      draft.weightOverrides = draft.weightOverrides || {};
+      draft.weightOverrides[dim] = pct / 100;
+      container.querySelector(`[data-dim-value="${dim}"]`).textContent = `${pct}%`;
+      refreshDirtyUI();
+    });
+  });
 }
 
 function bindSettingsEvents() {
@@ -787,6 +867,12 @@ function bindSettingsEvents() {
 
   document.getElementById("forceFavoriteCheckbox").addEventListener("change", (e) => {
     draft.forceFavorite = e.target.checked;
+    refreshDirtyUI();
+  });
+
+  document.getElementById("resetWeightsBtn").addEventListener("click", () => {
+    draft.weightOverrides = {};
+    populateWeightSliders();
     refreshDirtyUI();
   });
 

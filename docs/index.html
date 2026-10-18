@@ -106,6 +106,16 @@
           </label>
         </div>
 
+        <div class="field">
+          <label class="field-label">打分权重（可自行调整，决定推荐指数怎么算）</label>
+          <p class="weight-hint">
+            每个比赛8个维度的原始得分是后端算出来的（真实数据，不会变），下面调的是"每个维度算多重"。
+            调完点击下方"确认更新"才会生效；某个维度数据缺失时会在比赛卡片里标出来，不会悄悄当0分处理。
+          </p>
+          <div class="weight-sliders" id="weightSlidersContainer"></div>
+          <button type="button" class="reset-weights-btn" id="resetWeightsBtn">恢复默认权重</button>
+        </div>
+
         <div class="settings-actions static">
           <span class="dirty-hint" id="dirtyHint"></span>
           <button class="confirm-btn" id="confirmSettingsBtn">确认更新</button>
