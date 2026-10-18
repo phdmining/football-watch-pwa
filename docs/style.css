@@ -496,6 +496,18 @@ select, .city-row input {
 .cv-table th:first-child, .cv-table td:first-child { text-align: left; }
 .cv-table tr.cv-warn td { color: var(--amber); }
 
+.section-divider-heading { margin-top: 28px; }
+.scorer-league-block { margin-bottom: 10px; }
+.scorer-league-block summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 0;
+}
+.scorer-table th, .scorer-table td { text-align: left; }
+.scorer-table th:nth-child(3), .scorer-table th:nth-child(4),
+.scorer-table td:nth-child(3), .scorer-table td:nth-child(4) { text-align: right; }
+
 /* ---- Day sections ---- */
 .day-section {
   margin-top: 28px;

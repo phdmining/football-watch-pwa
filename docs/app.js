@@ -929,13 +929,47 @@ function populateStatsLeagueGrid() {
   grid.querySelectorAll("input").forEach(cb => {
     cb.addEventListener("change", () => {
       statsLeagues = [...grid.querySelectorAll("input:checked")].map(x => x.value);
+      renderTopScorers();
     });
   });
+}
+
+function renderTopScorers() {
+  const box = document.getElementById("topScorersResult");
+  if (!box) return;
+  const topScorers = (scheduleData && scheduleData.topScorers) || {};
+  const competitions = (scheduleData && scheduleData.competitions) || {};
+  const leagues = new Set(statsLeagues && statsLeagues.length ? statsLeagues : Object.keys(competitions));
+
+  const sections = Object.keys(competitions)
+    .filter(code => leagues.has(code) && topScorers[code] && topScorers[code].length)
+    .map(code => {
+      const rows = topScorers[code].map(s => `
+        <tr>
+          <td>${s.player_name || "--"}</td>
+          <td>${s.team_name || "--"}</td>
+          <td>${s.goals != null ? s.goals : "数据暂缺"}</td>
+          <td>${s.assists != null ? s.assists : "数据暂缺"}</td>
+        </tr>`).join("");
+      return `
+        <details class="scorer-league-block" open>
+          <summary>${(competitions[code] || code).split(" ")[0]}</summary>
+          <table class="cv-table scorer-table">
+            <thead><tr><th>球员</th><th>球队</th><th>进球</th><th>助攻</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </details>`;
+    });
+
+  box.innerHTML = sections.length
+    ? sections.join("")
+    : `<div class="stats-empty">所选赛事暂时没有射手榜数据，等下一次刷新后再看看。</div>`;
 }
 
 async function openStatsPanel() {
   if (!statsLeagues) statsLeagues = selectedLeagueCodes();
   populateStatsLeagueGrid();
+  renderTopScorers();
 
   // 清掉上次动态插入的具体赛季选项，重新拉取最新索引插入
   const sel = document.getElementById("statsRangeSelect");
