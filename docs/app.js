@@ -930,6 +930,7 @@ function populateStatsLeagueGrid() {
     cb.addEventListener("change", () => {
       statsLeagues = [...grid.querySelectorAll("input:checked")].map(x => x.value);
       renderTopScorers();
+      renderTeamCoaches();
     });
   });
 }
@@ -966,10 +967,50 @@ function renderTopScorers() {
     : `<div class="stats-empty">所选赛事暂时没有射手榜数据，等下一次刷新后再看看。</div>`;
 }
 
+function renderTeamCoaches() {
+  const box = document.getElementById("teamCoachesResult");
+  if (!box) return;
+  const teamCoaches = (scheduleData && scheduleData.teamCoaches) || {};
+  const competitions = (scheduleData && scheduleData.competitions) || {};
+  const teamsByComp = (scheduleData && scheduleData.teamsByCompetition) || {};
+  const leagues = new Set(statsLeagues && statsLeagues.length ? statsLeagues : Object.keys(competitions));
+
+  const sections = Object.keys(competitions)
+    .filter(code => leagues.has(code))
+    .map(code => {
+      const teamNames = (teamsByComp[code] || []).filter(name => teamCoaches[name]);
+      if (!teamNames.length) return "";
+      const rows = teamNames.map(name => {
+        const c = teamCoaches[name];
+        return `
+          <tr>
+            <td>${name}</td>
+            <td>${c.name || "--"}</td>
+            <td>${c.nationality || "数据暂缺"}</td>
+            <td>${c.contract_until || "数据暂缺"}</td>
+          </tr>`;
+      }).join("");
+      return `
+        <details class="scorer-league-block" open>
+          <summary>${(competitions[code] || code).split(" ")[0]}</summary>
+          <table class="cv-table scorer-table">
+            <thead><tr><th>球队</th><th>主教练</th><th>国籍</th><th>合同至</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </details>`;
+    })
+    .filter(Boolean);
+
+  box.innerHTML = sections.length
+    ? sections.join("")
+    : `<div class="stats-empty">所选赛事暂时没有教练数据，等下一次刷新后再看看。</div>`;
+}
+
 async function openStatsPanel() {
   if (!statsLeagues) statsLeagues = selectedLeagueCodes();
   populateStatsLeagueGrid();
   renderTopScorers();
+  renderTeamCoaches();
 
   // 清掉上次动态插入的具体赛季选项，重新拉取最新索引插入
   const sel = document.getElementById("statsRangeSelect");
